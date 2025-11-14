@@ -235,17 +235,18 @@ const BudgetPage: FC = () => {
                       </Box>
                     }
                     title={category?.name || "Khác"}
-                    subtitle={`${getMonthName(budget.month)} ${budget.year}`}
+                    subTitle={`${getMonthName(budget.month)} ${budget.year}`}
                     suffix={
                       <Box className="flex items-center space-x-2">
                         <Text className="font-semibold">
                           {formatCurrency(budget.amount)}
                         </Text>
-                        <Icon
-                          icon="zi-delete"
+                        <Box
                           className="text-red-500 cursor-pointer"
                           onClick={() => handleDeleteBudget(budget.id)}
-                        />
+                        >
+                          <Icon icon="zi-delete" />
+                        </Box>
                       </Box>
                     }
                   />

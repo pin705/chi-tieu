@@ -26,14 +26,24 @@
   - Progress bar hiển thị tỷ lệ phần trăm
 - **Lưu trữ dữ liệu**: Sử dụng ZMP Storage API để lưu trữ local
 
-### Phase 2: Tính năng nâng cao (Kế hoạch)
+### Phase 2: Tính năng nâng cao (Đang phát triển) 🚧
 
-- [ ] Thiết lập ngân sách theo tháng/danh mục
-- [ ] Cảnh báo khi vượt ngân sách
+- [x] Thiết lập ngân sách theo tháng/danh mục
+- [x] Cảnh báo khi vượt ngân sách
 - [ ] Biểu đồ xu hướng theo thời gian
 - [ ] Sao lưu đám mây
 - [ ] Sổ chi tiêu chung (gia đình)
 - [ ] Tích hợp ZaloPay
+
+#### Hoàn thành trong Phase 2:
+
+**Quản lý ngân sách** ✅
+- Thiết lập ngân sách theo tháng
+- Thiết lập ngân sách theo từng danh mục chi tiêu
+- Theo dõi tiến độ chi tiêu so với ngân sách
+- Cảnh báo tự động khi vượt ngân sách
+- Hiển thị thanh tiến độ (progress bar) trực quan
+- Thống kê chi tiêu so với ngân sách trong báo cáo
 
 ## Cài đặt
 
@@ -72,11 +82,13 @@
     - `add-transaction`: Form thêm giao dịch
     - `history`: Lịch sử giao dịch
     - `reports`: Báo cáo và thống kê
+    - `budget`: Quản lý ngân sách (Phase 2)
     - `settings`: Cài đặt ứng dụng
   - **`types`**: TypeScript type definitions
     - `transaction.ts`: Định nghĩa giao dịch
     - `expense-category.ts`: Danh mục chi tiêu/thu nhập
     - `wallet.ts`: Ví tiền
+    - `budget.ts`: Ngân sách (Phase 2)
   - **`utils`**: Utility functions
   - **`expense-state.ts`**: State management với Recoil
   - **`app.ts`**: Entry point
