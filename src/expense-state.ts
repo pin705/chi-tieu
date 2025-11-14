@@ -379,3 +379,101 @@ export const categoryBudgetStatusState = selectorFamily<
       };
     },
 });
+
+// Get transactions for last N months (for trend analysis)
+export const lastMonthsTransactionsState = selectorFamily<
+  { month: number; year: number; transactions: Transaction[] }[],
+  number
+>({
+  key: "lastMonthsTransactions",
+  get:
+    (months) =>
+    ({ get }) => {
+      const transactions = get(sortedTransactionsState);
+      const now = new Date();
+      const result: { month: number; year: number; transactions: Transaction[] }[] = [];
+
+      for (let i = 0; i < months; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const month = d.getMonth();
+        const year = d.getFullYear();
+
+        const monthTransactions = transactions.filter((t) => {
+          const date = new Date(t.date);
+          return date.getMonth() === month && date.getFullYear() === year;
+        });
+
+        result.push({ month, year, transactions: monthTransactions });
+      }
+
+      return result.reverse();
+    },
+});
+
+// Monthly trend data (income and expense for last N months)
+export const monthlyTrendState = selectorFamily<
+  { month: number; year: number; income: number; expense: number }[],
+  number
+>({
+  key: "monthlyTrend",
+  get:
+    (months) =>
+    ({ get }) => {
+      const monthsData = get(lastMonthsTransactionsState(months));
+
+      return monthsData.map(({ month, year, transactions }) => {
+        const income = transactions
+          .filter((t) => t.type === "income")
+          .reduce((sum, t) => sum + t.amount, 0);
+
+        const expense = transactions
+          .filter((t) => t.type === "expense")
+          .reduce((sum, t) => sum + t.amount, 0);
+
+        return { month, year, income, expense };
+      });
+    },
+});
+
+// Weekly trend for current month
+export const weeklyTrendState = selector<
+  { week: number; income: number; expense: number }[]
+>({
+  key: "weeklyTrend",
+  get: ({ get }) => {
+    const transactions = get(currentMonthTransactionsState);
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    // Get first day of month
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const weeks: { week: number; income: number; expense: number }[] = [];
+
+    // Calculate number of weeks in month
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const numWeeks = Math.ceil((lastDay.getDate() + firstDay.getDay()) / 7);
+
+    for (let week = 0; week < numWeeks; week++) {
+      const weekStart = new Date(currentYear, currentMonth, week * 7 - firstDay.getDay() + 1);
+      const weekEnd = new Date(currentYear, currentMonth, (week + 1) * 7 - firstDay.getDay());
+
+      const weekTransactions = transactions.filter((t) => {
+        const date = new Date(t.date);
+        return date >= weekStart && date <= weekEnd;
+      });
+
+      const income = weekTransactions
+        .filter((t) => t.type === "income")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+      const expense = weekTransactions
+        .filter((t) => t.type === "expense")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+      weeks.push({ week: week + 1, income, expense });
+    }
+
+    return weeks;
+  },
+});

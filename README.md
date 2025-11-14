@@ -26,14 +26,14 @@
   - Progress bar hiển thị tỷ lệ phần trăm
 - **Lưu trữ dữ liệu**: Sử dụng ZMP Storage API để lưu trữ local
 
-### Phase 2: Tính năng nâng cao (Đang phát triển) 🚧
+### Phase 2: Tính năng nâng cao (Đã hoàn thành) ✅
 
 - [x] Thiết lập ngân sách theo tháng/danh mục
 - [x] Cảnh báo khi vượt ngân sách
-- [ ] Biểu đồ xu hướng theo thời gian
-- [ ] Sao lưu đám mây
-- [ ] Sổ chi tiêu chung (gia đình)
-- [ ] Tích hợp ZaloPay
+- [x] Biểu đồ xu hướng theo thời gian
+- [ ] Sao lưu đám mây (Tính năng tương lai)
+- [ ] Sổ chi tiêu chung (gia đình) (Tính năng tương lai)
+- [ ] Tích hợp ZaloPay (Tính năng tương lai)
 
 #### Hoàn thành trong Phase 2:
 
@@ -44,6 +44,48 @@
 - Cảnh báo tự động khi vượt ngân sách
 - Hiển thị thanh tiến độ (progress bar) trực quan
 - Thống kê chi tiêu so với ngân sách trong báo cáo
+
+**Biểu đồ xu hướng** ✅
+- Biểu đồ cột theo tuần (trong tháng hiện tại)
+- Biểu đồ đường xu hướng 6 tháng
+- So sánh thu - chi theo tháng với thanh tiến độ
+- Chuyển đổi linh hoạt giữa xem theo danh mục và xu hướng
+
+### Phase 3: Phân tích nâng cao (Đã hoàn thành) ✅
+
+- [x] So sánh nhiều tháng
+- [x] Xu hướng chi tiêu theo tuần/tháng
+- [x] Phân tích danh mục chi tiêu hàng đầu
+- [x] Biểu đồ timeline thu nhập vs chi tiêu
+
+#### Hoàn thành trong Phase 3:
+
+**Phân tích và Báo cáo nâng cao** ✅
+- Xem xu hướng chi tiêu theo tuần trong tháng
+- Xem xu hướng thu/chi trong 6 tháng gần nhất
+- So sánh thu nhập và chi tiêu qua các tháng
+- Biểu đồ trực quan với màu sắc phân biệt
+- Chuyển đổi giữa biểu đồ cột và biểu đồ đường
+
+### Phase 4: Cải thiện trải nghiệm người dùng (Đã hoàn thành) ✅
+
+- [x] Tìm kiếm và lọc giao dịch
+- [x] Bộ lọc đa điều kiện (loại, danh mục, ví)
+- [x] Hiển thị trực quan các bộ lọc đang áp dụng
+- [ ] Xuất dữ liệu (Tính năng tương lai)
+- [ ] Chế độ tối (Tính năng tương lai)
+- [ ] Hệ thống thông báo (Tính năng tương lai)
+
+#### Hoàn thành trong Phase 4:
+
+**Tìm kiếm và Lọc nâng cao** ✅
+- Tìm kiếm giao dịch theo ghi chú, danh mục, số tiền
+- Lọc theo loại giao dịch (thu nhập/chi tiêu)
+- Lọc theo danh mục chi tiêu
+- Lọc theo ví
+- Hiển thị số lượng bộ lọc đang áp dụng
+- Xóa từng bộ lọc hoặc xóa tất cả
+- Giao diện lọc thân thiện với người dùng
 
 ## Cài đặt
 
