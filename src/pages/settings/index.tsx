@@ -66,6 +66,12 @@ const SettingsPage: FC = () => {
               onClick={() => navigate("/manage-categories")}
             />
             <List.Item
+              prefix={<Icon icon="zi-coin" />}
+              title="Quản lý ngân sách"
+              suffix={<Icon icon="zi-chevron-right" />}
+              onClick={() => navigate("/budget")}
+            />
+            <List.Item
               prefix={<Icon icon="zi-calendar" />}
               title="Lịch sử giao dịch"
               suffix={<Icon icon="zi-chevron-right" />}

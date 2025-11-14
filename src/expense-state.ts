@@ -7,6 +7,7 @@ import {
 } from "types/expense-category";
 import { Wallet, DEFAULT_WALLETS } from "types/wallet";
 import { Transaction } from "types/transaction";
+import { Budget } from "types/budget";
 import { getStorage, setStorage } from "zmp-sdk";
 
 // User state
@@ -233,4 +234,148 @@ export const transactionsByCategoryState = selectorFamily<
 export const selectedTransactionTypeState = atom<"income" | "expense">({
   key: "selectedTransactionType",
   default: "expense",
+});
+
+// Budgets state
+const loadBudgets = async (): Promise<Budget[]> => {
+  try {
+    const stored = await getStorage({ keys: ["budgets"] });
+    if (stored.budgets) {
+      return JSON.parse(stored.budgets);
+    }
+  } catch (error) {
+    console.warn("Error loading budgets:", error);
+  }
+  return [];
+};
+
+const saveBudgets = async (budgets: Budget[]) => {
+  try {
+    await setStorage({
+      data: { budgets: JSON.stringify(budgets) },
+    });
+  } catch (error) {
+    console.error("Error saving budgets:", error);
+  }
+};
+
+export const budgetsState = atom<Budget[]>({
+  key: "budgets",
+  default: loadBudgets(),
+  effects: [
+    ({ onSet }) => {
+      onSet((newBudgets) => {
+        saveBudgets(newBudgets);
+      });
+    },
+  ],
+});
+
+// Get budget for current month
+export const currentMonthBudgetState = selector<Budget | undefined>({
+  key: "currentMonthBudget",
+  get: ({ get }) => {
+    const budgets = get(budgetsState);
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    return budgets.find(
+      (b) => b.type === "monthly" && b.month === currentMonth && b.year === currentYear
+    );
+  },
+});
+
+// Get category budgets for current month
+export const currentMonthCategoryBudgetsState = selector<Budget[]>({
+  key: "currentMonthCategoryBudgets",
+  get: ({ get }) => {
+    const budgets = get(budgetsState);
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    return budgets.filter(
+      (b) => b.type === "category" && b.month === currentMonth && b.year === currentYear
+    );
+  },
+});
+
+// Get budget status (spending vs budget)
+export const budgetStatusState = selector({
+  key: "budgetStatus",
+  get: ({ get }) => {
+    const monthlyBudget = get(currentMonthBudgetState);
+    const stats = get(monthlyStatsState);
+    
+    if (!monthlyBudget) {
+      return {
+        hasBudget: false,
+        budget: 0,
+        spent: stats.expense,
+        remaining: 0,
+        percentage: 0,
+        isExceeded: false,
+      };
+    }
+
+    const remaining = monthlyBudget.amount - stats.expense;
+    const percentage = (stats.expense / monthlyBudget.amount) * 100;
+
+    return {
+      hasBudget: true,
+      budget: monthlyBudget.amount,
+      spent: stats.expense,
+      remaining,
+      percentage,
+      isExceeded: stats.expense > monthlyBudget.amount,
+    };
+  },
+});
+
+// Get category budget status
+export const categoryBudgetStatusState = selectorFamily<
+  {
+    hasBudget: boolean;
+    budget: number;
+    spent: number;
+    remaining: number;
+    percentage: number;
+    isExceeded: boolean;
+  },
+  string
+>({
+  key: "categoryBudgetStatus",
+  get:
+    (categoryId) =>
+    ({ get }) => {
+      const categoryBudgets = get(currentMonthCategoryBudgetsState);
+      const categoryBudget = categoryBudgets.find((b) => b.categoryId === categoryId);
+      const categoryStats = get(transactionsByCategoryState("expense"));
+      const categoryStat = categoryStats.find((s) => s.categoryId === categoryId);
+      const spent = categoryStat?.amount || 0;
+
+      if (!categoryBudget) {
+        return {
+          hasBudget: false,
+          budget: 0,
+          spent,
+          remaining: 0,
+          percentage: 0,
+          isExceeded: false,
+        };
+      }
+
+      const remaining = categoryBudget.amount - spent;
+      const percentage = (spent / categoryBudget.amount) * 100;
+
+      return {
+        hasBudget: true,
+        budget: categoryBudget.amount,
+        spent,
+        remaining,
+        percentage,
+        isExceeded: spent > categoryBudget.amount,
+      };
+    },
 });

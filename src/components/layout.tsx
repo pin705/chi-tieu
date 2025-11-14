@@ -7,6 +7,7 @@ import AddTransactionPage from "pages/add-transaction";
 import HistoryPage from "pages/history";
 import ReportsPage from "pages/reports";
 import SettingsPage from "pages/settings";
+import BudgetPage from "pages/budget";
 import { getSystemInfo } from "zmp-sdk";
 import { ScrollRestoration } from "./scroll-restoration";
 import { useHandlePayment } from "hooks";
@@ -35,6 +36,7 @@ export const Layout: FC = () => {
           <Route path="/add-transaction" element={<AddTransactionPage />}></Route>
           <Route path="/history" element={<HistoryPage />}></Route>
           <Route path="/reports" element={<ReportsPage />}></Route>
+          <Route path="/budget" element={<BudgetPage />}></Route>
           <Route path="/settings" element={<SettingsPage />}></Route>
         </Routes>
       </Box>
