@@ -12,6 +12,7 @@ import {
   Select,
   useSnackbar,
 } from "zmp-ui";
+import DatePicker from "zmp-ui/date-picker";
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
   budgetsState,
@@ -30,6 +31,7 @@ const BudgetPage: FC = () => {
   const categoryBudgets = useRecoilValue(currentMonthCategoryBudgetsState);
 
   const [showAddSheet, setShowAddSheet] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [formData, setFormData] = useState<BudgetFormData>({
     type: "monthly",
     amount: "",
@@ -102,6 +104,7 @@ const BudgetPage: FC = () => {
       month: new Date().getMonth(),
       year: new Date().getFullYear(),
     });
+    setSelectedDate(new Date());
   };
 
   const handleDeleteBudget = (budgetId: string) => {
@@ -158,26 +161,27 @@ const BudgetPage: FC = () => {
           </Box>
 
           {monthlyBudget ? (
-            <Box className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl text-white">
-              <Text size="xSmall" className="opacity-90">
-                {getMonthName(monthlyBudget.month)} {monthlyBudget.year}
+            <Box className="p-5 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl text-white shadow-lg">
+              <Text size="small" className="opacity-90">
+                📅 {getMonthName(monthlyBudget.month)} {monthlyBudget.year}
               </Text>
-              <Text.Title size="large" className="mt-2">
+              <Text.Title size="large" className="mt-3 mb-4 font-bold">
                 {formatCurrency(monthlyBudget.amount)}
               </Text.Title>
               <Button
                 size="small"
                 variant="secondary"
-                className="mt-3 bg-white text-blue-600"
+                className="bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md"
                 onClick={() => handleDeleteBudget(monthlyBudget.id)}
               >
                 <Icon icon="zi-delete" className="mr-1" />
-                Xóa
+                Xóa ngân sách
               </Button>
             </Box>
           ) : (
-            <Box className="p-6 bg-gray-50 rounded-xl text-center">
-              <Text className="text-gray-500">
+            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
+              <Icon icon="zi-calendar" size={48} className="text-gray-400 mb-3" />
+              <Text className="text-gray-500 font-medium">
                 Chưa thiết lập ngân sách cho tháng này
               </Text>
             </Box>
@@ -186,8 +190,8 @@ const BudgetPage: FC = () => {
 
         {/* Category Budgets Section */}
         <Box className="p-4">
-          <Box className="flex items-center justify-between mb-3">
-            <Text.Title size="small">Ngân sách theo danh mục</Text.Title>
+          <Box className="flex items-center justify-between mb-4">
+            <Text.Title size="small">💳 Ngân sách theo danh mục</Text.Title>
             <Button
               size="small"
               onClick={() => {
@@ -198,8 +202,10 @@ const BudgetPage: FC = () => {
                   month: new Date().getMonth(),
                   year: new Date().getFullYear(),
                 });
+                setSelectedDate(new Date());
                 setShowAddSheet(true);
               }}
+              className="shadow-sm hover:shadow-md transition-shadow"
             >
               <Icon icon="zi-plus" className="mr-1" />
               Thêm
@@ -207,8 +213,9 @@ const BudgetPage: FC = () => {
           </Box>
 
           {categoryBudgets.length === 0 ? (
-            <Box className="p-6 bg-gray-50 rounded-xl text-center">
-              <Text className="text-gray-500">
+            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
+              <Icon icon="zi-more-grid" size={48} className="text-gray-400 mb-3" />
+              <Text className="text-gray-500 font-medium">
                 Chưa có ngân sách theo danh mục
               </Text>
             </Box>
@@ -266,16 +273,16 @@ const BudgetPage: FC = () => {
         handler
         swipeToClose
       >
-        <Box className="p-4">
-          <Text.Title className="mb-4">
+        <Box className="p-5">
+          <Text.Title className="mb-5 text-center">
             {formData.type === "monthly"
-              ? "Ngân sách tháng"
-              : "Ngân sách danh mục"}
+              ? "💰 Ngân sách tháng"
+              : "📂 Ngân sách danh mục"}
           </Text.Title>
 
           {formData.type === "category" && (
-            <Box className="mb-4">
-              <Text size="small" className="mb-2 text-gray-600">
+            <Box className="mb-5">
+              <Text size="small" className="mb-3 text-gray-700 font-medium">
                 Danh mục
               </Text>
               <Select
@@ -283,6 +290,7 @@ const BudgetPage: FC = () => {
                 onChange={(value) =>
                   setFormData({ ...formData, categoryId: value as string })
                 }
+                className="bg-white border-2 border-gray-200 rounded-xl"
               >
                 {expenseCategories.map((category) => (
                   <Select.Option
@@ -295,8 +303,8 @@ const BudgetPage: FC = () => {
             </Box>
           )}
 
-          <Box className="mb-4">
-            <Text size="small" className="mb-2 text-gray-600">
+          <Box className="mb-5">
+            <Text size="small" className="mb-3 text-gray-700 font-medium">
               Số tiền (VNĐ)
             </Text>
             <Input
@@ -306,19 +314,48 @@ const BudgetPage: FC = () => {
                 setFormData({ ...formData, amount: e.target.value })
               }
               placeholder="Nhập số tiền"
+              className="bg-white border-2 border-gray-200 rounded-xl"
             />
           </Box>
 
-          <Box className="flex space-x-2">
+          <Box className="mb-5">
+            <DatePicker
+              label="Tháng/Năm"
+              placeholder="Chọn tháng và năm"
+              value={selectedDate}
+              onChange={(value) => {
+                setSelectedDate(value);
+                setFormData({ 
+                  ...formData, 
+                  month: value.getMonth(), 
+                  year: value.getFullYear() 
+                });
+              }}
+              dateFormat="mm/yyyy"
+              columnsFormat="MM-DD-YYYY"
+              title="Chọn tháng và năm"
+              locale="vi-VN"
+              mask
+              maskClosable
+              inputClass="bg-white border-2 border-gray-200 rounded-xl"
+            />
+          </Box>
+
+          <Box className="flex space-x-3">
             <Button
               fullWidth
               variant="secondary"
               onClick={() => setShowAddSheet(false)}
+              className="h-12 font-semibold shadow-sm hover:shadow-md transition-shadow"
             >
               Hủy
             </Button>
-            <Button fullWidth onClick={handleAddBudget}>
-              Lưu
+            <Button 
+              fullWidth 
+              onClick={handleAddBudget}
+              className="h-12 font-semibold shadow-md hover:shadow-lg transition-shadow"
+            >
+              ✓ Lưu
             </Button>
           </Box>
         </Box>

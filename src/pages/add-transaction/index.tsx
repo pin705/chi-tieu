@@ -10,6 +10,7 @@ import {
   Icon,
   useSnackbar,
 } from "zmp-ui";
+import DatePicker from "zmp-ui/date-picker";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -129,47 +130,59 @@ const AddTransactionPage: FC = () => {
       <Header title="Thêm giao dịch" showBackIcon={true} />
       <Box className="flex-1 overflow-auto p-4">
         {/* Type Toggle */}
-        <Box className="grid grid-cols-2 gap-2 mb-6">
+        <Box className="grid grid-cols-2 gap-3 mb-6">
           <Button
             variant={type === "expense" ? "primary" : "secondary"}
             onClick={() => setType("expense")}
+            className={`transition-all duration-200 ${
+              type === "expense" 
+                ? "shadow-md transform scale-105" 
+                : "hover:bg-gray-200"
+            }`}
           >
+            <Icon icon="zi-minus-circle" className="mr-1" />
             Chi tiêu
           </Button>
           <Button
             variant={type === "income" ? "primary" : "secondary"}
             onClick={() => setType("income")}
+            className={`transition-all duration-200 ${
+              type === "income" 
+                ? "shadow-md transform scale-105" 
+                : "hover:bg-gray-200"
+            }`}
           >
+            <Icon icon="zi-plus-circle" className="mr-1" />
             Thu nhập
           </Button>
         </Box>
 
         {/* Amount Input */}
-        <Box className="mb-6">
-          <Text size="xSmall" className="text-gray-600 mb-2">
-            Số tiền
+        <Box className="mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-sm border border-gray-200">
+          <Text size="small" className="text-gray-700 mb-3 font-medium">
+            💰 Số tiền
           </Text>
           <Input
             type="number"
             placeholder="0"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="text-2xl"
+            className="text-3xl font-bold"
           />
         </Box>
 
         {/* Category Selection */}
         <Box
-          className="mb-4 p-4 bg-gray-50 rounded-xl cursor-pointer"
+          className="mb-4 p-4 bg-white rounded-xl cursor-pointer border-2 border-gray-100 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
           onClick={() => setShowCategorySheet(true)}
         >
-          <Text size="xSmall" className="text-gray-600 mb-2">
-            Danh mục
+          <Text size="small" className="text-gray-700 mb-2 font-medium">
+            📂 Danh mục
           </Text>
           {selectedCategoryData ? (
             <Box className="flex items-center space-x-3">
               <Box
-                className="w-10 h-10 rounded-full flex items-center justify-center"
+                className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm"
                 style={{
                   backgroundColor: `${selectedCategoryData.color}20`,
                 }}
@@ -177,9 +190,10 @@ const AddTransactionPage: FC = () => {
                 <Icon
                   icon={selectedCategoryData.icon as any}
                   style={{ color: selectedCategoryData.color }}
+                  size={24}
                 />
               </Box>
-              <Text>{selectedCategoryData.name}</Text>
+              <Text className="font-medium">{selectedCategoryData.name}</Text>
             </Box>
           ) : (
             <Text className="text-gray-400">Chọn danh mục</Text>
@@ -188,16 +202,16 @@ const AddTransactionPage: FC = () => {
 
         {/* Wallet Selection */}
         <Box
-          className="mb-4 p-4 bg-gray-50 rounded-xl cursor-pointer"
+          className="mb-4 p-4 bg-white rounded-xl cursor-pointer border-2 border-gray-100 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
           onClick={() => setShowWalletSheet(true)}
         >
-          <Text size="xSmall" className="text-gray-600 mb-2">
-            Ví
+          <Text size="small" className="text-gray-700 mb-2 font-medium">
+            👛 Ví
           </Text>
           {selectedWalletData ? (
             <Box className="flex items-center space-x-3">
               <Box
-                className="w-10 h-10 rounded-full flex items-center justify-center"
+                className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm"
                 style={{
                   backgroundColor: `${selectedWalletData.color}20`,
                 }}
@@ -205,9 +219,10 @@ const AddTransactionPage: FC = () => {
                 <Icon
                   icon={selectedWalletData.icon as any}
                   style={{ color: selectedWalletData.color }}
+                  size={24}
                 />
               </Box>
-              <Text>{selectedWalletData.name}</Text>
+              <Text className="font-medium">{selectedWalletData.name}</Text>
             </Box>
           ) : (
             <Text className="text-gray-400">Chọn ví</Text>
@@ -216,25 +231,30 @@ const AddTransactionPage: FC = () => {
 
         {/* Date Input */}
         <Box className="mb-4">
-          <Text size="xSmall" className="text-gray-600 mb-2">
-            Ngày
-          </Text>
-          <Input
-            type="text"
-            value={date.toISOString().split("T")[0]}
-            onChange={(e) => setDate(new Date(e.target.value))}
+          <DatePicker
+            label="Ngày"
+            placeholder="Chọn ngày giao dịch"
+            value={date}
+            onChange={(value) => setDate(value)}
+            dateFormat="dd/mm/yyyy"
+            columnsFormat="DD-MM-YYYY"
+            title="Chọn ngày giao dịch"
+            locale="vi-VN"
+            mask
+            maskClosable
           />
         </Box>
 
         {/* Note Input */}
         <Box className="mb-6">
-          <Text size="xSmall" className="text-gray-600 mb-2">
-            Ghi chú
+          <Text size="small" className="text-gray-700 mb-2 font-medium">
+            📝 Ghi chú
           </Text>
           <Input
             placeholder="Thêm ghi chú (không bắt buộc)"
             value={note}
             onChange={(e) => setNote(e.target.value)}
+            className="bg-white border-2 border-gray-100 rounded-xl"
           />
         </Box>
 
@@ -243,9 +263,9 @@ const AddTransactionPage: FC = () => {
           variant="primary"
           fullWidth
           onClick={handleSubmit}
-          className="mb-4"
+          className="mb-4 h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
         >
-          Lưu giao dịch
+          ✓ Lưu giao dịch
         </Button>
       </Box>
 
@@ -258,18 +278,18 @@ const AddTransactionPage: FC = () => {
         handler
         swipeToClose
       >
-        <Box className="p-4">
-          <Text.Title size="small" className="mb-4">
+        <Box className="p-5">
+          <Text.Title size="small" className="mb-4 text-center">
             Chọn danh mục
           </Text.Title>
-          <Box className="grid grid-cols-3 gap-3">
+          <Box className="grid grid-cols-3 gap-4">
             {categories.map((category) => (
               <Box
                 key={category.id}
-                className={`p-3 rounded-xl cursor-pointer text-center ${
+                className={`p-4 rounded-2xl cursor-pointer text-center transition-all duration-200 transform hover:scale-105 ${
                   selectedCategory === category.id
-                    ? "bg-primary text-white"
-                    : "bg-gray-50"
+                    ? "bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg"
+                    : "bg-gray-50 hover:bg-gray-100"
                 }`}
                 onClick={() => {
                   setSelectedCategory(category.id);
@@ -278,7 +298,7 @@ const AddTransactionPage: FC = () => {
               >
                 <Icon
                   icon={category.icon as any}
-                  className="text-2xl mb-2"
+                  className="text-3xl mb-2"
                   style={{
                     color:
                       selectedCategory === category.id
@@ -288,11 +308,11 @@ const AddTransactionPage: FC = () => {
                 />
                 <Text
                   size="xSmall"
-                  className={
+                  className={`font-medium ${
                     selectedCategory === category.id
                       ? "text-white"
                       : "text-gray-700"
-                  }
+                  }`}
                 >
                   {category.name}
                 </Text>
@@ -311,16 +331,18 @@ const AddTransactionPage: FC = () => {
         handler
         swipeToClose
       >
-        <Box className="p-4">
-          <Text.Title size="small" className="mb-4">
+        <Box className="p-5">
+          <Text.Title size="small" className="mb-4 text-center">
             Chọn ví
           </Text.Title>
-          <Box className="space-y-2">
+          <Box className="space-y-3">
             {wallets.map((wallet) => (
               <Box
                 key={wallet.id}
-                className={`p-4 rounded-xl cursor-pointer flex items-center justify-between ${
-                  selectedWallet === wallet.id ? "bg-primary" : "bg-gray-50"
+                className={`p-4 rounded-2xl cursor-pointer flex items-center justify-between transition-all duration-200 transform hover:scale-102 ${
+                  selectedWallet === wallet.id 
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg" 
+                    : "bg-gray-50 hover:bg-gray-100"
                 }`}
                 onClick={() => {
                   setSelectedWallet(wallet.id);
@@ -329,7 +351,7 @@ const AddTransactionPage: FC = () => {
               >
                 <Box className="flex items-center space-x-3">
                   <Box
-                    className="w-10 h-10 rounded-full flex items-center justify-center"
+                    className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm"
                     style={{
                       backgroundColor:
                         selectedWallet === wallet.id
@@ -345,25 +367,26 @@ const AddTransactionPage: FC = () => {
                             ? wallet.color
                             : wallet.color,
                       }}
+                      size={24}
                     />
                   </Box>
                   <Text
-                    className={
+                    className={`font-medium ${
                       selectedWallet === wallet.id
                         ? "text-white"
                         : "text-gray-700"
-                    }
+                    }`}
                   >
                     {wallet.name}
                   </Text>
                 </Box>
                 <Text
                   size="small"
-                  className={
+                  className={`font-semibold ${
                     selectedWallet === wallet.id
                       ? "text-white"
                       : "text-gray-600"
-                  }
+                  }`}
                 >
                   {new Intl.NumberFormat("vi-VN", {
                     style: "currency",

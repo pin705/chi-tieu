@@ -29,11 +29,11 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
   );
 
   return (
-    <Box className="p-4 bg-gray-50 rounded-xl">
-      <Box className="flex items-center justify-between mb-2">
+    <Box className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+      <Box className="flex items-center justify-between mb-3">
         <Box className="flex items-center space-x-3">
           <Box
-            className="w-10 h-10 rounded-full flex items-center justify-center"
+            className="w-12 h-12 rounded-xl flex items-center justify-center shadow-sm"
             style={{
               backgroundColor: `${category?.color}20`,
             }}
@@ -41,37 +41,38 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
             <Icon
               icon={(category?.icon || "zi-more-grid") as any}
               style={{ color: category?.color }}
+              size={24}
             />
           </Box>
           <Box>
-            <Text size="small" className="font-medium">
+            <Text size="small" className="font-semibold text-gray-800">
               {category?.name || "Khác"}
             </Text>
             {showBudget && budgetStatus.hasBudget && (
               <Text size="xSmall" className="text-gray-500">
-                Ngân sách: {formatCurrency(budgetStatus.budget)}
+                💰 Ngân sách: {formatCurrency(budgetStatus.budget)}
               </Text>
             )}
           </Box>
         </Box>
         <Box className="text-right">
-          <Text size="small" className="font-semibold">
+          <Text size="small" className="font-bold text-gray-800">
             {formatCurrency(stat.amount)}
           </Text>
-          <Text size="xSmall" className="text-gray-500">
+          <Text size="xSmall" className="text-blue-600 font-medium">
             {stat.percentage.toFixed(1)}%
           </Text>
           {showBudget && budgetStatus.hasBudget && budgetStatus.isExceeded && (
-            <Text size="xSmall" className="text-red-600">
-              Vượt ngân sách!
+            <Text size="xSmall" className="text-red-600 font-medium">
+              ⚠️ Vượt ngân sách!
             </Text>
           )}
         </Box>
       </Box>
       {/* Progress Bar */}
-      <Box className="w-full bg-gray-200 rounded-full h-2">
+      <Box className="w-full bg-gray-200 rounded-full h-2.5 shadow-inner">
         <Box
-          className="h-2 rounded-full"
+          className="h-2.5 rounded-full shadow-sm"
           style={{
             width: `${stat.percentage}%`,
             backgroundColor: category?.color,
@@ -80,21 +81,21 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
       </Box>
       {/* Budget Progress Bar */}
       {showBudget && budgetStatus.hasBudget && (
-        <Box className="mt-2">
-          <Box className="flex justify-between items-center mb-1">
-            <Text size="xSmall" className="text-gray-600">
+        <Box className="mt-3">
+          <Box className="flex justify-between items-center mb-2">
+            <Text size="xSmall" className="text-gray-600 font-medium">
               So với ngân sách
             </Text>
             <Text
               size="xSmall"
-              className={budgetStatus.isExceeded ? "text-red-600" : "text-blue-600"}
+              className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-blue-600"}`}
             >
               {budgetStatus.percentage.toFixed(1)}%
             </Text>
           </Box>
-          <Box className="w-full bg-gray-200 rounded-full h-1.5">
+          <Box className="w-full bg-gray-200 rounded-full h-2 shadow-inner">
             <Box
-              className={`h-1.5 rounded-full ${
+              className={`h-2 rounded-full shadow-sm ${
                 budgetStatus.isExceeded ? "bg-red-600" : "bg-blue-600"
               }`}
               style={{
@@ -134,32 +135,32 @@ const ReportsPage: FC = () => {
       <Header title="Báo cáo" showBackIcon={false} />
       <Box className="flex-1 overflow-auto">
         {/* Monthly Summary */}
-        <Box className="p-4 bg-gradient-to-r from-blue-500 to-purple-600">
-          <Text size="xSmall" className="text-white opacity-90 mb-2">
-            Tháng này
+        <Box className="p-5 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 shadow-lg">
+          <Text size="small" className="text-white opacity-90 mb-3 font-medium">
+            📊 Tháng này
           </Text>
           <Box className="grid grid-cols-3 gap-4 text-white">
-            <Box>
-              <Text size="xSmall" className="opacity-90">
+            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
+              <Text size="xSmall" className="opacity-90 mb-1">
                 Thu nhập
               </Text>
-              <Text.Title size="small" className="mt-1">
+              <Text.Title size="small" className="mt-1 font-bold">
                 {formatCurrency(stats.income)}
               </Text.Title>
             </Box>
-            <Box>
-              <Text size="xSmall" className="opacity-90">
+            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
+              <Text size="xSmall" className="opacity-90 mb-1">
                 Chi tiêu
               </Text>
-              <Text.Title size="small" className="mt-1">
+              <Text.Title size="small" className="mt-1 font-bold">
                 {formatCurrency(stats.expense)}
               </Text.Title>
             </Box>
-            <Box>
-              <Text size="xSmall" className="opacity-90">
+            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
+              <Text size="xSmall" className="opacity-90 mb-1">
                 Còn lại
               </Text>
-              <Text.Title size="small" className="mt-1">
+              <Text.Title size="small" className="mt-1 font-bold">
                 {formatCurrency(stats.balance)}
               </Text.Title>
             </Box>
@@ -179,28 +180,30 @@ const ReportsPage: FC = () => {
 
         {/* View Mode Toggle */}
         <Box className="px-4 pb-4">
-          <Box className="flex gap-2">
+          <Box className="flex gap-3 bg-gray-100 p-1 rounded-xl">
             <Box
-              className={`flex-1 py-2 px-4 rounded-lg text-center cursor-pointer transition-all ${
+              className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "category"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-600"
+                  ? "bg-white text-blue-600 shadow-md transform scale-105"
+                  : "text-gray-600 hover:bg-gray-200"
               }`}
               onClick={() => setViewMode("category")}
             >
-              <Text size="small" className={viewMode === "category" ? "text-white" : "text-gray-600"}>
+              <Icon icon="zi-more-grid" className="mb-1" />
+              <Text size="small" className={`font-medium ${viewMode === "category" ? "text-blue-600" : "text-gray-600"}`}>
                 Theo danh mục
               </Text>
             </Box>
             <Box
-              className={`flex-1 py-2 px-4 rounded-lg text-center cursor-pointer transition-all ${
+              className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "trend"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-600"
+                  ? "bg-white text-blue-600 shadow-md transform scale-105"
+                  : "text-gray-600 hover:bg-gray-200"
               }`}
               onClick={() => setViewMode("trend")}
             >
-              <Text size="small" className={viewMode === "trend" ? "text-white" : "text-gray-600"}>
+              <Icon icon="zi-more-grid" className="mb-1" />
+              <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-blue-600" : "text-gray-600"}`}>
                 Xu hướng
               </Text>
             </Box>
