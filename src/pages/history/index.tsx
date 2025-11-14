@@ -271,7 +271,7 @@ const HistoryPage: FC = () => {
                           </Box>
                         </Box>
                         <Text
-                          size="medium"
+                          size="small"
                           className={`font-bold flex-shrink-0 ml-2 ${
                             transaction.type === "income"
                               ? "text-green-600"

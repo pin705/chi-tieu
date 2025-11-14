@@ -189,7 +189,7 @@ const ReportsPage: FC = () => {
               }`}
               onClick={() => setViewMode("category")}
             >
-              <Icon icon="zi-grid" className="mb-1" />
+              <Icon icon="zi-more-grid" className="mb-1" />
               <Text size="small" className={`font-medium ${viewMode === "category" ? "text-blue-600" : "text-gray-600"}`}>
                 Theo danh mục
               </Text>
@@ -202,7 +202,7 @@ const ReportsPage: FC = () => {
               }`}
               onClick={() => setViewMode("trend")}
             >
-              <Icon icon="zi-chart" className="mb-1" />
+              <Icon icon="zi-more-grid" className="mb-1" />
               <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-blue-600" : "text-gray-600"}`}>
                 Xu hướng
               </Text>

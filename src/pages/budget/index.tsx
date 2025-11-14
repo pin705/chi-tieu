@@ -180,7 +180,7 @@ const BudgetPage: FC = () => {
             </Box>
           ) : (
             <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
-              <Icon icon="zi-add-circle" size={48} className="text-gray-400 mb-3" />
+              <Icon icon="zi-calendar" size={48} className="text-gray-400 mb-3" />
               <Text className="text-gray-500 font-medium">
                 Chưa thiết lập ngân sách cho tháng này
               </Text>
@@ -214,7 +214,7 @@ const BudgetPage: FC = () => {
 
           {categoryBudgets.length === 0 ? (
             <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
-              <Icon icon="zi-grid" size={48} className="text-gray-400 mb-3" />
+              <Icon icon="zi-more-grid" size={48} className="text-gray-400 mb-3" />
               <Text className="text-gray-500 font-medium">
                 Chưa có ngân sách theo danh mục
               </Text>
@@ -332,7 +332,7 @@ const BudgetPage: FC = () => {
                 });
               }}
               dateFormat="mm/yyyy"
-              columnsFormat="MM-YYYY"
+              columnsFormat="MM-DD-YYYY"
               title="Chọn tháng và năm"
               locale="vi-VN"
               mask
