@@ -36,7 +36,7 @@ export const Summary: FC = () => {
           <Icon icon="zi-warning-solid" className="text-red-600 text-xl mt-0.5" />
           <Box className="flex-1">
             <Text className="text-red-800 font-semibold">
-              ⚠️ Vượt ngân sách!
+              Vượt ngân sách!
             </Text>
             <Text size="xSmall" className="text-red-600 mt-1">
               Chi tiêu vượt {formatCurrency(Math.abs(budgetStatus.remaining))} so với ngân sách
