@@ -36,3 +36,8 @@ Thumbs.db
 
 # Production build
 www/
+dist/
+
+# Generated files
+src/index.html
+src/css/styles.css

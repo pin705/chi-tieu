@@ -1,162 +1,108 @@
-# ZaUI Coffee
+# Quản Lý Chi Tiêu - Expense Tracker
 
 <p style="display: flex; flex-wrap: wrap; gap: 4px">
-  <img alt="react" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/react" />
-  <img alt="zmp-ui" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/zmp-ui" />
-  <img alt="zmp-sdk" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/zmp-sdk" />
-  <img alt="recoil" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/recoil" />
-  <img alt="tailwindcss" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/dev/tailwindcss" />
-  <img alt="scss" src="https://img.shields.io/github/package-json/dependency-version/Zalo-MiniApp/zaui-coffee/dev/sass" />
+  <img alt="react" src="https://img.shields.io/github/package-json/dependency-version/pin705/chi-tieu/react" />
+  <img alt="zmp-ui" src="https://img.shields.io/github/package-json/dependency-version/pin705/chi-tieu/zmp-ui" />
+  <img alt="zmp-sdk" src="https://img.shields.io/github/package-json/dependency-version/pin705/chi-tieu/zmp-sdk" />
+  <img alt="recoil" src="https://img.shields.io/github/package-json/dependency-version/pin705/chi-tieu/recoil" />
+  <img alt="tailwindcss" src="https://img.shields.io/github/package-json/dependency-version/pin705/chi-tieu/dev/tailwindcss" />
 </p>
 
-Public template for building a coffee shop on Zalo Mini App. Main features:
+Ứng dụng quản lý chi tiêu cá nhân trên nền tảng Zalo Mini App.
 
-- View coffee shop details and menus.
-- Order coffee and snacks with customizable size options.
-- Notifications management.
-- Manage your cart and delivery options.
-- View customer profile and membership.
+## Tính năng
 
-|                      Demo                       |                  Entrypoint                  |
-| :---------------------------------------------: | :------------------------------------------: |
-| <img src="./docs/preview.webp" alt="Home page"> | <img src="./docs/qr.webp" alt="Entry point"> |
+### Phase 1: MVP (Đã hoàn thành) ✅
 
-## Setup
+- **Ghi nhận giao dịch**: Thêm nhanh các giao dịch thu/chi
+- **Quản lý danh mục**: 
+  - 8 danh mục chi tiêu mặc định (Ăn uống, Di chuyển, Mua sắm, Giải trí, Hóa đơn, Sức khỏe, Giáo dục, Khác)
+  - 5 danh mục thu nhập mặc định (Lương, Thưởng, Quà tặng, Đầu tư, Khác)
+- **Quản lý ví**: Hỗ trợ nhiều ví (Tiền mặt, Ngân hàng, ZaloPay)
+- **Lịch sử giao dịch**: Xem danh sách giao dịch theo ngày
+- **Báo cáo**: 
+  - Tổng quan thu/chi trong tháng
+  - Phân tích chi tiêu theo danh mục
+  - Progress bar hiển thị tỷ lệ phần trăm
+- **Lưu trữ dữ liệu**: Sử dụng ZMP Storage API để lưu trữ local
 
-### Using Zalo Mini App Extension
+### Phase 2: Tính năng nâng cao (Kế hoạch)
 
-1. Install [Visual Studio Code](https://code.visualstudio.com/download) and [Zalo Mini App Extension](https://mini.zalo.me/docs/dev-tools).
-1. Click on **Create Project** > Choose **ZaUI Coffee** template > Wait until the generated project is ready.
-1. **Configure App ID** and **Install Dependencies**, then navigate to the **Run** panel > **Start** to develop your Mini App 🚀
+- [ ] Thiết lập ngân sách theo tháng/danh mục
+- [ ] Cảnh báo khi vượt ngân sách
+- [ ] Biểu đồ xu hướng theo thời gian
+- [ ] Sao lưu đám mây
+- [ ] Sổ chi tiêu chung (gia đình)
+- [ ] Tích hợp ZaloPay
 
+## Cài đặt
 
-### Using Zalo Mini App Studio
+### Sử dụng Zalo Mini App Extension
 
-1. [Install Zalo Mini App Studio](https://mini.zalo.me/docs/dev-tools)
-1. Click on New project > Enter your Mini App ID > Choose ZaUI Coffee template
-1. Wait until the generated project is ready and click the Start button to run the mini app 🚀
+1. Cài đặt [Visual Studio Code](https://code.visualstudio.com/download) và [Zalo Mini App Extension](https://mini.zalo.me/docs/dev-tools)
+2. Nhấn **Create Project** > Chọn template này > Đợi dự án được tạo
+3. **Cấu hình App ID** và **Cài đặt Dependencies**, sau đó vào **Run panel** > **Start** 🚀
 
-### Using Zalo Mini App CLI
+### Sử dụng Zalo Mini App CLI
 
-1. [Install Node JS](https://nodejs.org/en/download/)
-1. [Install Mini App DevTools CLI](https://mini.zalo.me/docs/dev-tools/cli/intro/)
-1. Download or clone this repository
-1. Install dependencies
-
+1. [Cài đặt Node.js](https://nodejs.org/en/download/)
+2. [Cài đặt Mini App DevTools CLI](https://mini.zalo.me/docs/dev-tools/cli/intro/)
+3. Clone repository này
+4. Cài đặt dependencies:
    ```bash
    npm install
    ```
-
-1. Start dev server using `zmp-cli`
-
+5. Build CSS:
+   ```bash
+   npm run build:css
+   ```
+6. Start dev server:
    ```bash
    zmp start
    ```
+7. Mở `localhost:3000` trên trình duyệt 🔥
 
-1. Open `localhost:3000` on your browser and start coding 🔥
+## Cấu trúc dự án
 
-## Deployment
+- **`src`**: Mã nguồn của Mini App
+  - **`components`**: Các component React.JS tái sử dụng
+  - **`css`**: Stylesheets (Tailwind CSS)
+  - **`pages`**: Các trang của ứng dụng
+    - `expense-home`: Trang chủ với tổng quan
+    - `add-transaction`: Form thêm giao dịch
+    - `history`: Lịch sử giao dịch
+    - `reports`: Báo cáo và thống kê
+    - `settings`: Cài đặt ứng dụng
+  - **`types`**: TypeScript type definitions
+    - `transaction.ts`: Định nghĩa giao dịch
+    - `expense-category.ts`: Danh mục chi tiêu/thu nhập
+    - `wallet.ts`: Ví tiền
+  - **`utils`**: Utility functions
+  - **`expense-state.ts`**: State management với Recoil
+  - **`app.ts`**: Entry point
 
-1. Create a mini app. For instruction on how to create a mini app, please refer to [Coffee Shop Tutorial](https://mini.zalo.me/tutorial/coffee-shop)
+- **`app-config.json`**: [Cấu hình toàn cục](https://mini.zalo.me/intro/getting-started/app-config/)
 
-1. Setup payment methods if you want to accept online payments
-   ![](./docs/payment.png "Payment method")
+## Công nghệ sử dụng
 
-1. Deploy your mini app to Zalo using the mini app ID created in step 1.
+- **Framework**: React 18
+- **State Management**: Recoil
+- **UI Components**: ZMP UI (Zalo Mini Program UI)
+- **Storage**: ZMP SDK Storage API
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **Language**: TypeScript
 
-   If you're using `zmp-cli`:
+## Triển khai
 
+1. Tạo một Mini App trên [Zalo Mini App Center](https://mini.zalo.me/)
+2. Triển khai bằng `zmp-cli`:
    ```bash
    zmp login
    zmp deploy
    ```
-
-1. Scan the QR code using Zalo to preview your mini app.
-
-## Usage:
-
-The repository contains sample UI components for building your application. You may wish to integrate internal APIs to fetch restaurants, menus, and booking history or modify the code to suit your business needs.
-
-Folder structure:
-
-- **`src`**: Contains all the logic source code of your Mini App. Inside the `src` folder:
-
-  - **`components`**: Reusable components written in React.JS.
-  - **`css`**: Stylesheets; pre-processors are also supported.
-  - **`pages`**: A Page is also a component but will act as an entire view and must be registered inside `app.tsx` as a [Route](https://mini.zalo.me/docs/zaui/router/ZMPRouter/).
-  - **`statics`**: SVG and images that should be imported directly into bundle source code.
-  - **`types`**: Contains TypeScript type and interface declarations.
-  - **`utils`**: Reusable utility functions, such as distance calculation, date and time format, etc.
-  - **`app.ts`**: Entry point of your Mini App.
-  - **`global.d.ts`**: Contains TypeScript declarations for third-party modules and global objects.
-  - **`state.ts`**: State management, containing [Recoil](https://recoiljs.org/docs/introduction/getting-started#atom)'s atoms and selectors.
-
-- **`mock`**: Example data as \*.json files.
-
-- **`app-config.json`**: [Global configuration](https://mini.zalo.me/intro/getting-started/app-config/) for your Mini App.
-
-The other files (such as `tailwind.config.js`, `vite.config.ts`, `tsconfig.json`, `postcss.config.js`) are configurations for libraries used in your application. Visit the library's documentation to learn how to use them.
-
-## Recipes
-
-### Changing restaurant's name
-
-Just change the `app.title` property in `app-config.json`:
-
-```json
-{
-  "app": {
-    "title": "ZaUI Coffee"
-  }
-}
-```
-
-### Changing coffee shop's logo
-
-Visit [Zalo Mini App](https://mini.zalo.me/) and go to your mini app's settings to change the logo.
-
-### Customizations
-
-You can customizations primary colors and currency displays using [Zalo Mini App Studio](https://mini.zalo.me/docs/dev-tools):
-
-![Customizations](./docs/customizations.webp)
-
-### Load product list from server
-
-<img src="./docs/products-fetching.webp" alt="Products fetching" width="250" align="right">
-
-For a simple MVP, you can put in your store products and categories as simply as making changes to `mock/*.json` files. However, a typical application would likely need to fetch data over REST API.
-
-To make an HTTP GET request to your server and fetch the product list, update the `productsState` selector in src/state.ts to use `fetch`.
-
-If the returned JSON structure is different from the template, you would need to map your product object to the corresponding `Product` interface. For example:
-
-```ts
-export const productsState = selector<Product[]>({
-  key: "products",
-  get: async () => {
-    const response = await fetch("https://dummyjson.com/products");
-    const data = await response.json();
-    return data.products.map(
-      ({ id, title, price, images, description, category }) =>
-        <Product>{
-          id,
-          name: title,
-          price: price,
-          image: images[0],
-          description,
-          categoryId: category,
-        }
-    );
-  },
-});
-```
-
-Feel free to create another `service` layer and put the network fetching logics inside. This template provides only the UI layer, so you can customize the logic in any way you want.
+3. Quét mã QR bằng Zalo để xem Mini App
 
 ## License
 
-Copyright (c) Zalo Group. and its affiliates. All rights reserved.
-
-The examples provided by Zalo Group are for non-commercial testing and evaluation
-purposes only. Zalo Group reserves all rights not expressly granted.
+Copyright (c) 2024. All rights reserved.
