@@ -160,7 +160,7 @@ const AddTransactionPage: FC = () => {
         {/* Amount Input */}
         <Box className="mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-sm border border-gray-200">
           <Box className="flex items-center mb-3">
-            <Icon icon="zi-coin" className="text-yellow-500 mr-2" size={20} />
+            <Icon icon="zi-star" className="text-yellow-500 mr-2" size={20} />
             <Text size="small" className="text-gray-700 font-medium">
               Số tiền
             </Text>
@@ -212,7 +212,7 @@ const AddTransactionPage: FC = () => {
           onClick={() => setShowWalletSheet(true)}
         >
           <Box className="flex items-center mb-2">
-            <Icon icon="zi-wallet" className="text-purple-500 mr-2" size={18} />
+            <Icon icon="zi-user-circle" className="text-purple-500 mr-2" size={18} />
             <Text size="small" className="text-gray-700 font-medium">
               Ví
             </Text>

@@ -11,7 +11,7 @@ export const DEFAULT_WALLETS: Wallet[] = [
     id: "cash",
     name: "Tiền mặt",
     balance: 0,
-    icon: "zi-coin",
+    icon: "zi-star",
     color: "#10b981",
   },
   {
@@ -25,7 +25,7 @@ export const DEFAULT_WALLETS: Wallet[] = [
     id: "zalopay",
     name: "ZaloPay",
     balance: 0,
-    icon: "zi-wallet",
+    icon: "zi-user-circle-solid",
     color: "#006af5",
   },
 ];

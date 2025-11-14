@@ -50,7 +50,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
             </Text>
             {showBudget && budgetStatus.hasBudget && (
               <Box className="flex items-center">
-                <Icon icon="zi-coin" className="text-gray-500 mr-1" size={12} />
+                <Icon icon="zi-star" className="text-gray-500 mr-1" size={12} />
                 <Text size="xSmall" className="text-gray-500">
                   Ngân sách: {formatCurrency(budgetStatus.budget)}
                 </Text>

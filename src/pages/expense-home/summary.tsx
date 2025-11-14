@@ -19,7 +19,7 @@ export const Summary: FC = () => {
         <Box className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12" />
         <Box className="relative">
           <Box className="flex items-center mb-2">
-            <Icon icon="zi-wallet" className="text-white mr-2" size={20} />
+            <Icon icon="zi-user-circle" className="text-white mr-2" size={20} />
             <Text size="xSmall" className="text-white opacity-90 font-medium">
               Tổng số dư
             </Text>
@@ -50,7 +50,7 @@ export const Summary: FC = () => {
         <Box className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-5 mb-4 shadow-sm border border-blue-100">
           <Box className="flex items-center justify-between mb-3">
             <Box className="flex items-center">
-              <Icon icon="zi-chart" className="text-blue-600 mr-2" size={20} />
+              <Icon icon="zi-poll" className="text-blue-600 mr-2" size={20} />
               <Text.Title size="small">Ngân sách tháng</Text.Title>
             </Box>
             <Box

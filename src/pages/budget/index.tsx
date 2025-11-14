@@ -276,7 +276,7 @@ const BudgetPage: FC = () => {
         <Box className="p-5">
           <Box className="flex items-center justify-center mb-5">
             <Icon 
-              icon={formData.type === "monthly" ? "zi-coin" : "zi-more-grid"} 
+              icon={formData.type === "monthly" ? "zi-star" : "zi-more-grid"} 
               className="mr-2" 
               size={24}
             />
