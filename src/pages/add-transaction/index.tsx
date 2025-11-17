@@ -176,7 +176,7 @@ const AddTransactionPage: FC = () => {
 
         {/* Category Selection */}
         <Box
-          className="mb-4 p-4 bg-white rounded-xl cursor-pointer border-2 border-gray-100 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
+          className="mb-4 p-4 bg-white rounded-xl cursor-pointer hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
           onClick={() => setShowCategorySheet(true)}
         >
           <Box className="flex items-center mb-2">
@@ -208,7 +208,7 @@ const AddTransactionPage: FC = () => {
 
         {/* Wallet Selection */}
         <Box
-          className="mb-4 p-4 bg-white rounded-xl cursor-pointer border-2 border-gray-100 hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
+          className="mb-4 p-4 bg-white rounded-xl cursor-pointer hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
           onClick={() => setShowWalletSheet(true)}
         >
           <Box className="flex items-center mb-2">
@@ -266,7 +266,7 @@ const AddTransactionPage: FC = () => {
             placeholder="Thêm ghi chú (không bắt buộc)"
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="bg-white border-2 border-gray-100 rounded-xl"
+            className="bg-white rounded-xl"
           />
         </Box>
 

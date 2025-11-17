@@ -29,7 +29,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
   );
 
   return (
-    <Box className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+    <Box className="p-4 bg-white rounded-2xl shadow-sm ">
       <Box className="flex items-center justify-between mb-3">
         <Box className="flex items-center space-x-3">
           <Box
@@ -137,17 +137,18 @@ const ReportsPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col">
+    <Page className="flex flex-col bg-gray-50">
       <Header title="Báo cáo" showBackIcon={false} />
-      <Box className="flex-1 overflow-auto">
+      <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Summary */}
-        <Box className="p-5 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 shadow-lg">
-          <Text size="small" className="text-white opacity-90 mb-3 font-medium">
+        <Box className="p-6 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 relative overflow-hidden">
+          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+          <Text size="small" className="text-white opacity-95 mb-3 font-medium relative z-10">
              Tháng này
           </Text>
-          <Box className="grid grid-cols-3 gap-4 text-white">
-            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
-              <Text size="xSmall" className="opacity-90 mb-1">
+          <Box className="grid grid-cols-3 gap-3 text-white relative z-10">
+            <Box className="bg-white bg-opacity-20 backdrop-blur-sm p-3 rounded-2xl">
+              <Text size="xSmall" className="opacity-95 mb-1">
                 Thu nhập
               </Text>
               <Text.Title size="small" className="mt-1 font-bold">

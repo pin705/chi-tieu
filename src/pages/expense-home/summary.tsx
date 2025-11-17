@@ -12,19 +12,19 @@ export const Summary: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <Box className="m-4">
+    <Box className="px-4 pt-4 pb-2">
       {/* Total Balance Card */}
-      <Box className="bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 rounded-2xl p-6 mb-4 shadow-xl relative overflow-hidden">
-        <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-16 -mt-16" />
-        <Box className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12" />
+      <Box className="bg-white rounded-2xl p-6 mb-3 shadow-md relative overflow-hidden">
+        <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12" />
         <Box className="relative">
-          <Box className="flex items-center mb-2">
-            <Icon icon="zi-user-circle" className="text-white mr-2" size={20} />
-            <Text size="xSmall" className="text-white opacity-90 font-medium">
+          <Box className="flex items-center mb-1">
+            <Icon icon="zi-user-circle" className="opacity-90 mr-2" size={18} />
+            <Text size="xSmall" className="opacity-90 font-medium">
               Tổng số dư
             </Text>
           </Box>
-          <Text.Title size="large" className="text-white mt-1 font-bold">
+          <Text.Title size="large" className="mt-1 font-bold text-3xl">
             {formatCurrency(totalBalance)}
           </Text.Title>
         </Box>
@@ -32,13 +32,15 @@ export const Summary: FC = () => {
 
       {/* Budget Alert */}
       {budgetStatus.hasBudget && budgetStatus.isExceeded && (
-        <Box className="bg-red-50 border-2 border-red-200 rounded-xl p-4 mb-4 flex items-start space-x-3 shadow-sm">
-          <Icon icon="zi-warning-solid" className="text-red-600 text-xl mt-0.5" />
+        <Box className="bg-red-50  rounded-2xl p-4 mb-3 flex items-start space-x-3">
+          <Box className="bg-red-100 rounded-full p-2 flex items-center justify-center">
+            <Icon icon="zi-warning-solid" className="text-red-600" size={20} />
+          </Box>
           <Box className="flex-1">
-            <Text className="text-red-800 font-semibold">
+            <Text className="text-red-800 font-semibold text-sm">
               Vượt ngân sách!
             </Text>
-            <Text size="xSmall" className="text-red-600 mt-1">
+            <Text size="xSmall" className="text-red-600 mt-0.5">
               Chi tiêu vượt {formatCurrency(Math.abs(budgetStatus.remaining))} so với ngân sách
             </Text>
           </Box>
@@ -47,14 +49,16 @@ export const Summary: FC = () => {
 
       {/* Budget Progress */}
       {budgetStatus.hasBudget && (
-        <Box className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-5 mb-4 shadow-sm border border-blue-100">
+        <Box className="bg-white rounded-2xl p-5 mb-3 ">
           <Box className="flex items-center justify-between mb-3">
             <Box className="flex items-center">
-              <Icon icon="zi-poll" className="text-blue-600 mr-2" size={20} />
-              <Text.Title size="small">Ngân sách tháng</Text.Title>
+              <Box className="bg-blue-50 rounded-full p-2 mr-2">
+                <Icon icon="zi-poll" className="text-blue-600" size={18} />
+              </Box>
+              <Text.Title size="small" className="font-semibold">Ngân sách tháng</Text.Title>
             </Box>
             <Box
-              className="flex items-center text-blue-600 cursor-pointer hover:text-blue-700 transition-colors"
+              className="flex items-center text-blue-600 cursor-pointer active:opacity-70 transition-opacity"
               onClick={() => navigate("/budget")}
             >
               <Text size="xSmall" className="font-medium">Chi tiết</Text>
@@ -62,17 +66,17 @@ export const Summary: FC = () => {
             </Box>
           </Box>
           <Box className="flex justify-between items-center mb-2">
-            <Text size="xSmall" className="text-gray-700 font-medium">
+            <Text size="xSmall" className="text-gray-600 font-medium">
               {formatCurrency(budgetStatus.spent)} / {formatCurrency(budgetStatus.budget)}
             </Text>
-            <Text size="small" className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-blue-600"}`}>
+            <Text size="small" className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-emerald-600"}`}>
               {budgetStatus.percentage.toFixed(1)}%
             </Text>
           </Box>
-          <Box className="w-full bg-gray-200 rounded-full h-2.5">
+          <Box className="w-full bg-gray-100 rounded-full h-2">
             <Box
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                budgetStatus.isExceeded ? "bg-red-600" : "bg-gradient-to-r from-blue-500 to-blue-600"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                budgetStatus.isExceeded ? "bg-red-500" : "bg-gradient-to-r from-emerald-500 to-green-600"
               }`}
               style={{
                 width: `${Math.min(budgetStatus.percentage, 100)}%`,
@@ -81,7 +85,7 @@ export const Summary: FC = () => {
           </Box>
           {!budgetStatus.isExceeded && (
             <Text size="xSmall" className="text-gray-600 mt-2 flex items-center">
-              <Icon icon="zi-check-circle" className="text-green-500 mr-1" size={14} />
+              <Icon icon="zi-check-circle" className="text-emerald-500 mr-1" size={14} />
               Còn lại: {formatCurrency(budgetStatus.remaining)}
             </Text>
           )}
@@ -89,16 +93,18 @@ export const Summary: FC = () => {
       )}
 
       {/* Monthly Stats */}
-      <Box className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-5 shadow-sm ">
+      <Box className="bg-white rounded-2xl p-5 ">
         <Box className="flex items-center mb-4">
-          <Icon icon="zi-clock-2" className="text-gray-700 mr-2" size={20} />
-          <Text.Title size="small">Tháng này</Text.Title>
+          <Box className="bg-gray-50 rounded-full p-2 mr-2">
+            <Icon icon="zi-clock-2" className="text-gray-700" size={18} />
+          </Box>
+          <Text.Title size="small" className="font-semibold">Tháng này</Text.Title>
         </Box>
-        <Box className="grid grid-cols-2 gap-4">
-          <Box className="bg-white rounded-xl p-4 shadow-sm border border-green-100">
+        <Box className="grid grid-cols-2 gap-3">
+          <Box className="bg-green-50 rounded-xl p-4 ">
             <Box className="flex items-center mb-2">
-              <Icon icon="zi-plus-circle" className="text-green-500 mr-1" size={18} />
-              <Text size="xSmall" className="text-gray-600 font-medium">
+              <Icon icon="zi-plus-circle" className="text-green-600 mr-1.5" size={16} />
+              <Text size="xSmall" className="text-green-700 font-medium">
                 Thu nhập
               </Text>
             </Box>
@@ -106,10 +112,10 @@ export const Summary: FC = () => {
               {formatCurrency(stats.income)}
             </Text.Title>
           </Box>
-          <Box className="bg-white rounded-xl p-4 shadow-sm border border-red-100">
+          <Box className="bg-red-50 rounded-xl p-4 ">
             <Box className="flex items-center mb-2">
-              <Icon icon="zi-minus-circle" className="text-red-500 mr-1" size={18} />
-              <Text size="xSmall" className="text-gray-600 font-medium">
+              <Icon icon="zi-minus-circle" className="text-red-600 mr-1.5" size={16} />
+              <Text size="xSmall" className="text-red-700 font-medium">
                 Chi tiêu
               </Text>
             </Box>
@@ -118,17 +124,17 @@ export const Summary: FC = () => {
             </Text.Title>
           </Box>
         </Box>
-        <Box className="mt-4 pt-4 border-t-2 border-gray-200">
-          <Box className="flex justify-between items-center bg-white rounded-xl p-3 shadow-sm">
+        <Box className="mt-3 pt-3 border-t border-gray-200">
+          <Box className="flex justify-between items-center bg-gray-50 rounded-xl p-3">
             <Box className="flex items-center">
-              <Icon icon="zi-poll" className="text-gray-600 mr-2" size={18} />
+              <Icon icon="zi-poll" className="text-gray-600 mr-2" size={16} />
               <Text size="small" className="text-gray-700 font-medium">
                 Còn lại
               </Text>
             </Box>
             <Text.Title
               size="small"
-              className={`font-bold ${stats.balance >= 0 ? "text-green-600" : "text-red-600"}`}
+              className={`font-bold ${stats.balance >= 0 ? "text-emerald-600" : "text-red-600"}`}
             >
               {stats.balance >= 0 ? "+" : ""}{formatCurrency(stats.balance)}
             </Text.Title>

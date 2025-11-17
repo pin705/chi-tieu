@@ -31,18 +31,19 @@ const SettingsPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-white">
+    <Page className="flex flex-col bg-gray-50">
       <Header title="Cài đặt" showBackIcon={false} />
-      <Box className="flex-1 overflow-auto bg-gray-50">
+      <Box className="flex-1 overflow-auto pb-20">
         {/* User Info */}
-        <Box className="p-4 bg-gradient-to-r from-green-500 to-emerald-600">
-          <Box className="flex items-center space-x-3">
+        <Box className="bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 p-6 relative overflow-hidden">
+          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+          <Box className="flex items-center space-x-3 relative z-10">
             <img
-              className="w-16 h-16 rounded-full border-2 border-white"
+              className="w-16 h-16 rounded-full border-3 border-white shadow-lg"
               src={user.avatar.startsWith("http") ? user.avatar : undefined}
             />
             <Box>
-              <Text.Title className="text-white font-bold">{user.name}</Text.Title>
+              <Text.Title className="text-white font-bold text-lg">{user.name}</Text.Title>
               <Text size="small" className="text-white opacity-95">
                 ID: {user.id}
               </Text>
@@ -51,31 +52,31 @@ const SettingsPage: FC = () => {
         </Box>
 
         {/* Settings List */}
-        <Box className="mt-4 bg-white">
-          <Box className="px-4 py-2">
-            <Text size="xSmall" className="text-gray-500 font-medium">QUẢN LÝ</Text>
+        <Box className="mt-4 mx-4 bg-white rounded-2xl overflow-hidden ">
+          <Box className="px-4 pt-3 pb-2 bg-gray-50">
+            <Text size="xSmall" className="text-gray-600 font-semibold tracking-wide">QUẢN LÝ</Text>
           </Box>
           <List>
             <List.Item
-              prefix={<Icon icon="zi-user" className="text-blue-500" />}
+              prefix={<Icon icon="zi-user" className="text-blue-600" size={22} />}
               title="Quản lý ví"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/manage-wallets")}
             />
             <List.Item
-              prefix={<Icon icon="zi-list-1" className="text-purple-500" />}
+              prefix={<Icon icon="zi-list-1" className="text-purple-600" size={22} />}
               title="Quản lý danh mục"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/manage-categories")}
             />
             <List.Item
-              prefix={<Icon icon="zi-star" className="text-yellow-500" />}
+              prefix={<Icon icon="zi-star" className="text-amber-500" size={22} />}
               title="Quản lý ngân sách"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/budget")}
             />
             <List.Item
-              prefix={<Icon icon="zi-calendar" className="text-green-500" />}
+              prefix={<Icon icon="zi-calendar" className="text-emerald-600" size={22} />}
               title="Lịch sử giao dịch"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/history")}
@@ -83,19 +84,19 @@ const SettingsPage: FC = () => {
           </List>
         </Box>
 
-        <Box className="mt-4 bg-white">
-          <Box className="px-4 py-2">
-            <Text size="xSmall" className="text-gray-500 font-medium">HỖ TRỢ</Text>
+        <Box className="mt-3 mx-4 bg-white rounded-2xl overflow-hidden ">
+          <Box className="px-4 pt-3 pb-2 bg-gray-50">
+            <Text size="xSmall" className="text-gray-600 font-semibold tracking-wide">HỖ TRỢ</Text>
           </Box>
           <List>
             <List.Item
-              prefix={<Icon icon="zi-help-circle" className="text-orange-500" />}
+              prefix={<Icon icon="zi-help-circle" className="text-orange-500" size={22} />}
               title="Hướng dẫn sử dụng"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/guide")}
             />
             <List.Item
-              prefix={<Icon icon="zi-info-circle" className="text-cyan-500" />}
+              prefix={<Icon icon="zi-info-circle" className="text-cyan-600" size={22} />}
               title="Giới thiệu"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => {
@@ -108,28 +109,30 @@ const SettingsPage: FC = () => {
         </Box>
 
         {/* Danger Zone */}
-        <Box className="p-4 mt-4 bg-white">
-          <Box className="px-0 py-2">
-            <Text size="xSmall" className="text-red-600 font-medium">VÙNG NGUY HIỂM</Text>
+        <Box className="px-4 mt-4 mb-4">
+          <Box className="bg-white rounded-2xl p-4 ">
+            <Box className="mb-3">
+              <Text size="xSmall" className="text-red-600 font-semibold tracking-wide">VÙNG NGUY HIỂM</Text>
+            </Box>
+            <Button
+              variant="secondary"
+              fullWidth
+              onClick={handleClearData}
+              className="border-red-300 text-red-600 active:bg-red-50"
+            >
+              <Icon icon="zi-delete" className="mr-2" />
+              Xóa toàn bộ dữ liệu
+            </Button>
           </Box>
-          <Button
-            variant="secondary"
-            fullWidth
-            onClick={handleClearData}
-            className="border-red-500 text-red-600 hover:bg-red-50"
-          >
-            <Icon icon="zi-delete" className="mr-2" />
-            Xóa toàn bộ dữ liệu
-          </Button>
         </Box>
 
         {/* Footer */}
-        <Box className="p-4 text-center bg-gray-50">
+        <Box className="px-4 pb-4 text-center">
           <Text size="xSmall" className="text-gray-500 block">
             Phiên bản 1.0.0
           </Text>
-          <Text size="xSmall" className="text-gray-500 block mt-1">
-            © 2024 Quản Lý Chi Tiêu
+          <Text size="xSmall" className="text-gray-400 block mt-1">
+            © 2025 Quản Lý Chi Tiêu
           </Text>
         </Box>
       </Box>

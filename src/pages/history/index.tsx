@@ -100,12 +100,12 @@ const HistoryPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col">
+    <Page className="flex flex-col bg-gray-50">
       <Header title="Lịch sử giao dịch" showBackIcon={true} />
       
       {/* Search and Filter Bar */}
-      <Box className="p-4 bg-gradient-to-br from-white to-gray-50 border-b border-gray-200 shadow-sm">
-        <Box className="flex gap-3 mb-3">
+      <Box className="p-4 bg-white ">
+        <Box className="flex gap-2.5 mb-3">
           <Input
             type="text"
             placeholder="Tìm kiếm giao dịch..."

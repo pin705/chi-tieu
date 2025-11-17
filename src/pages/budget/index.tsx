@@ -136,13 +136,13 @@ const BudgetPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col">
+    <Page className="flex flex-col bg-gray-50">
       <Header title="Quản lý ngân sách" />
-      <Box className="flex-1 overflow-auto pb-4">
+      <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Budget Section */}
-        <Box className="p-4">
+        <Box className="px-4 pt-4">
           <Box className="flex items-center justify-between mb-3">
-            <Text.Title size="small">Ngân sách tháng</Text.Title>
+            <Text.Title size="small" className="font-semibold">Ngân sách tháng</Text.Title>
             <Button
               size="small"
               onClick={() => {

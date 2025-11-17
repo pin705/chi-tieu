@@ -135,12 +135,14 @@ const ManageCategoriesPage: FC = () => {
   };
 
   const renderCategoryList = (categoryList: ExpenseCategory[], type: "expense" | "income") => (
-    <Box className="p-4 space-y-3">
+    <Box className="p-4 pb-24 space-y-2.5">
       {categoryList.length === 0 ? (
-        <Box className="bg-white rounded-xl p-8 text-center">
-          <Icon icon="zi-home" size={48} className="text-gray-300 mb-3" />
-          <Text className="text-gray-500">Chưa có danh mục nào</Text>
-          <Text size="xSmall" className="text-gray-400 mt-1">
+        <Box className="bg-white rounded-2xl p-12 text-center ">
+          <Box className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+            <Icon icon="zi-home" size={40} className="text-gray-400" />
+          </Box>
+          <Text className="text-gray-600 font-medium">Chưa có danh mục nào</Text>
+          <Text size="xSmall" className="text-gray-400 mt-2">
             Nhấn nút + bên dưới để thêm danh mục
           </Text>
         </Box>
@@ -148,22 +150,22 @@ const ManageCategoriesPage: FC = () => {
         categoryList.map((category) => (
           <Box
             key={category.id}
-            className="bg-white rounded-xl p-4 shadow-sm"
+            className="bg-white rounded-2xl p-4 "
           >
             <Box className="flex items-center justify-between">
               <Box className="flex items-center flex-1">
                 <Box
-                  className="w-12 h-12 rounded-full flex items-center justify-center mr-3"
-                  style={{ backgroundColor: category.color + "20" }}
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mr-3.5"
+                  style={{ backgroundColor: category.color + "15" }}
                 >
                   <Icon
                     icon={category.icon as any}
-                    size={24}
+                    size={26}
                     style={{ color: category.color }}
                   />
                 </Box>
                 <Box className="flex-1">
-                  <Text className="font-semibold text-gray-900">
+                  <Text className="font-semibold text-gray-900 mb-0.5">
                     {category.name}
                   </Text>
                   <Text size="xSmall" className="text-gray-500">
@@ -176,16 +178,17 @@ const ManageCategoriesPage: FC = () => {
                   size="small"
                   variant="secondary"
                   onClick={() => handleOpenEditSheet(category)}
+                  className="border-gray-200 active:bg-gray-100"
                 >
-                  <Icon icon="zi-edit" size={16} />
+                  <Icon icon="zi-edit" size={18} className="text-gray-700" />
                 </Button>
                 <Button
                   size="small"
                   variant="secondary"
                   onClick={() => handleDelete(category.id)}
-                  className="text-red-600"
+                  className="border-red-200 text-red-600 active:bg-red-50"
                 >
-                  <Icon icon="zi-delete" size={16} />
+                  <Icon icon="zi-delete" size={18} />
                 </Button>
               </Box>
             </Box>
@@ -194,13 +197,13 @@ const ManageCategoriesPage: FC = () => {
       )}
       
       {/* Add Button */}
-      <Box className="fixed bottom-20 right-4 z-10">
+      <Box className="fixed bottom-5 right-5 z-10">
         <Button
           variant="primary"
           onClick={() => handleOpenAddSheet(type)}
-          className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center"
+          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-gradient-to-br from-emerald-500 to-green-600 border-0 active:scale-95 transition-transform"
         >
-          <Icon icon="zi-plus" size={24} />
+          <Icon icon="zi-plus" size={28} className="text-white" />
         </Button>
       </Box>
     </Box>
@@ -211,26 +214,29 @@ const ManageCategoriesPage: FC = () => {
       <Header title="Quản lý danh mục" showBackIcon={true} />
       <Box className="flex-1 overflow-auto pb-4">
         {/* Header Info */}
-        <Box className="bg-gradient-to-r from-purple-500 to-pink-600 p-6 text-white">
-          <Text.Title className="text-white text-2xl font-bold mb-2">
-            Danh mục thu chi
-          </Text.Title>
-          <Box className="flex gap-4 mt-3">
-            <Box>
-              <Text size="xSmall" className="text-white opacity-90">
-                Chi tiêu
-              </Text>
-              <Text className="text-white font-bold text-lg">
-                {expenseCategories.length} danh mục
-              </Text>
-            </Box>
-            <Box>
-              <Text size="xSmall" className="text-white opacity-90">
-                Thu nhập
-              </Text>
-              <Text className="text-white font-bold text-lg">
-                {incomeCategories.length} danh mục
-              </Text>
+        <Box className="bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 p-6 relative overflow-hidden">
+          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+          <Box className="relative z-10">
+            <Text.Title className="text-white text-2xl font-bold mb-3">
+              Danh mục thu chi
+            </Text.Title>
+            <Box className="flex gap-6">
+              <Box>
+                <Text size="xSmall" className="text-white opacity-90 mb-1">
+                  Chi tiêu
+                </Text>
+                <Text className="text-white font-bold text-xl">
+                  {expenseCategories.length} danh mục
+                </Text>
+              </Box>
+              <Box>
+                <Text size="xSmall" className="text-white opacity-90 mb-1">
+                  Thu nhập
+                </Text>
+                <Text className="text-white font-bold text-xl">
+                  {incomeCategories.length} danh mục
+                </Text>
+              </Box>
             </Box>
           </Box>
         </Box>

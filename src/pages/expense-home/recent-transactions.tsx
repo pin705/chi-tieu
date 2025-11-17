@@ -14,30 +14,31 @@ export const RecentTransactions: FC = () => {
 
   if (recentTransactions.length === 0) {
     return (
-      <Box className="m-4">
+      <Box className="px-4 pb-4">
         <Box className="flex justify-between items-center mb-3">
-          <Text.Title size="small">Giao dịch gần đây</Text.Title>
+          <Text.Title size="small" className="font-semibold">Giao dịch gần đây</Text.Title>
         </Box>
-        <Box className="text-center py-8 text-gray-400">
-          <Text size="small">Chưa có giao dịch nào</Text>
+        <Box className="text-center py-12 bg-white rounded-2xl ">
+          <Icon icon="zi-clock-2" size={48} className="text-gray-300 mb-2" />
+          <Text size="small" className="text-gray-400">Chưa có giao dịch nào</Text>
         </Box>
       </Box>
     );
   }
 
   return (
-    <Box className="m-4">
+    <Box className="px-4 pb-4">
       <Box className="flex justify-between items-center mb-3">
-        <Text.Title size="small">Giao dịch gần đây</Text.Title>
+        <Text.Title size="small" className="font-semibold">Giao dịch gần đây</Text.Title>
         <Text
           size="xSmall"
-          className="text-primary cursor-pointer"
+          className="text-emerald-600 cursor-pointer font-medium active:opacity-70"
           onClick={() => navigate("/history")}
         >
           Xem tất cả
         </Text>
       </Box>
-      <Box className="space-y-2">
+      <Box className="space-y-2 bg-white rounded-2xl p-3 ">
         {recentTransactions.map((transaction) => {
           const category = categories.find(
             (c) => c.id === transaction.categoryId
@@ -51,16 +52,17 @@ export const RecentTransactions: FC = () => {
             >
               <Box className="flex items-center space-x-3">
                 <Box
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${category?.color}20` }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center"
+                  style={{ backgroundColor: `${category?.color}15` }}
                 >
                   <Icon
                     icon={(category?.icon || "zi-more-grid") as any}
                     style={{ color: category?.color }}
+                    size={20}
                   />
                 </Box>
                 <Box>
-                  <Text size="small" className="font-medium">
+                  <Text size="small" className="font-medium text-gray-900">
                     {category?.name || "Khác"}
                   </Text>
                   <Text size="xSmall" className="text-gray-500">
@@ -72,7 +74,7 @@ export const RecentTransactions: FC = () => {
                 size="small"
                 className={`font-semibold ${
                   transaction.type === "income"
-                    ? "text-green-600"
+                    ? "text-emerald-600"
                     : "text-red-600"
                 }`}
               >
