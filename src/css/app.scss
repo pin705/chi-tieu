@@ -57,6 +57,17 @@ body {
   opacity: 0.9;
 }
 
+// Fix button icon padding - ensure icons in buttons have balanced padding
+.zaui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  .zaui-icon {
+    flex-shrink: 0;
+  }
+}
+
 .zaui-picker-item-selected {
   color: var(--zmp-primary-color);
 }

@@ -141,13 +141,12 @@ const ReportsPage: FC = () => {
       <Header title="Báo cáo" showBackIcon={false} />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Summary */}
-        <Box className="p-6 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="p-6 bg-yellow-500 relative overflow-hidden">
           <Text size="small" className="text-white opacity-95 mb-3 font-medium relative z-10">
              Tháng này
           </Text>
           <Box className="grid grid-cols-3 gap-3 text-white relative z-10">
-            <Box className="bg-white bg-opacity-20 backdrop-blur-sm p-3 rounded-2xl">
+            <Box className="bg-white bg-opacity-20 p-3 rounded-2xl">
               <Text size="xSmall" className="opacity-95 mb-1">
                 Thu nhập
               </Text>
@@ -155,7 +154,7 @@ const ReportsPage: FC = () => {
                 {formatCurrency(stats.income)}
               </Text.Title>
             </Box>
-            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
+            <Box className="bg-white bg-opacity-10 p-3 rounded-xl">
               <Text size="xSmall" className="opacity-90 mb-1">
                 Chi tiêu
               </Text>
@@ -163,7 +162,7 @@ const ReportsPage: FC = () => {
                 {formatCurrency(stats.expense)}
               </Text.Title>
             </Box>
-            <Box className="bg-white bg-opacity-10 backdrop-blur-sm p-3 rounded-xl">
+            <Box className="bg-white bg-opacity-10 p-3 rounded-xl">
               <Text size="xSmall" className="opacity-90 mb-1">
                 Còn lại
               </Text>

@@ -135,8 +135,7 @@ const ManageWalletsPage: FC = () => {
       <Header title="Quản lý ví" showBackIcon={true} />
       <Box className="flex-1 overflow-auto pb-24">
         {/* Total Balance */}
-        <Box className="bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 p-6 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="bg-yellow-500 p-6 relative overflow-hidden">
           <Box className="relative z-10">
             <Text size="xSmall" className="text-white opacity-90 mb-1">
               Tổng số dư
@@ -218,7 +217,7 @@ const ManageWalletsPage: FC = () => {
           <Button
             variant="primary"
             onClick={handleOpenAddSheet}
-            className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-gradient-to-br from-emerald-500 to-green-600 border-0 active:scale-95 transition-transform"
+            className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-yellow-500 border-0 active:scale-95 transition-transform"
           >
             <Icon icon="zi-plus" size={28} className="text-white" />
           </Button>

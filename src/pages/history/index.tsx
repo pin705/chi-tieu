@@ -118,14 +118,14 @@ const HistoryPage: FC = () => {
           <Box
             className={`px-5 py-2 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md transform hover:scale-105 ${
               activeFiltersCount > 0 
-                ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white" 
+                ? "bg-yellow-500 text-white" 
                 : "bg-white text-gray-600 border-2 border-gray-200"
             }`}
             onClick={() => setShowFilterSheet(true)}
           >
             <Icon icon="zi-filter" />
             {activeFiltersCount > 0 && (
-              <Box className="bg-white text-blue-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-sm">
+              <Box className="bg-white text-yellow-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-sm">
                 {activeFiltersCount}
               </Box>
             )}
@@ -136,60 +136,60 @@ const HistoryPage: FC = () => {
         {activeFiltersCount > 0 && (
           <Box className="flex flex-wrap gap-2 animate-fadeIn">
             {filterType !== "all" && (
-              <Box className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
+              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
                 <Text size="xSmall" className="font-medium">
                   {filterType === "income" ? "Thu nhập" : "Chi tiêu"}
                 </Text>
-                <Box className="cursor-pointer hover:bg-blue-300 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterCategory !== "all" && (
-              <Box className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
+              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
                 <Text size="xSmall" className="font-medium">
                   {categories.find((c) => c.id === filterCategory)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-blue-300 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterWallet !== "all" && (
-              <Box className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
+              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
                 <Text size="xSmall" className="font-medium">
                   {wallets.find((w) => w.id === filterWallet)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-blue-300 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterStartDate && (
-              <Box className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
+              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
                 <Text size="xSmall" className="font-medium">
                   Từ {filterStartDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-blue-300 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterEndDate && (
-              <Box className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
+              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
                 <Text size="xSmall" className="font-medium">
                   Đến {filterEndDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-blue-300 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             <Box
-              className="text-blue-600 px-3 py-1.5 text-xs cursor-pointer hover:bg-blue-50 rounded-full transition-colors font-medium"
+              className="text-yellow-600 px-3 py-1.5 text-xs cursor-pointer hover:bg-yellow-50 rounded-full transition-colors font-medium"
               onClick={clearFilters}
             >
-              <Text size="xSmall" className="text-blue-600">✕ Xóa tất cả</Text>
+              <Text size="xSmall" className="text-yellow-600">✕ Xóa tất cả</Text>
             </Box>
           </Box>
         )}

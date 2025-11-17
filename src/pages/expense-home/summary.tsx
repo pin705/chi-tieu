@@ -76,7 +76,7 @@ export const Summary: FC = () => {
           <Box className="w-full bg-gray-100 rounded-full h-2">
             <Box
               className={`h-2 rounded-full transition-all duration-300 ${
-                budgetStatus.isExceeded ? "bg-red-500" : "bg-gradient-to-r from-emerald-500 to-green-600"
+                budgetStatus.isExceeded ? "bg-red-500" : "bg-yellow-500"
               }`}
               style={{
                 width: `${Math.min(budgetStatus.percentage, 100)}%`,
