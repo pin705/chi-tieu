@@ -35,8 +35,7 @@ const SettingsPage: FC = () => {
       <Header title="Cài đặt" showBackIcon={false} />
       <Box className="flex-1 overflow-auto pb-20">
         {/* User Info */}
-        <Box className="bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 p-6 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="bg-yellow-500 p-6 relative overflow-hidden">
           <Box className="flex items-center space-x-3 relative z-10">
             <img
               className="w-16 h-16 rounded-full border-3 border-white shadow-lg"

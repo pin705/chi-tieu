@@ -15,7 +15,7 @@
   "listAsyncJS": [],
   "template": {
     "name": "expense-tracker",
-    "primaryColor": "#10b981",
+    "primaryColor": "#eab308",
     "prefixCurrencySymbol": false,
     "currencySymbol": "đ",
     "headerLogo": ""

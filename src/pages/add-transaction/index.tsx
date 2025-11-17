@@ -158,7 +158,7 @@ const AddTransactionPage: FC = () => {
         </Box>
 
         {/* Amount Input */}
-        <Box className="mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-sm ">
+        <Box className="mb-6 p-5 bg-gray-100 rounded-2xl shadow-sm ">
           <Box className="flex items-center mb-3">
             <Icon icon="zi-star" className="text-yellow-500 mr-2" size={20} />
             <Text size="small" className="text-gray-700 font-medium">
@@ -301,7 +301,7 @@ const AddTransactionPage: FC = () => {
                 key={category.id}
                 className={`p-4 rounded-2xl cursor-pointer text-center transition-all duration-200 transform hover:scale-105 ${
                   selectedCategory === category.id
-                    ? "bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg"
+                    ? "bg-yellow-500 text-white shadow-lg"
                     : "bg-gray-50 hover:bg-gray-100"
                 }`}
                 onClick={() => {
@@ -354,7 +354,7 @@ const AddTransactionPage: FC = () => {
                 key={wallet.id}
                 className={`p-4 rounded-2xl cursor-pointer flex items-center justify-between transition-all duration-200 transform hover:scale-102 ${
                   selectedWallet === wallet.id 
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg" 
+                    ? "bg-yellow-500 shadow-lg" 
                     : "bg-gray-50 hover:bg-gray-100"
                 }`}
                 onClick={() => {

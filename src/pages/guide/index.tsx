@@ -71,11 +71,9 @@ const GuidePage: FC = () => {
       <Header title="Hướng dẫn sử dụng" showBackIcon={true} />
       <Box className="flex-1 overflow-auto pb-24">
         {/* Welcome Section */}
-        <Box className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-600 p-8 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
-          <Box className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-10 rounded-full -ml-12 -mb-12" />
+        <Box className="bg-yellow-500 p-8 relative overflow-hidden">
           <Box className="flex items-center justify-center mb-4 relative z-10">
-            <Box className="bg-white bg-opacity-25 rounded-full p-4 backdrop-blur-sm">
+            <Box className="bg-white bg-opacity-25 rounded-full p-4">
               <Icon icon="zi-help-circle" size={40} className="text-white" />
             </Box>
           </Box>
@@ -140,12 +138,12 @@ const GuidePage: FC = () => {
               Mẹo sử dụng hiệu quả
             </Text.Title>
           </Box>
-          <Box className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-5 border border-amber-200">
+          <Box className="bg-yellow-50 rounded-2xl p-5 border border-yellow-200">
             <Box className="space-y-3">
               {TIPS.map((tip, index) => (
                 <Box key={index} className="flex items-start">
-                  <Box className="bg-amber-100 rounded-full p-1.5 mr-3 mt-0.5 flex-shrink-0">
-                    <Icon icon="zi-check-circle" size={14} className="text-amber-600" />
+                  <Box className="bg-yellow-100 rounded-full p-1.5 mr-3 mt-0.5 flex-shrink-0">
+                    <Icon icon="zi-check-circle" size={14} className="text-yellow-600" />
                   </Box>
                   <Text size="small" className="text-gray-700 flex-1 leading-relaxed">
                     {tip}
@@ -167,7 +165,7 @@ const GuidePage: FC = () => {
                 fullWidth
                 variant="primary"
                 onClick={() => navigate("/add-transaction?type=expense")}
-                className="flex items-center justify-center bg-gradient-to-r from-emerald-500 to-green-600 border-0"
+                className="flex items-center justify-center bg-yellow-500 border-0"
               >
                 <Icon icon="zi-plus-circle" className="mr-2" />
                 Thêm giao dịch đầu tiên

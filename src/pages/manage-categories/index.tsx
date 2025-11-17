@@ -201,7 +201,7 @@ const ManageCategoriesPage: FC = () => {
         <Button
           variant="primary"
           onClick={() => handleOpenAddSheet(type)}
-          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-gradient-to-br from-emerald-500 to-green-600 border-0 active:scale-95 transition-transform"
+          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-yellow-500 border-0 active:scale-95 transition-transform"
         >
           <Icon icon="zi-plus" size={28} className="text-white" />
         </Button>
@@ -214,8 +214,7 @@ const ManageCategoriesPage: FC = () => {
       <Header title="Quản lý danh mục" showBackIcon={true} />
       <Box className="flex-1 overflow-auto pb-4">
         {/* Header Info */}
-        <Box className="bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 p-6 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="bg-yellow-500 p-6 relative overflow-hidden">
           <Box className="relative z-10">
             <Text.Title className="text-white text-2xl font-bold mb-3">
               Danh mục thu chi
