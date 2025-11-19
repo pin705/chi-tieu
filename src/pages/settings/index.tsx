@@ -119,8 +119,8 @@ const SettingsPage: FC = () => {
               fullWidth
               onClick={handleClearData}
               className="border-red-300 text-red-600 active:bg-red-50"
+              prefixIcon={<Icon icon="zi-delete" />}
             >
-              <Icon icon="zi-delete" className="mr-2" />
               Xóa toàn bộ dữ liệu
             </Button>
           </Box>

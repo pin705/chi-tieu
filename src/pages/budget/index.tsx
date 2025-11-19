@@ -144,7 +144,7 @@ const BudgetPage: FC = () => {
           <Box className="flex items-center justify-between mb-3">
             <Text.Title size="small" className="font-semibold">Ngân sách tháng</Text.Title>
             <Button
-            className="flex"
+              className="flex"
               size="small"
               onClick={() => {
                 setFormData({
@@ -155,8 +155,8 @@ const BudgetPage: FC = () => {
                 });
                 setShowAddSheet(true);
               }}
+              prefixIcon={<Icon icon="zi-plus" />}
             >
-              <Icon icon="zi-plus" className="mr-1" />
               {monthlyBudget ? "Sửa" : "Thêm"}
             </Button>
           </Box>
@@ -170,13 +170,13 @@ const BudgetPage: FC = () => {
                 {formatCurrency(monthlyBudget.amount)}
               </Text.Title>
               <Button
-              className="flex"
+                className="flex"
                 size="small"
                 variant="secondary"
                 className="bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md"
                 onClick={() => handleDeleteBudget(monthlyBudget.id)}
+                prefixIcon={<Icon icon="zi-delete" />}
               >
-                <Icon icon="zi-delete" className="mr-1" />
                 Xóa ngân sách
               </Button>
             </Box>
@@ -208,8 +208,8 @@ const BudgetPage: FC = () => {
                 setShowAddSheet(true);
               }}
               className="shadow-sm flex hover:shadow-md transition-shadow"
+              prefixIcon={<Icon icon="zi-plus" />}
             >
-              <Icon icon="zi-plus" className="mr-1" />
               Thêm
             </Button>
           </Box>
@@ -363,8 +363,8 @@ const BudgetPage: FC = () => {
               fullWidth 
               onClick={handleAddBudget}
               className="h-12 font-semibold shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+              prefixIcon={<Icon icon="zi-check-circle" />}
             >
-              <Icon icon="zi-check-circle" className="mr-2" />
               Lưu
             </Button>
           </Box>

@@ -166,8 +166,8 @@ const GuidePage: FC = () => {
                 variant="primary"
                 onClick={() => navigate("/add-transaction?type=expense")}
                 className="flex items-center justify-center bg-yellow-500 border-0"
+                prefixIcon={<Icon icon="zi-plus-circle" />}
               >
-                <Icon icon="zi-plus-circle" className="mr-2" />
                 Thêm giao dịch đầu tiên
               </Button>
               <Button
@@ -175,8 +175,8 @@ const GuidePage: FC = () => {
                 variant="secondary"
                 onClick={() => navigate("/manage-wallets")}
                 className="flex items-center justify-center border-gray-200"
+                prefixIcon={<Icon icon="zi-user" />}
               >
-                <Icon icon="zi-user" className="mr-2" />
                 Thiết lập ví
               </Button>
               <Button
@@ -184,8 +184,8 @@ const GuidePage: FC = () => {
                 variant="secondary"
                 onClick={() => navigate("/budget")}
                 className="flex items-center justify-center border-gray-200"
+                prefixIcon={<Icon icon="zi-star" />}
               >
-                <Icon icon="zi-star" className="mr-2" />
                 Đặt ngân sách
               </Button>
             </Box>

@@ -195,17 +195,15 @@ const ManageWalletsPage: FC = () => {
                       variant="secondary"
                       onClick={() => handleOpenEditSheet(wallet)}
                       className="border-gray-200 active:bg-gray-100"
-                    >
-                      <Icon icon="zi-edit" size={18} className="text-gray-700" />
-                    </Button>
+                      icon={<Icon icon="zi-edit" size={18} className="text-gray-700" />}
+                    />
                     <Button
                       size="small"
                       variant="secondary"
                       onClick={() => handleDelete(wallet.id)}
                       className="border-red-200 text-red-600 active:bg-red-50"
-                    >
-                      <Icon icon="zi-delete" size={18} />
-                    </Button>
+                      icon={<Icon icon="zi-delete" size={18} />}
+                    />
                   </Box>
                 </Box>
               </Box>
@@ -219,9 +217,8 @@ const ManageWalletsPage: FC = () => {
             variant="primary"
             onClick={handleOpenAddSheet}
             className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center bg-yellow-500 border-0 active:scale-95 transition-transform"
-          >
-            <Icon icon="zi-plus" size={28} className="text-white" />
-          </Button>
+            icon={<Icon icon="zi-plus" size={28} className="text-white" />}
+          />
         </Box>
 
         {/* Add/Edit Sheet */}

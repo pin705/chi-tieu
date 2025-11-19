@@ -105,7 +105,7 @@ const HistoryPage: FC = () => {
       
       {/* Search and Filter Bar */}
       <Box className="p-4 bg-white ">
-        <Box className="flex gap-2.5 mb-3">
+          <Box className="flex gap-2.5 mb-3">
           <Input
             type="text"
             placeholder="Tìm kiếm giao dịch..."
@@ -418,16 +418,16 @@ const HistoryPage: FC = () => {
                 setShowFilterSheet(false);
               }}
               className="h-12 font-semibold shadow-sm hover:shadow-md transition-shadow flex items-center justify-center"
+              prefixIcon={<Icon icon="zi-delete" />}
             >
-              <Icon icon="zi-delete" className="mr-2" />
               Xóa bộ lọc
             </Button>
             <Button 
               fullWidth 
               onClick={() => setShowFilterSheet(false)}
               className="h-12 font-semibold shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+              prefixIcon={<Icon icon="zi-check-circle" />}
             >
-              <Icon icon="zi-check-circle" className="mr-2" />
               Áp dụng
             </Button>
           </Box>
