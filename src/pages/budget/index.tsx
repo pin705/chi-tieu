@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react";
 import {
   Page,
-  Header,
   Box,
   Text,
   List,
@@ -22,6 +21,7 @@ import {
 } from "expense-state";
 import { Budget, BudgetFormData } from "types/budget";
 import { formatCurrency } from "utils/format";
+import AppHeader from "components/app-header";
 
 const BudgetPage: FC = () => {
   const { openSnackbar } = useSnackbar();
@@ -137,7 +137,7 @@ const BudgetPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Quản lý ngân sách" />
+      <AppHeader title="Quản lý ngân sách" />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Budget Section */}
         <Box className="px-4 pt-4">
@@ -170,10 +170,9 @@ const BudgetPage: FC = () => {
                 {formatCurrency(monthlyBudget.amount)}
               </Text.Title>
               <Button
-                className="flex"
+                className="flex bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md"
                 size="small"
                 variant="secondary"
-                className="bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md"
                 onClick={() => handleDeleteBudget(monthlyBudget.id)}
                 prefixIcon={<Icon icon="zi-delete" />}
               >

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Page, Header, Box, Text, List, Icon, Button, useSnackbar } from "zmp-ui";
+import { Page, Box, Text, List, Icon, Button, useSnackbar } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userState, walletsState, transactionsState, categoriesState } from "expense-state";
@@ -32,7 +33,7 @@ const SettingsPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Cài đặt" showBackIcon={false} />
+      <AppHeader title="Cài đặt" noBack />
       <Box className="flex-1 overflow-auto pb-20">
         {/* User Info */}
         <Box className="rounded-2xl m-4 bg-white p-6 relative overflow-hidden">

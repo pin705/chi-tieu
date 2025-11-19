@@ -1,5 +1,6 @@
 import React, { FC, useState, useMemo } from "react";
-import { Page, Header, Box, Text, Icon, Input, Select, Sheet, Button } from "zmp-ui";
+import { Page, Box, Text, Icon, Input, Select, Sheet, Button } from "zmp-ui";
+import AppHeader from "components/app-header";
 import DatePicker from "zmp-ui/date-picker";
 import { useRecoilValue } from "recoil";
 import { sortedTransactionsState, categoriesState, walletsState } from "expense-state";
@@ -101,7 +102,7 @@ const HistoryPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Lịch sử giao dịch" showBackIcon={true} />
+      <AppHeader title="Lịch sử giao dịch" />
       
       {/* Search and Filter Bar */}
       <Box className="p-4 bg-white ">

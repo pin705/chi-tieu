@@ -1,17 +1,6 @@
 import React, { FC, useState } from "react";
-import {
-  Page,
-  Header,
-  Box,
-  Text,
-  Button,
-  Icon,
-  useSnackbar,
-  Sheet,
-  Input,
-  Select,
-  Tabs,
-} from "zmp-ui";
+import { Page, Box, Text, Button, Icon, useSnackbar, Sheet, Input, Select, Tabs } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { useRecoilState } from "recoil";
 import { categoriesState } from "expense-state";
 import { ExpenseCategory } from "types/expense-category";
@@ -208,7 +197,7 @@ const ManageCategoriesPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Quản lý danh mục" showBackIcon={true} />
+      <AppHeader title="Quản lý danh mục" />
       <Box className="flex-1 overflow-auto pb-4">
         {/* Header Info */}
         <Box className="rounded-2xl m-4 bg-section p-6 relative overflow-hidden">

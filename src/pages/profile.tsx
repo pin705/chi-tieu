@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Box, Header, Icon, Page, Text } from "zmp-ui";
+import { Box, Icon, Page, Text } from "zmp-ui";
+import AppHeader from "components/app-header";
 import subscriptionDecor from "static/subscription-decor.svg";
 import { ListRenderer } from "components/list-renderer";
 import { useToBeImplemented } from "hooks";
@@ -116,7 +117,7 @@ const Other: FC = () => {
 const ProfilePage: FC = () => {
   return (
     <Page>
-      <Header showBackIcon={false} title="&nbsp;" />
+      <AppHeader noBack title="&nbsp;" />
       <Subscription />
       <Personal />
       <Other />

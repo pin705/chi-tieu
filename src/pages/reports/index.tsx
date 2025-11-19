@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { Page, Header, Box, Text, Tabs, Icon } from "zmp-ui";
+import { Page, Box, Text, Tabs, Icon } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { useRecoilValue } from "recoil";
 import {
   monthlyStatsState,
@@ -138,7 +139,7 @@ const ReportsPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Báo cáo" showBackIcon={false} />
+      <AppHeader title="Báo cáo" noBack />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Summary */}
         <Box className="p-6 rounded-2xl m-4 bg-section relative overflow-hidden">

@@ -1,16 +1,6 @@
 import React, { FC, useState } from "react";
-import {
-  Page,
-  Header,
-  Box,
-  Text,
-  Button,
-  Icon,
-  useSnackbar,
-  Sheet,
-  Input,
-  Select,
-} from "zmp-ui";
+import { Page, Box, Text, Button, Icon, useSnackbar, Sheet, Input, Select } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { useRecoilState } from "recoil";
 import { walletsState } from "expense-state";
 import { Wallet } from "types/wallet";
@@ -132,7 +122,7 @@ const ManageWalletsPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Quản lý ví" showBackIcon={true} />
+      <AppHeader title="Quản lý ví" />
       <Box className="flex-1 overflow-auto pb-24">
         {/* Total Balance */}
         <Box className="rounded-2xl m-4 bg-section p-6 relative overflow-hidden">

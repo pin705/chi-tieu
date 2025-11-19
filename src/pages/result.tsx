@@ -1,5 +1,6 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
-import { Box, Button, Header, Page, Text, useNavigate } from "zmp-ui";
+import { Box, Button, Page, Text, useNavigate } from "zmp-ui";
+import AppHeader from "components/app-header";
 import {
   AsyncCallbackFailObject,
   CheckTransactionReturns,
@@ -74,7 +75,7 @@ const CheckoutResultPage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-white">
-      <Header title="Kết quả thanh toán" />
+      <AppHeader title="Kết quả thanh toán" />
       {(function (render: (result: RenderResultProps) => ReactNode) {
         if (paymentResult && paymentResult.resultCode) {
           if (paymentResult.resultCode === 1) {

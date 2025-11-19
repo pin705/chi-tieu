@@ -1,15 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
-import {
-  Page,
-  Header,
-  Box,
-  Text,
-  Input,
-  Button,
-  Sheet,
-  Icon,
-  useSnackbar,
-} from "zmp-ui";
+import { Page, Box, Text, Input, Button, Sheet, Icon, useSnackbar } from "zmp-ui";
+import AppHeader from "components/app-header";
 import DatePicker from "zmp-ui/date-picker";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -127,7 +118,7 @@ const AddTransactionPage: FC = () => {
 
   return (
     <Page className="flex flex-col">
-      <Header title="Thêm giao dịch" showBackIcon={true} />
+      <AppHeader title="Thêm giao dịch" />
       <Box className="flex-1 overflow-auto p-4">
         {/* Type Toggle */}
         <Box className="grid grid-cols-2 gap-3 mb-6">

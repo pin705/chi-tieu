@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { Page, Header, Box, Text, Icon, Button } from "zmp-ui";
+import { Page, Box, Text, Icon, Button } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { useNavigate } from "react-router-dom";
 
 interface GuideStep {
@@ -68,7 +69,7 @@ const GuidePage: FC = () => {
 
   return (
     <Page className="flex flex-col bg-background">
-      <Header title="Hướng dẫn sử dụng" showBackIcon={true} />
+      <AppHeader title="Hướng dẫn sử dụng" />
       <Box className="flex-1 overflow-auto pb-24">
         {/* Welcome Section */}
         <Box className="bg-yellow-500 p-8 relative overflow-hidden">

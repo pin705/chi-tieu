@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { ListRenderer } from "components/list-renderer";
 import { useRecoilValue } from "recoil";
 import { notificationsState } from "state";
-import { Box, Header, Page, Text } from "zmp-ui";
+import { Box, Page, Text } from "zmp-ui";
+import AppHeader from "components/app-header";
 import { Divider } from "components/divider";
 
 const NotificationList: FC = () => {
@@ -34,7 +35,7 @@ const NotificationList: FC = () => {
 const NotificationPage: FC = () => {
   return (
     <Page>
-      <Header title="Thông báo" showBackIcon={false} />
+      <AppHeader title="Thông báo" noBack />
       <Divider />
       <NotificationList />
     </Page>
