@@ -21,7 +21,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({
   const autoShowBack = location.key !== "default";
   const shouldShowBack = showBackIcon ?? (!noBack && autoShowBack);
   const variantClass =
-    variant === "primary" ? "bg-primary text-primaryForeground" : "";
+    variant === "primary" ? "" : "";
 
   return (
     <ZmpHeader

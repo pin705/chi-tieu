@@ -63,12 +63,18 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
+  line-height: 1; /* keep icon + text vertically centered */
+  gap: 6px; /* balanced spacing between icon and text */
   &:active {
     opacity: 0.85;
   }
-  
+
   .zaui-icon {
     flex-shrink: 0;
+    color: currentColor; /* inherit button text color */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -83,6 +89,7 @@ body {
       font-size: 24px;
       margin-right: 4px;
       vertical-align: middle;
+      color: currentColor; /* inherit header text color */
     }
   }
   .zaui-header-title {
@@ -90,6 +97,16 @@ body {
     align-items: center;
     height: 100%;
   }
+}
+
+/* Ensure AppHeader sets color for its children */
+.app-header {
+  color: inherit; /* allow tailwind text-* to flow through */
+}
+.app-header .zaui-header-back,
+.app-header .zaui-header-title,
+.app-header .zaui-header-back .zaui-icon {
+  color: inherit;
 }
 .zaui-picker-item-selected {
   color: var(--zmp-primary-color);
