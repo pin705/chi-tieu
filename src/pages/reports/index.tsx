@@ -143,7 +143,9 @@ const ReportsPage: FC = () => {
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Summary */}
         <Box className="p-6 rounded-2xl m-4 bg-section dark:bg-dark-surface relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+          <Box className="absolute top-0 right-0 w-32 h-32 opacity-10 rounded-full -mr-16 -mt-16" 
+            style={{ backgroundColor: 'white' }} 
+          />
           <Text size="small" className="text-gray-900 dark:text-dark-text opacity-95 mb-3 font-medium relative z-10">
              Tháng này
           </Text>

@@ -186,8 +186,15 @@ body {
   --section: #1E293B;
 }
 
-/* Smooth transitions for theme changes */
-* {
+/* Smooth transitions for theme changes - applied to specific elements */
+.dark-transition,
+.zaui-page,
+.zaui-box,
+.bg-section,
+.bg-background,
+.bg-white,
+.dark\:bg-dark-background,
+.dark\:bg-dark-surface {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
