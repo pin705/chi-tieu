@@ -1,6 +1,7 @@
 body {
-  background-color: var(--zmp-background-color);
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
   user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 .zaui-routes {
@@ -57,21 +58,26 @@ body {
   opacity: 0.9;
 }
 
-// Fix button icon padding - ensure icons in buttons have balanced padding
+// Modern button styling with smooth animations
 .zaui-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  line-height: 1; /* keep icon + text vertically centered */
-  gap: 6px; /* balanced spacing between icon and text */
+  border-radius: 16px;
+  line-height: 1;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
   &:active {
-    opacity: 0.85;
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
   }
 
   .zaui-icon {
     flex-shrink: 0;
-    color: currentColor; /* inherit button text color */
+    color: currentColor;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -170,70 +176,82 @@ body {
 
 /* Dark mode support */
 :root.dark {
-  --zmp-background-color: #121212;
-  --background: #121212;
-  --section: #1E1E1E;
+  --zmp-background-color: #0F172A;
+  --background: #0F172A;
+  --section: #1E293B;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+/* Remove generic transitions - we'll add specific ones where needed */
+button, .zaui-btn, .transition-all {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Improve shadows for a more native look */
+/* Modern card shadows with depth */
 .shadow-sm {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
 }
 
 .dark .shadow-sm {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1), 0 2px 6px -2px rgba(0, 0, 0, 0.08);
 }
 
 .dark .shadow-md {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
 }
 
-/* Better button hover states */
+.shadow-lg {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* Elevated button states */
 .zaui-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .dark .zaui-btn:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* Improve list items */
+/* Improved list items with better touch feedback */
 .zaui-list-item {
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  border-radius: 12px;
 }
 
 .zaui-list-item:active {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(79, 70, 229, 0.08);
+  transform: scale(0.99);
 }
 
 .dark .zaui-list-item:active {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(129, 140, 248, 0.15);
 }
 
-/* Better input focus states */
+/* Modern input focus states */
 .zaui-input-affix-wrapper-focused {
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  border-color: #4F46E5;
 }
 
 .dark .zaui-input-affix-wrapper-focused {
-  box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.2);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+  border-color: #818CF8;
 }
 
-/* Smooth animations */
+/* Modern smooth animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -241,22 +259,107 @@ body {
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Better scrollbar for dark mode */
-.dark ::-webkit-scrollbar {
-  width: 8px;
-  background-color: #1E1E1E;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animations for lists */
+.stagger-item {
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* Improved scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.6);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background-color: #333333;
-  border-radius: 4px;
+  background-color: rgba(71, 85, 105, 0.6);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background-color: #444444;
+  background-color: rgba(71, 85, 105, 0.8);
+}
+
+/* Modern card styling */
+.card-modern {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-modern:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.dark .card-modern {
+  background: #1E293B;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .card-modern:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(71, 85, 105, 0.3);
 }
 

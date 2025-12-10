@@ -51,43 +51,50 @@ export const Navigation: FC = () => {
 
   return (
     <Box className="relative">
-      {/* Floating Add Button */}
+      {/* Floating Add Button with gradient */}
       <Box
         className="absolute left-1/2 -translate-x-1/2 -top-8 z-50"
         onClick={() => navigate("/add-transaction")}
       >
-        <Box className="bg-[#eab308] w-16 h-16 rounded-full shadow-xl flex items-center justify-center cursor-pointer active:scale-95 transition-transform border-4 border-white">
+        <Box 
+          className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-200 border-4 border-white"
+          style={{
+            background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+          }}
+        >
           <Icon icon="zi-plus" size={32} className="text-white" />
         </Box>
       </Box>
 
-      <BottomNavigation
-        id="footer"
-        activeKey={location.pathname}
-        onChange={navigate}
-        className="z-50"
-      >
-        {firstHalf.map((path: TabKeys) => (
-          <BottomNavigation.Item
-            key={path}
-            label={tabs[path].label}
-            icon={tabs[path].icon}
-            activeIcon={tabs[path].activeIcon}
-          />
-        ))}
-        
-        {/* Spacer for floating button */}
-        <Box className="flex-1" style={{ minWidth: '80px' }} />
-        
-        {secondHalf.map((path: TabKeys) => (
-          <BottomNavigation.Item
-            key={path}
-            label={tabs[path].label}
-            icon={tabs[path].icon}
-            activeIcon={tabs[path].activeIcon}
-          />
-        ))}
-      </BottomNavigation>
+      <Box className="glass border-t border-gray-200/50 dark:border-gray-700/50">
+        <BottomNavigation
+          id="footer"
+          activeKey={location.pathname}
+          onChange={navigate}
+          className="z-50 bg-transparent"
+        >
+          {firstHalf.map((path: TabKeys) => (
+            <BottomNavigation.Item
+              key={path}
+              label={tabs[path].label}
+              icon={tabs[path].icon}
+              activeIcon={tabs[path].activeIcon}
+            />
+          ))}
+          
+          {/* Spacer for floating button */}
+          <Box className="flex-1" style={{ minWidth: '80px' }} />
+          
+          {secondHalf.map((path: TabKeys) => (
+            <BottomNavigation.Item
+              key={path}
+              label={tabs[path].label}
+              icon={tabs[path].icon}
+              activeIcon={tabs[path].activeIcon}
+            />
+          ))}
+        </BottomNavigation>
+      </Box>
     </Box>
   );
 };

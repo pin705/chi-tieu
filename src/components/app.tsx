@@ -13,7 +13,7 @@ const MyApp = () => {
         <ConfigProvider
           cssVariables={{
             "--zmp-primary-color": getConfig((c) => c.template.primaryColor),
-            "--zmp-background-color": "#f4f5f6",
+            "--zmp-background-color": "#F8FAFC",
           }}
         >
           <App>
