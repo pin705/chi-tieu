@@ -136,13 +136,13 @@ const BudgetPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background">
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Quản lý ngân sách" />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Budget Section */}
         <Box className="px-4 pt-4">
           <Box className="flex items-center justify-between mb-3">
-            <Text.Title size="small" className="font-semibold">Ngân sách tháng</Text.Title>
+            <Text.Title size="small" className="font-semibold dark:text-dark-text">Ngân sách tháng</Text.Title>
             <Button
               className="flex"
               size="small"
@@ -180,9 +180,9 @@ const BudgetPage: FC = () => {
               </Button>
             </Box>
           ) : (
-            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
-              <Icon icon="zi-calendar" size={48} className="text-gray-400 mb-3" />
-              <Text className="text-gray-500 font-medium">
+            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl text-center border-2 border-dashed border-gray-300 dark:border-gray-600">
+              <Icon icon="zi-calendar" size={48} className="text-gray-400 dark:text-gray-500 mb-3" />
+              <Text className="text-gray-500 dark:text-gray-400 font-medium">
                 Chưa thiết lập ngân sách cho tháng này
               </Text>
             </Box>
@@ -192,7 +192,7 @@ const BudgetPage: FC = () => {
         {/* Category Budgets Section */}
         <Box className="p-4">
           <Box className="flex items-center justify-between mb-4">
-            <Text.Title size="small">💳 Ngân sách theo danh mục</Text.Title>
+            <Text.Title size="small" className="dark:text-dark-text">💳 Ngân sách theo danh mục</Text.Title>
             <Button
               size="small"
               onClick={() => {
@@ -214,9 +214,9 @@ const BudgetPage: FC = () => {
           </Box>
 
           {categoryBudgets.length === 0 ? (
-            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl text-center border-2 border-dashed border-gray-300">
-              <Icon icon="zi-more-grid" size={48} className="text-gray-400 mb-3" />
-              <Text className="text-gray-500 font-medium">
+            <Box className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl text-center border-2 border-dashed border-gray-300 dark:border-gray-600">
+              <Icon icon="zi-more-grid" size={48} className="text-gray-400 dark:text-gray-500 mb-3" />
+              <Text className="text-gray-500 dark:text-gray-400 font-medium">
                 Chưa có ngân sách theo danh mục
               </Text>
             </Box>
@@ -246,7 +246,7 @@ const BudgetPage: FC = () => {
                     subTitle={`${getMonthName(budget.month)} ${budget.year}`}
                     suffix={
                       <Box className="flex items-center space-x-2">
-                        <Text className="font-semibold">
+                        <Text className="font-semibold dark:text-dark-text">
                           {formatCurrency(budget.amount)}
                         </Text>
                         <Box
@@ -274,14 +274,14 @@ const BudgetPage: FC = () => {
         handler
         swipeToClose
       >
-        <Box className="p-5">
+        <Box className="p-5 dark:bg-dark-surface">
           <Box className="flex items-center justify-center mb-5">
             <Icon 
               icon={formData.type === "monthly" ? "zi-star" : "zi-more-grid"} 
-              className="mr-2" 
+              className="mr-2 dark:text-dark-text" 
               size={24}
             />
-            <Text.Title>
+            <Text.Title className="dark:text-dark-text">
               {formData.type === "monthly"
                 ? "Ngân sách tháng"
                 : "Ngân sách danh mục"}
@@ -290,7 +290,7 @@ const BudgetPage: FC = () => {
 
           {formData.type === "category" && (
             <Box className="mb-5">
-              <Text size="small" className="mb-3 text-gray-700 font-medium">
+              <Text size="small" className="mb-3 text-gray-700 dark:text-gray-300 font-medium">
                 Danh mục
               </Text>
               <Select
@@ -298,7 +298,7 @@ const BudgetPage: FC = () => {
                 onChange={(value) =>
                   setFormData({ ...formData, categoryId: value as string })
                 }
-                className="bg-white border-2 border-gray-200 rounded-xl"
+                className="bg-white dark:bg-dark-surfaceVariant border-2 border-gray-200 dark:border-gray-600 rounded-xl"
               >
                 {expenseCategories.map((category) => (
                   <Select.Option
@@ -312,7 +312,7 @@ const BudgetPage: FC = () => {
           )}
 
           <Box className="mb-5">
-            <Text size="small" className="mb-3 text-gray-700 font-medium">
+            <Text size="small" className="mb-3 text-gray-700 dark:text-gray-300 font-medium">
               Số tiền (VNĐ)
             </Text>
             <Input
@@ -322,7 +322,7 @@ const BudgetPage: FC = () => {
                 setFormData({ ...formData, amount: e.target.value })
               }
               placeholder="Nhập số tiền"
-              className="bg-white border-2 border-gray-200 rounded-xl"
+              className="bg-white dark:bg-dark-surfaceVariant border-2 border-gray-200 dark:border-gray-600 rounded-xl dark:text-dark-text"
             />
           </Box>
 
