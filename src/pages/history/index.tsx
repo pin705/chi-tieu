@@ -101,7 +101,7 @@ const HistoryPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col" style={{ background: 'linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%)' }}>
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Lịch sử giao dịch" />
       
       {/* Search and Filter Bar */}

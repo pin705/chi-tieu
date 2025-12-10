@@ -57,7 +57,7 @@ export const Navigation: FC = () => {
         onClick={() => navigate("/add-transaction")}
       >
         <Box 
-          className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-200 border-4 border-white"
+          className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-200 border-4 border-white dark:border-dark-background"
           style={{
             background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
           }}

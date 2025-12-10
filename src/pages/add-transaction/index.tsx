@@ -131,7 +131,7 @@ const AddTransactionPage: FC = () => {
   const selectedWalletData = wallets.find((w) => w.id === selectedWallet);
 
   return (
-    <Page className="flex flex-col" style={{ background: 'linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%)' }}>
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Thêm giao dịch" />
       <Box className="flex-1 overflow-auto p-4">
         {/* Type Toggle with modern gradient buttons */}

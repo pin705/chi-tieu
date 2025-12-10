@@ -126,12 +126,12 @@ const ManageCategoriesPage: FC = () => {
   const renderCategoryList = (categoryList: ExpenseCategory[], type: "expense" | "income") => (
     <Box className="p-4 pb-24 space-y-2.5">
       {categoryList.length === 0 ? (
-        <Box className="bg-section rounded-2xl p-12 text-center ">
-          <Box className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-            <Icon icon="zi-home" size={40} className="text-gray-400" />
+        <Box className="bg-section dark:bg-dark-surface rounded-2xl p-12 text-center">
+          <Box className="bg-gray-100 dark:bg-dark-surfaceVariant rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+            <Icon icon="zi-home" size={40} className="text-gray-400 dark:text-gray-500" />
           </Box>
-          <Text className="text-gray-600 font-medium">Chưa có danh mục nào</Text>
-          <Text size="xSmall" className="text-gray-400 mt-2">
+          <Text className="text-gray-600 dark:text-dark-textSecondary font-medium">Chưa có danh mục nào</Text>
+          <Text size="xSmall" className="text-gray-400 dark:text-dark-textSecondary mt-2">
             Nhấn nút + bên dưới để thêm danh mục
           </Text>
         </Box>
@@ -139,7 +139,7 @@ const ManageCategoriesPage: FC = () => {
         categoryList.map((category) => (
           <Box
             key={category.id}
-            className="bg-section rounded-2xl p-4 "
+            className="bg-section dark:bg-dark-surface rounded-2xl p-4"
           >
             <Box className="flex items-center justify-between">
               <Box className="flex items-center flex-1">
@@ -154,10 +154,10 @@ const ManageCategoriesPage: FC = () => {
                   />
                 </Box>
                 <Box className="flex-1">
-                  <Text className="font-semibold text-gray-900 mb-0.5">
+                  <Text className="font-semibold text-gray-900 dark:text-dark-text mb-0.5">
                     {category.name}
                   </Text>
-                  <Text size="xSmall" className="text-gray-500">
+                  <Text size="xSmall" className="text-gray-500 dark:text-dark-textSecondary">
                     {category.type === "expense" ? "Chi tiêu" : "Thu nhập"}
                   </Text>
                 </Box>
@@ -167,14 +167,14 @@ const ManageCategoriesPage: FC = () => {
                   size="small"
                   variant="secondary"
                   onClick={() => handleOpenEditSheet(category)}
-                  className="border-gray-200 active:bg-gray-100"
-                  icon={<Icon icon="zi-edit" size={18} className="text-gray-700" />}
+                  className="border-gray-200 dark:border-dark-border active:bg-gray-100 dark:active:bg-gray-700"
+                  icon={<Icon icon="zi-edit" size={18} className="text-gray-700 dark:text-gray-300" />}
                 />
                 <Button
                   size="small"
                   variant="secondary"
                   onClick={() => handleDelete(category.id)}
-                  className="border-red-200 text-red-600 active:bg-red-50"
+                  className="border-red-200 dark:border-red-700 text-red-600 dark:text-red-400 active:bg-red-50 dark:active:bg-red-950"
                   icon={<Icon icon="zi-delete" size={18} />}
                 />
               </Box>
@@ -196,7 +196,7 @@ const ManageCategoriesPage: FC = () => {
   );
 
   return (
-    <Page className="flex flex-col bg-background">
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Quản lý danh mục" />
       <Box className="flex-1 overflow-auto pb-4">
         {/* Header Info */}
