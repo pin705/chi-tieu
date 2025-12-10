@@ -14,6 +14,7 @@ import { Transaction, TransactionType } from "types/transaction";
 import { ExpenseCategory } from "types/expense-category";
 import { Wallet } from "types/wallet";
 import { suggestCategoryWithLearning, learnFromHistory } from "services/ai-categorization";
+import { formatCurrency } from "utils/format";
 
 const AddTransactionPage: FC = () => {
   const navigate = useNavigate();
@@ -130,42 +131,77 @@ const AddTransactionPage: FC = () => {
   const selectedWalletData = wallets.find((w) => w.id === selectedWallet);
 
   return (
-    <Page className="flex flex-col bg-background dark:bg-dark-background">
+    <Page className="flex flex-col" style={{ background: 'linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%)' }}>
       <AppHeader title="Thêm giao dịch" />
       <Box className="flex-1 overflow-auto p-4">
-        {/* Type Toggle */}
-        <Box className="grid grid-cols-2 gap-3 mb-6">
-          <Button
-            variant={type === "expense" ? "primary" : "secondary"}
+        {/* Type Toggle with modern gradient buttons */}
+        <Box className="grid grid-cols-2 gap-3 mb-6 animate-fade-in">
+          <Box
             onClick={() => setType("expense")}
-            className={`transition-all duration-200 ${
+            className={`p-4 rounded-2xl cursor-pointer transition-all duration-200 transform ${
               type === "expense" 
-                ? "shadow-md transform scale-105" 
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                ? "shadow-lg scale-105" 
+                : "shadow-soft hover:shadow-md active:scale-98"
             }`}
+            style={{
+              background: type === "expense"
+                ? 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)'
+                : 'white',
+            }}
           >
-            <Icon icon="zi-minus-circle" className="mr-1" />
-            Chi tiêu
-          </Button>
-          <Button
-            variant={type === "income" ? "primary" : "secondary"}
+            <Box className="flex items-center justify-center">
+              <Icon 
+                icon="zi-minus-circle" 
+                className={type === "expense" ? "text-white" : "text-rose-500"} 
+                size={24} 
+              />
+              <Text 
+                className={`ml-2 font-bold ${type === "expense" ? "text-white" : "text-gray-700"}`}
+              >
+                Chi tiêu
+              </Text>
+            </Box>
+          </Box>
+          <Box
             onClick={() => setType("income")}
-            className={`transition-all duration-200 ${
+            className={`p-4 rounded-2xl cursor-pointer transition-all duration-200 transform ${
               type === "income" 
-                ? "shadow-md transform scale-105" 
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                ? "shadow-lg scale-105" 
+                : "shadow-soft hover:shadow-md active:scale-98"
             }`}
+            style={{
+              background: type === "income"
+                ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)'
+                : 'white',
+            }}
           >
-            <Icon icon="zi-plus-circle" className="mr-1" />
-            Thu nhập
-          </Button>
+            <Box className="flex items-center justify-center">
+              <Icon 
+                icon="zi-plus-circle" 
+                className={type === "income" ? "text-white" : "text-emerald-500"} 
+                size={24} 
+              />
+              <Text 
+                className={`ml-2 font-bold ${type === "income" ? "text-white" : "text-gray-700"}`}
+              >
+                Thu nhập
+              </Text>
+            </Box>
+          </Box>
         </Box>
 
-        {/* Amount Input */}
-        <Box className="mb-6 p-5 bg-gray-100 dark:bg-dark-surface rounded-2xl shadow-sm">
+        {/* Amount Input with gradient card */}
+        <Box 
+          className="mb-6 p-6 rounded-3xl shadow-card animate-slide-up"
+          style={{
+            background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+          }}
+        >
           <Box className="flex items-center mb-3">
-            <Icon icon="zi-star" className="text-yellow-500 mr-2" size={20} />
-            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-medium">
+            <Box className="bg-white/20 rounded-full p-2 mr-2">
+              <Icon icon="zi-star" className="text-white" size={20} />
+            </Box>
+            <Text size="small" className="text-white/90 font-semibold">
               Số tiền
             </Text>
           </Box>
@@ -174,98 +210,109 @@ const AddTransactionPage: FC = () => {
             placeholder="0"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="text-3xl font-bold dark:bg-dark-surfaceVariant dark:text-dark-text"
+            className="text-4xl font-bold bg-white/10 border-white/20 text-white placeholder-white/50 rounded-2xl"
           />
         </Box>
 
         {/* Category Selection */}
         <Box
-          className="mb-4 p-4 bg-section dark:bg-dark-surface rounded-xl cursor-pointer hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
+          className="mb-4 p-5 bg-white dark:bg-dark-surface rounded-2xl cursor-pointer transition-all duration-200 shadow-card hover:shadow-lg active:scale-98 animate-slide-up"
+          style={{ animationDelay: '0.1s' }}
           onClick={() => setShowCategorySheet(true)}
         >
-          <Box className="flex items-center mb-2">
-            <Icon icon="zi-more-grid" className="text-blue-500 mr-2" size={18} />
-            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-medium">
+          <Box className="flex items-center mb-3">
+            <Box className="bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-2xl p-2 mr-2">
+              <Icon icon="zi-more-grid" className="text-indigo-600" size={20} />
+            </Box>
+            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-bold">
               Danh mục
             </Text>
           </Box>
           {selectedCategoryData ? (
             <Box className="flex items-center space-x-3">
               <Box
-                className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md"
                 style={{
-                  backgroundColor: `${selectedCategoryData.color}20`,
+                  background: `linear-gradient(135deg, ${selectedCategoryData.color}15 0%, ${selectedCategoryData.color}25 100%)`,
                 }}
               >
                 <Icon
                   icon={selectedCategoryData.icon as any}
                   style={{ color: selectedCategoryData.color }}
-                  size={24}
+                  size={26}
                 />
               </Box>
-              <Text className="font-medium dark:text-dark-text">{selectedCategoryData.name}</Text>
+              <Text className="font-bold text-gray-900 dark:text-dark-text">{selectedCategoryData.name}</Text>
             </Box>
           ) : (
-            <Text className="text-gray-400 dark:text-dark-textSecondary">Chọn danh mục</Text>
+            <Text className="text-gray-400 dark:text-dark-textSecondary font-medium">Chọn danh mục</Text>
           )}
         </Box>
 
         {/* AI Category Suggestion */}
         {suggestedCategory && selectedCategory !== suggestedCategory.id && (
-          <Box className="mb-4 p-3 bg-blue-50 dark:bg-dark-surfaceVariant border border-blue-200 dark:border-dark-border rounded-xl animate-fade-in">
+          <Box 
+            className="mb-4 p-4 rounded-2xl shadow-soft animate-fade-in"
+            style={{
+              background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+            }}
+          >
             <Box className="flex items-center justify-between">
               <Box className="flex items-center space-x-2 flex-1">
-                <Icon icon="zi-star" className="text-blue-600" size={18} />
-                <Text size="small" className="text-blue-700 dark:text-blue-400">
+                <Box className="bg-indigo-500 rounded-full p-1.5">
+                  <Icon icon="zi-star" className="text-white" size={16} />
+                </Box>
+                <Text size="small" className="text-indigo-900 font-semibold">
                   Đề xuất: <strong>{suggestedCategory.name}</strong>
                 </Text>
               </Box>
-              <Button
-                size="small"
-                variant="tertiary"
+              <Box
                 onClick={() => setSelectedCategory(suggestedCategory.id)}
-                className="text-blue-600 dark:text-blue-400"
+                className="px-4 py-2 bg-indigo-600 rounded-xl cursor-pointer active:scale-95 transition-transform"
               >
-                Áp dụng
-              </Button>
+                <Text size="small" className="text-white font-semibold">Áp dụng</Text>
+              </Box>
             </Box>
           </Box>
         )}
 
         {/* Wallet Selection */}
         <Box
-          className="mb-4 p-4 bg-section dark:bg-dark-surface rounded-xl cursor-pointer hover:border-blue-300 transition-all duration-200 shadow-sm hover:shadow-md"
+          className="mb-4 p-5 bg-white dark:bg-dark-surface rounded-2xl cursor-pointer transition-all duration-200 shadow-card hover:shadow-lg active:scale-98 animate-slide-up"
+          style={{ animationDelay: '0.2s' }}
           onClick={() => setShowWalletSheet(true)}
         >
-          <Box className="flex items-center mb-2">
-            <Icon icon="zi-user-circle" className="text-purple-500 mr-2" size={18} />
-            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-medium">
+          <Box className="flex items-center mb-3">
+            <Box className="bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl p-2 mr-2">
+              <Icon icon="zi-user-circle" className="text-purple-600" size={20} />
+            </Box>
+            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-bold">
               Ví
             </Text>
           </Box>
           {selectedWalletData ? (
             <Box className="flex items-center space-x-3">
               <Box
-                className="w-12 h-12 rounded-full flex items-center justify-center shadow-sm"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md"
                 style={{
-                  backgroundColor: `${selectedWalletData.color}20`,
+                  background: `linear-gradient(135deg, ${selectedWalletData.color}15 0%, ${selectedWalletData.color}25 100%)`,
                 }}
               >
                 <Icon
                   icon={selectedWalletData.icon as any}
                   style={{ color: selectedWalletData.color }}
-                  size={24}
+                  size={26}
                 />
               </Box>
-              <Text className="font-medium dark:text-dark-text">{selectedWalletData.name}</Text>
+              <Text className="font-bold text-gray-900 dark:text-dark-text">{selectedWalletData.name}</Text>
             </Box>
           ) : (
-            <Text className="text-gray-400 dark:text-dark-textSecondary">Chọn ví</Text>
+            <Text className="text-gray-400 dark:text-dark-textSecondary font-medium">Chọn ví</Text>
           )}
         </Box>
 
         {/* Date Input */}
-        <Box className="mb-4">
+        <Box className="mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <DatePicker
             label="Ngày"
             placeholder="Chọn ngày giao dịch"
@@ -281,10 +328,12 @@ const AddTransactionPage: FC = () => {
         </Box>
 
         {/* Note Input */}
-        <Box className="mb-6">
+        <Box className="mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Box className="flex items-center mb-2">
-            <Icon icon="zi-note" className="text-gray-500 dark:text-dark-textSecondary mr-2" size={18} />
-            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-medium">
+            <Box className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl p-2 mr-2">
+              <Icon icon="zi-note" className="text-gray-600" size={18} />
+            </Box>
+            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary font-bold">
               Ghi chú
             </Text>
           </Box>
@@ -292,20 +341,24 @@ const AddTransactionPage: FC = () => {
             placeholder="Thêm ghi chú (không bắt buộc)"
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="bg-section dark:bg-dark-surface dark:text-dark-text rounded-xl"
+            className="bg-white dark:bg-dark-surface dark:text-dark-text rounded-2xl shadow-soft"
           />
         </Box>
 
-        {/* Submit Button */}
-        <Button
-          variant="primary"
-          fullWidth
+        {/* Submit Button with gradient */}
+        <Box
           onClick={handleSubmit}
-          className="mb-4 h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+          className="p-5 rounded-2xl cursor-pointer transition-all duration-200 transform active:scale-98 shadow-floating hover:shadow-lg animate-slide-up mb-4"
+          style={{
+            background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+            animationDelay: '0.5s',
+          }}
         >
-          <Icon icon="zi-check-circle" className="mr-2" />
-          Lưu giao dịch
-        </Button>
+          <Box className="flex items-center justify-center">
+            <Icon icon="zi-check-circle" className="text-white mr-2" size={24} />
+            <Text className="text-white text-lg font-bold">Lưu giao dịch</Text>
+          </Box>
+        </Box>
       </Box>
 
       {/* Category Selection Sheet */}
@@ -316,6 +369,140 @@ const AddTransactionPage: FC = () => {
         mask
         handler
         swipeToClose
+      >
+        <Box className="p-6 dark:bg-dark-surface">
+          <Text.Title size="small" className="mb-5 text-center dark:text-dark-text font-bold">
+            Chọn danh mục
+          </Text.Title>
+          <Box className="grid grid-cols-3 gap-3">
+            {categories.map((category) => (
+              <Box
+                key={category.id}
+                className={`p-4 rounded-2xl cursor-pointer text-center transition-all duration-200 transform active:scale-95 ${
+                  selectedCategory === category.id
+                    ? "shadow-lg"
+                    : "bg-gray-50 dark:bg-dark-surfaceVariant hover:bg-gray-100 dark:hover:bg-gray-700 shadow-soft"
+                }`}
+                style={{
+                  background: selectedCategory === category.id
+                    ? 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)'
+                    : undefined,
+                }}
+                onClick={() => {
+                  setSelectedCategory(category.id);
+                  setShowCategorySheet(false);
+                }}
+              >
+                <Icon
+                  icon={category.icon as any}
+                  className="text-3xl mb-2"
+                  style={{
+                    color:
+                      selectedCategory === category.id
+                        ? "white"
+                        : category.color,
+                  }}
+                />
+                <Text
+                  size="xSmall"
+                  className={`font-bold ${
+                    selectedCategory === category.id
+                      ? "text-white"
+                      : "text-gray-700 dark:text-dark-text"
+                  }`}
+                >
+                  {category.name}
+                </Text>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Sheet>
+
+      {/* Wallet Selection Sheet */}
+      <Sheet
+        visible={showWalletSheet}
+        onClose={() => setShowWalletSheet(false)}
+        autoHeight
+        mask
+        handler
+        swipeToClose
+      >
+        <Box className="p-6 dark:bg-dark-surface">
+          <Text.Title size="small" className="mb-5 text-center dark:text-dark-text font-bold">
+            Chọn ví
+          </Text.Title>
+          <Box className="space-y-3">
+            {wallets.map((wallet) => (
+              <Box
+                key={wallet.id}
+                className={`p-4 rounded-2xl cursor-pointer flex items-center justify-between transition-all duration-200 transform active:scale-98 ${
+                  selectedWallet === wallet.id 
+                    ? "shadow-lg" 
+                    : "bg-gray-50 dark:bg-dark-surfaceVariant hover:bg-gray-100 dark:hover:bg-gray-700 shadow-soft"
+                }`}
+                style={{
+                  background: selectedWallet === wallet.id
+                    ? 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)'
+                    : undefined,
+                }}
+                onClick={() => {
+                  setSelectedWallet(wallet.id);
+                  setShowWalletSheet(false);
+                }}
+              >
+                <Box className="flex items-center space-x-3">
+                  <Box
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm"
+                    style={{
+                      background:
+                        selectedWallet === wallet.id
+                          ? "rgba(255, 255, 255, 0.2)"
+                          : `linear-gradient(135deg, ${wallet.color}15 0%, ${wallet.color}25 100%)`,
+                    }}
+                  >
+                    <Icon
+                      icon={wallet.icon as any}
+                      style={{
+                        color:
+                          selectedWallet === wallet.id ? "white" : wallet.color,
+                      }}
+                      size={24}
+                    />
+                  </Box>
+                  <Box>
+                    <Text
+                      className={`font-bold ${
+                        selectedWallet === wallet.id
+                          ? "text-white"
+                          : "text-gray-900 dark:text-dark-text"
+                      }`}
+                    >
+                      {wallet.name}
+                    </Text>
+                    <Text
+                      size="xSmall"
+                      className={`${
+                        selectedWallet === wallet.id
+                          ? "text-white/80"
+                          : "text-gray-500 dark:text-dark-textSecondary"
+                      }`}
+                    >
+                      {formatCurrency(wallet.balance)}
+                    </Text>
+                  </Box>
+                </Box>
+                {selectedWallet === wallet.id && (
+                  <Icon icon="zi-check-circle-solid" className="text-white" size={24} />
+                )}
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Sheet>
+    </Page>
+  );
+};
       >
         <Box className="p-5 dark:bg-dark-surface">
           <Text.Title size="small" className="mb-4 text-center dark:text-dark-text">
