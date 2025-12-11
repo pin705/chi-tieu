@@ -118,7 +118,7 @@ const ExportPage: React.FC = () => {
             >
               <Option value="csv" title="CSV (Excel Compatible)">
                 <Box className="flex items-center py-2">
-                  <Icon icon="zi-file-text" className="text-green-600 mr-3" size={24} />
+                  <Icon icon="zi-file" className="text-green-600 mr-3" size={24} />
                   <Box className="flex-1">
                     <Text className="font-medium">CSV</Text>
                     <Text size="xSmall" className="text-gray-500">
@@ -129,7 +129,7 @@ const ExportPage: React.FC = () => {
               </Option>
               <Option value="excel" title="Excel (.xlsx)">
                 <Box className="flex items-center py-2">
-                  <Icon icon="zi-grid" className="text-blue-600 mr-3" size={24} />
+                  <Icon icon="zi-grid-solid" className="text-blue-600 mr-3" size={24} />
                   <Box className="flex-1">
                     <Text className="font-medium">Excel</Text>
                     <Text size="xSmall" className="text-gray-500">
@@ -170,7 +170,7 @@ const ExportPage: React.FC = () => {
           >
             {exporting ? (
               <Box className="flex items-center justify-center">
-                <Icon icon="zi-loading" className="mr-2 animate-spin" />
+                <Icon icon="zi-retry" className="mr-2 animate-spin" />
                 Đang xuất...
               </Box>
             ) : (

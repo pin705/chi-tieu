@@ -15,7 +15,7 @@
     "Samsung >= 5"
   ],
   "scripts": {
-    "start": "zmp start",
+    "start": "vite",
     "deploy": "zmp deploy",
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css"
   },

@@ -94,14 +94,14 @@ const SettingsPage: FC = () => {
             <List.Item
               prefix={<Icon icon="zi-download" className="text-green-600" size={22} />}
               title="Xuất dữ liệu"
-              subtitle="CSV, Excel, PDF"
+              subTitle="CSV, Excel, PDF"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/export")}
             />
             <List.Item
-              prefix={<Icon icon="zi-cloud" className="text-blue-600" size={22} />}
+              prefix={<Icon icon="zi-backup-solid" className="text-blue-600" size={22} />}
               title="Sao lưu & Khôi phục"
-              subtitle="Bảo vệ dữ liệu của bạn"
+              subTitle="Bảo vệ dữ liệu của bạn"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/backup")}
             />

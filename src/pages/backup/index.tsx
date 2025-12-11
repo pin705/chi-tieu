@@ -154,7 +154,7 @@ const BackupPage: React.FC = () => {
         {/* Backup Info */}
         <Box className="m-4 p-6 bg-white rounded-2xl shadow-sm">
           <Box className="flex items-center mb-4">
-            <Icon icon="zi-cloud" className="text-blue-600 mr-3" size={28} />
+            <Icon icon="zi-backup-solid" className="text-blue-600 mr-3" size={28} />
             <Text.Title className="text-gray-900 font-bold">
               Sao lưu dữ liệu
             </Text.Title>
@@ -184,7 +184,7 @@ const BackupPage: React.FC = () => {
 
           {backups.length === 0 ? (
             <Box className="bg-white rounded-2xl p-8 text-center shadow-sm">
-              <Icon icon="zi-cloud-download" size={48} className="text-gray-400 mb-3" />
+              <Icon icon="zi-download-solid" size={48} className="text-gray-400 mb-3" />
               <Text className="text-gray-500">
                 Chưa có bản sao lưu nào
               </Text>
@@ -215,7 +215,7 @@ const BackupPage: React.FC = () => {
                       onClick={() => handleRestoreBackup(backup.id)}
                       className="flex-1"
                     >
-                      <Icon icon="zi-reload" size={16} className="mr-1" />
+                      <Icon icon="zi-retry" size={16} className="mr-1" />
                       Khôi phục
                     </Button>
                     <Button
