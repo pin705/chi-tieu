@@ -30,7 +30,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
   );
 
   return (
-    <Box className="p-4 bg-section rounded-2xl shadow-sm ">
+    <Box className="p-4 bg-section dark:bg-dark-surface rounded-2xl shadow-sm">
       <Box className="flex items-center justify-between mb-3">
         <Box className="flex items-center space-x-3">
           <Box
@@ -46,13 +46,13 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
             />
           </Box>
           <Box>
-            <Text size="small" className="font-semibold text-gray-800">
+            <Text size="small" className="font-semibold text-gray-800 dark:text-dark-text">
               {category?.name || "Khác"}
             </Text>
             {showBudget && budgetStatus.hasBudget && (
               <Box className="flex items-center">
-                <Icon icon="zi-star" className="text-gray-500 mr-1" size={12} />
-                <Text size="xSmall" className="text-gray-500">
+                <Icon icon="zi-star" className="text-gray-500 dark:text-gray-400 mr-1" size={12} />
+                <Text size="xSmall" className="text-gray-500 dark:text-gray-400">
                   Ngân sách: {formatCurrency(budgetStatus.budget)}
                 </Text>
               </Box>
@@ -60,10 +60,10 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
           </Box>
         </Box>
         <Box className="text-right">
-          <Text size="small" className="font-bold text-gray-800">
+          <Text size="small" className="font-bold text-gray-800 dark:text-dark-text">
             {formatCurrency(stat.amount)}
           </Text>
-          <Text size="xSmall" className="text-blue-600 font-medium">
+          <Text size="xSmall" className="text-blue-600 dark:text-blue-400 font-medium">
             {stat.percentage.toFixed(1)}%
           </Text>
           {showBudget && budgetStatus.hasBudget && budgetStatus.isExceeded && (
@@ -77,7 +77,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
         </Box>
       </Box>
       {/* Progress Bar */}
-      <Box className="w-full bg-gray-200 rounded-full h-2.5 shadow-inner">
+      <Box className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 shadow-inner">
         <Box
           className="h-2.5 rounded-full shadow-sm"
           style={{
@@ -90,17 +90,17 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
       {showBudget && budgetStatus.hasBudget && (
         <Box className="mt-3">
           <Box className="flex justify-between items-center mb-2">
-            <Text size="xSmall" className="text-gray-600 font-medium">
+            <Text size="xSmall" className="text-gray-600 dark:text-gray-400 font-medium">
               So với ngân sách
             </Text>
             <Text
               size="xSmall"
-              className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-blue-600"}`}
+              className={`font-bold ${budgetStatus.isExceeded ? "text-red-600 dark:text-red-400" : "text-blue-600 dark:text-blue-400"}`}
             >
               {budgetStatus.percentage.toFixed(1)}%
             </Text>
           </Box>
-          <Box className="w-full bg-gray-200 rounded-full h-2 shadow-inner">
+          <Box className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 shadow-inner">
             <Box
               className={`h-2 rounded-full shadow-sm ${
                 budgetStatus.isExceeded ? "bg-red-600" : "bg-blue-600"
@@ -138,17 +138,19 @@ const ReportsPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background">
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Báo cáo" noBack />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Monthly Summary */}
-        <Box className="p-6 rounded-2xl m-4 bg-section relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
-          <Text size="small" className="text-gray-900 opacity-95 mb-3 font-medium relative z-10">
+        <Box className="p-6 rounded-2xl m-4 bg-section dark:bg-dark-surface relative overflow-hidden">
+          <Box className="absolute top-0 right-0 w-32 h-32 opacity-10 rounded-full -mr-16 -mt-16" 
+            style={{ backgroundColor: 'white' }} 
+          />
+          <Text size="small" className="text-gray-900 dark:text-dark-text opacity-95 mb-3 font-medium relative z-10">
              Tháng này
           </Text>
-          <Box className="grid grid-cols-3 gap-3 text-gray-900 relative z-10">
-            <Box className="bg-white bg-opacity-20 backdrop-blur-sm p-3 rounded-2xl">
+          <Box className="grid grid-cols-3 gap-3 text-gray-900 dark:text-dark-text relative z-10">
+            <Box className="bg-white dark:bg-white bg-opacity-20 backdrop-blur-sm p-3 rounded-2xl">
               <Text size="xSmall" className="opacity-95 mb-1">
                 Thu nhập
               </Text>
@@ -156,7 +158,7 @@ const ReportsPage: FC = () => {
                 {formatCurrency(stats.income)}
               </Text.Title>
             </Box>
-            <Box className="bg-white bg-opacity-10 p-3 rounded-xl">
+            <Box className="bg-white dark:bg-white bg-opacity-10 p-3 rounded-xl">
               <Text size="xSmall" className="opacity-90 mb-1">
                 Chi tiêu
               </Text>
@@ -164,7 +166,7 @@ const ReportsPage: FC = () => {
                 {formatCurrency(stats.expense)}
               </Text.Title>
             </Box>
-            <Box className="bg-white bg-opacity-10 p-3 rounded-xl">
+            <Box className="bg-white dark:bg-white bg-opacity-10 p-3 rounded-xl">
               <Text size="xSmall" className="opacity-90 mb-1">
                 Còn lại
               </Text>
@@ -188,30 +190,30 @@ const ReportsPage: FC = () => {
 
         {/* View Mode Toggle */}
         <Box className="px-4 pb-4">
-          <Box className="flex gap-3 bg-gray-100 p-1 rounded-xl">
+          <Box className="flex gap-3 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
             <Box
               className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "category"
-                  ? "bg-white text-blue-600 shadow-md transform scale-105"
-                  : "text-gray-600 hover:bg-gray-200"
+                  ? "bg-white dark:bg-dark-surface text-blue-600 dark:text-blue-400 shadow-md transform scale-105"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
               onClick={() => setViewMode("category")}
             >
               <Icon icon="zi-more-grid" className="mb-1" />
-              <Text size="small" className={`font-medium ${viewMode === "category" ? "text-blue-600" : "text-gray-600"}`}>
+              <Text size="small" className={`font-medium ${viewMode === "category" ? "text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-400"}`}>
                 Theo danh mục
               </Text>
             </Box>
             <Box
               className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "trend"
-                  ? "bg-white text-blue-600 shadow-md transform scale-105"
-                  : "text-gray-600 hover:bg-gray-200"
+                  ? "bg-white dark:bg-dark-surface text-blue-600 dark:text-blue-400 shadow-md transform scale-105"
+                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
               onClick={() => setViewMode("trend")}
             >
               <Icon icon="zi-more-grid" className="mb-1" />
-              <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-blue-600" : "text-gray-600"}`}>
+              <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-400"}`}>
                 Xu hướng
               </Text>
             </Box>
@@ -223,7 +225,7 @@ const ReportsPage: FC = () => {
           <Box className="px-4 pb-4">
             {categoryStats.length === 0 ? (
               <Box className="text-center py-8">
-                <Text className="text-gray-400">
+                <Text className="text-gray-400 dark:text-gray-500">
                   Chưa có {activeTab === "expense" ? "chi tiêu" : "thu nhập"} nào
                   trong tháng này
                 </Text>
@@ -254,10 +256,10 @@ const ReportsPage: FC = () => {
           <Box className="px-4 pb-4">
             {/* Weekly Trend */}
             <Box className="mb-6">
-              <Text.Title size="small" className="mb-3">
+              <Text.Title size="small" className="mb-3 dark:text-dark-text">
                 Xu hướng theo tuần (Tháng này)
               </Text.Title>
-              <Box className="bg-section rounded-xl p-4 shadow-sm">
+              <Box className="bg-section dark:bg-dark-surface rounded-xl p-4 shadow-sm">
                 <TrendChart
                   data={weeklyTrend.map((w) => ({
                     label: `T${w.week}`,
@@ -272,10 +274,10 @@ const ReportsPage: FC = () => {
 
             {/* Monthly Trend */}
             <Box className="mb-6">
-              <Text.Title size="small" className="mb-3">
+              <Text.Title size="small" className="mb-3 dark:text-dark-text">
                 Xu hướng 6 tháng
               </Text.Title>
-              <Box className="bg-section rounded-xl p-4 shadow-sm">
+              <Box className="bg-section dark:bg-dark-surface rounded-xl p-4 shadow-sm">
                 <TrendChart
                   data={monthlyTrend.map((m) => ({
                     label: getMonthName(m.month),
@@ -290,28 +292,28 @@ const ReportsPage: FC = () => {
 
             {/* Comparison Chart */}
             <Box>
-              <Text.Title size="small" className="mb-3">
+              <Text.Title size="small" className="mb-3 dark:text-dark-text">
                 So sánh Thu - Chi (6 tháng)
               </Text.Title>
-              <Box className="bg-section rounded-xl p-4 shadow-sm">
+              <Box className="bg-section dark:bg-dark-surface rounded-xl p-4 shadow-sm">
                 <Box className="space-y-4">
                   {monthlyTrend.map((m, i) => (
                     <Box key={i}>
                       <Box className="flex justify-between items-center mb-2">
-                        <Text size="small" className="font-medium">
+                        <Text size="small" className="font-medium dark:text-dark-text">
                           {getMonthName(m.month)} {m.year}
                         </Text>
-                        <Text size="xSmall" className={m.income >= m.expense ? "text-green-600" : "text-red-600"}>
+                        <Text size="xSmall" className={m.income >= m.expense ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
                           {formatCurrency(m.income - m.expense)}
                         </Text>
                       </Box>
                       <Box className="flex gap-2">
                         <Box className="flex-1">
                           <Box className="flex justify-between mb-1">
-                            <Text size="xSmall" className="text-green-600">Thu</Text>
-                            <Text size="xSmall" className="text-green-600">{formatCurrency(m.income)}</Text>
+                            <Text size="xSmall" className="text-green-600 dark:text-green-400">Thu</Text>
+                            <Text size="xSmall" className="text-green-600 dark:text-green-400">{formatCurrency(m.income)}</Text>
                           </Box>
-                          <Box className="w-full bg-gray-100 rounded-full h-2">
+                          <Box className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2">
                             <Box
                               className="h-2 rounded-full bg-green-600"
                               style={{
@@ -322,10 +324,10 @@ const ReportsPage: FC = () => {
                         </Box>
                         <Box className="flex-1">
                           <Box className="flex justify-between mb-1">
-                            <Text size="xSmall" className="text-red-600">Chi</Text>
-                            <Text size="xSmall" className="text-red-600">{formatCurrency(m.expense)}</Text>
+                            <Text size="xSmall" className="text-red-600 dark:text-red-400">Chi</Text>
+                            <Text size="xSmall" className="text-red-600 dark:text-red-400">{formatCurrency(m.expense)}</Text>
                           </Box>
-                          <Box className="w-full bg-gray-100 rounded-full h-2">
+                          <Box className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2">
                             <Box
                               className="h-2 rounded-full bg-red-600"
                               style={{

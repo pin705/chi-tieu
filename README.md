@@ -72,8 +72,8 @@
 - [x] Tìm kiếm và lọc giao dịch
 - [x] Bộ lọc đa điều kiện (loại, danh mục, ví)
 - [x] Hiển thị trực quan các bộ lọc đang áp dụng
-- [ ] Xuất dữ liệu (Tính năng tương lai)
-- [ ] Chế độ tối (Tính năng tương lai)
+- [x] Chế độ tối (Dark Mode)
+- [ ] Xuất dữ liệu (Đang phát triển)
 - [ ] Hệ thống thông báo (Tính năng tương lai)
 
 #### Hoàn thành trong Phase 4:
@@ -86,6 +86,15 @@
 - Hiển thị số lượng bộ lọc đang áp dụng
 - Xóa từng bộ lọc hoặc xóa tất cả
 - Giao diện lọc thân thiện với người dùng
+
+**Chế độ tối (Dark Mode)** ✅
+- Chuyển đổi linh hoạt giữa chế độ sáng và tối
+- Theme toggle button với hiệu ứng mượt mà
+- Lưu tùy chọn theme vào Zalo storage
+- Hỗ trợ tự động theo theme hệ thống
+- Dark mode cho tất cả các trang và components
+- Màu sắc và shadow được tối ưu cho dark mode
+- Transitions mượt mà khi chuyển theme (0.2s ease)
 
 ## Cài đặt
 
@@ -146,6 +155,22 @@
 - **Styling**: Tailwind CSS
 - **Build Tool**: Vite
 - **Language**: TypeScript
+
+## Kế hoạch phát triển
+
+Xem các tài liệu sau để biết chi tiết về kế hoạch phát triển tính năng:
+
+- 📋 **[FEATURE_ROADMAP.md](./FEATURE_ROADMAP.md)** - Lộ trình phát triển chi tiết các tính năng từ Phase 5-8
+- 🎯 **[NEXT_STEPS.md](./NEXT_STEPS.md)** - Các bước tiếp theo và ưu tiên phát triển
+- 🔧 **[TECHNICAL_SPEC.md](./TECHNICAL_SPEC.md)** - Đặc tả kỹ thuật cho các tính năng ưu tiên cao
+
+### Tính năng sắp triển khai:
+- 📥 **Xuất dữ liệu** (CSV, Excel, PDF) - Phase 5
+- 🌙 **Chế độ tối** (Dark Mode) - Phase 5
+- ☁️ **Sao lưu đám mây** (Cloud Backup) - Phase 5
+- 🔔 **Hệ thống thông báo** - Phase 7
+- 🔄 **Giao dịch định kỳ** - Phase 7
+- 🎯 **Mục tiêu tiết kiệm** - Phase 7
 
 ## Triển khai
 

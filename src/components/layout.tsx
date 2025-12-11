@@ -11,6 +11,8 @@ import BudgetPage from "pages/budget";
 import ManageWalletsPage from "pages/manage-wallets";
 import ManageCategoriesPage from "pages/manage-categories";
 import GuidePage from "pages/guide";
+import ExportPage from "pages/export";
+import BackupPage from "pages/backup";
 import { getSystemInfo } from "zmp-sdk";
 import { ScrollRestoration } from "./scroll-restoration";
 import { useHandlePayment } from "hooks";
@@ -44,6 +46,8 @@ export const Layout: FC = () => {
           <Route path="/manage-wallets" element={<ManageWalletsPage />}></Route>
           <Route path="/manage-categories" element={<ManageCategoriesPage />}></Route>
           <Route path="/guide" element={<GuidePage />}></Route>
+          <Route path="/export" element={<ExportPage />}></Route>
+          <Route path="/backup" element={<BackupPage />}></Route>
         </Routes>
       </Box>
       <Navigation />

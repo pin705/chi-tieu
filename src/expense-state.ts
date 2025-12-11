@@ -477,3 +477,86 @@ export const weeklyTrendState = selector<
     return weeks;
   },
 });
+
+// Recurring Transactions state
+import { RecurringTransaction } from "types/recurring";
+
+const loadRecurringTransactions = async (): Promise<RecurringTransaction[]> => {
+  try {
+    const stored = await getStorage({ keys: ["recurringTransactions"] });
+    if (stored.recurringTransactions) {
+      return JSON.parse(stored.recurringTransactions);
+    }
+  } catch (error) {
+    console.warn("Error loading recurring transactions:", error);
+  }
+  return [];
+};
+
+const saveRecurringTransactions = async (recurringTransactions: RecurringTransaction[]) => {
+  try {
+    await setStorage({
+      data: { recurringTransactions: JSON.stringify(recurringTransactions) },
+    });
+  } catch (error) {
+    console.error("Error saving recurring transactions:", error);
+  }
+};
+
+export const recurringTransactionsState = atom<RecurringTransaction[]>({
+  key: "recurringTransactions",
+  default: loadRecurringTransactions(),
+  effects: [
+    ({ onSet }) => {
+      onSet((newRecurringTransactions) => {
+        saveRecurringTransactions(newRecurringTransactions);
+      });
+    },
+  ],
+});
+
+// Savings Goals state
+import { SavingsGoal } from "types/savings-goal";
+
+const loadSavingsGoals = async (): Promise<SavingsGoal[]> => {
+  try {
+    const stored = await getStorage({ keys: ["savingsGoals"] });
+    if (stored.savingsGoals) {
+      return JSON.parse(stored.savingsGoals);
+    }
+  } catch (error) {
+    console.warn("Error loading savings goals:", error);
+  }
+  return [];
+};
+
+const saveSavingsGoals = async (savingsGoals: SavingsGoal[]) => {
+  try {
+    await setStorage({
+      data: { savingsGoals: JSON.stringify(savingsGoals) },
+    });
+  } catch (error) {
+    console.error("Error saving savings goals:", error);
+  }
+};
+
+export const savingsGoalsState = atom<SavingsGoal[]>({
+  key: "savingsGoals",
+  default: loadSavingsGoals(),
+  effects: [
+    ({ onSet }) => {
+      onSet((newSavingsGoals) => {
+        saveSavingsGoals(newSavingsGoals);
+      });
+    },
+  ],
+});
+
+// Active savings goals (not completed)
+export const activeSavingsGoalsState = selector<SavingsGoal[]>({
+  key: "activeSavingsGoals",
+  get: ({ get }) => {
+    const goals = get(savingsGoalsState);
+    return goals.filter((g) => !g.completedAt);
+  },
+});

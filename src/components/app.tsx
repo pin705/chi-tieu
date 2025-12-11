@@ -4,24 +4,27 @@ import { RecoilRoot } from "recoil";
 import { getConfig } from "utils/config";
 import { Layout } from "./layout";
 import { ConfigProvider } from "./config-provider";
+import { ThemeProvider } from "../contexts/theme-context";
 
 const MyApp = () => {
   return (
     <RecoilRoot>
-      <ConfigProvider
-        cssVariables={{
-          "--zmp-primary-color": getConfig((c) => c.template.primaryColor),
-          "--zmp-background-color": "#f4f5f6",
-        }}
-      >
-        <App>
-          <SnackbarProvider>
-            <ZMPRouter>
-              <Layout />
-            </ZMPRouter>
-          </SnackbarProvider>
-        </App>
-      </ConfigProvider>
+      <ThemeProvider>
+        <ConfigProvider
+          cssVariables={{
+            "--zmp-primary-color": getConfig((c) => c.template.primaryColor),
+            "--zmp-background-color": "#F8FAFC",
+          }}
+        >
+          <App>
+            <SnackbarProvider>
+              <ZMPRouter>
+                <Layout />
+              </ZMPRouter>
+            </SnackbarProvider>
+          </App>
+        </ConfigProvider>
+      </ThemeProvider>
     </RecoilRoot>
   );
 };

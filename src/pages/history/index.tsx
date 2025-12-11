@@ -101,32 +101,37 @@ const HistoryPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background">
+    <Page className="flex flex-col bg-background dark:bg-dark-background">
       <AppHeader title="Lịch sử giao dịch" />
       
       {/* Search and Filter Bar */}
-      <Box className="p-4 bg-white ">
+      <Box className="p-4 bg-white dark:bg-dark-surface shadow-soft rounded-b-2xl animate-fade-in">
           <Box className="flex gap-2.5 mb-3">
           <Input
             type="text"
             placeholder="Tìm kiếm giao dịch..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 bg-white border-2 border-gray-200 rounded-xl shadow-sm"
+            className="flex-1 bg-gray-50 dark:bg-dark-surfaceVariant border-2 border-gray-200 dark:border-dark-border rounded-2xl shadow-soft"
             prefix={<Icon icon="zi-search" />}
             clearable
           />
           <Box
-            className={`px-5 py-2 rounded-xl flex items-center gap-2 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md transform hover:scale-105 ${
+            className={`px-5 py-2 rounded-2xl flex items-center gap-2 cursor-pointer transition-all duration-200 transform active:scale-95 ${
               activeFiltersCount > 0 
-                ? "bg-yellow-500 text-white" 
-                : "bg-white text-gray-600 border-2 border-gray-200"
+                ? "shadow-lg"
+                : "bg-white dark:bg-dark-surface border-2 border-gray-200 dark:border-dark-border shadow-soft hover:shadow-md"
             }`}
+            style={{
+              background: activeFiltersCount > 0 
+                ? 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)'
+                : undefined,
+            }}
             onClick={() => setShowFilterSheet(true)}
           >
-            <Icon icon="zi-filter" />
+            <Icon icon="zi-filter" className={activeFiltersCount > 0 ? "text-white" : "text-gray-600"} />
             {activeFiltersCount > 0 && (
-              <Box className="bg-white text-yellow-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-sm">
+              <Box className="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-md">
                 {activeFiltersCount}
               </Box>
             )}
@@ -135,75 +140,82 @@ const HistoryPage: FC = () => {
 
         {/* Active Filters Display */}
         {activeFiltersCount > 0 && (
-          <Box className="flex flex-wrap gap-2 animate-fadeIn">
+          <Box className="flex flex-wrap gap-2 animate-slide-up">
             {filterType !== "all" && (
-              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
-                <Text size="xSmall" className="font-medium">
+              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+                <Text size="xSmall" className="font-bold">
                   {filterType === "income" ? "Thu nhập" : "Chi tiêu"}
                 </Text>
-                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
+                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterCategory !== "all" && (
-              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
-                <Text size="xSmall" className="font-medium">
+              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+                <Text size="xSmall" className="font-bold">
                   {categories.find((c) => c.id === filterCategory)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
+                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterWallet !== "all" && (
-              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
-                <Text size="xSmall" className="font-medium">
+              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+                <Text size="xSmall" className="font-bold">
                   {wallets.find((w) => w.id === filterWallet)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
+                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterStartDate && (
-              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
-                <Text size="xSmall" className="font-medium">
+              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+                <Text size="xSmall" className="font-bold">
                   Từ {filterStartDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterEndDate && (
-              <Box className="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-sm">
-                <Text size="xSmall" className="font-medium">
+              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+                <Text size="xSmall" className="font-bold">
                   Đến {filterEndDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             <Box
-              className="text-yellow-600 px-3 py-1.5 text-xs cursor-pointer hover:bg-yellow-50 rounded-full transition-colors font-medium"
+              className="px-3 py-1.5 text-xs cursor-pointer hover:bg-indigo-50 rounded-full transition-colors active:scale-95"
               onClick={clearFilters}
             >
-              <Text size="xSmall" className="text-yellow-600">✕ Xóa tất cả</Text>
+              <Text size="xSmall" className="text-indigo-600 font-bold">✕ Xóa tất cả</Text>
             </Box>
           </Box>
         )}
       </Box>
 
-      <Box className="flex-1 overflow-auto">
+      <Box className="flex-1 overflow-auto px-4 pt-4">
         {Object.keys(groupedTransactions).length === 0 ? (
-          <Box className="text-center py-12">
-            <Icon icon="zi-search" size={48} className="text-gray-300 mb-3" />
-            <Text className="text-gray-400">
+          <Box className="text-center py-16 bg-white dark:bg-dark-surface rounded-2xl shadow-card animate-fade-in">
+            <Box className="bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon icon="zi-search" size={40} className="text-gray-300 dark:text-gray-600" />
+            </Box>
+            <Text className="text-gray-400 dark:text-gray-500 font-medium">
               {searchTerm || activeFiltersCount > 0
                 ? "Không tìm thấy giao dịch nào"
                 : "Chưa có giao dịch nào"}
+            </Text>
+            <Text size="xSmall" className="text-gray-300 dark:text-gray-600 mt-1">
+              {searchTerm || activeFiltersCount > 0
+                ? "Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm"
+                : "Bắt đầu thêm giao dịch ngay"}
             </Text>
           </Box>
         ) : (
@@ -213,24 +225,30 @@ const HistoryPage: FC = () => {
             }, 0);
 
             return (
-              <Box key={dateKey} className="mb-6">
-                <Box className="px-4 py-3 bg-gradient-to-r from-gray-100 to-gray-50 flex justify-between items-center rounded-t-xl">
-                  <Text size="small" className="font-semibold text-gray-700">
+              <Box key={dateKey} className="mb-4 animate-slide-up">
+                <Box 
+                  className="px-5 py-3 flex justify-between items-center rounded-t-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+                  }}
+                >
+                  <Text size="small" className="font-bold text-white">
                     {dateKey}
                   </Text>
-                  <Text
-                    size="small"
-                    className={`font-bold px-3 py-1 rounded-full ${
+                  <Box
+                    className={`px-3 py-1.5 rounded-xl font-bold ${
                       dayTotal >= 0 
-                        ? "bg-green-100 text-green-700" 
-                        : "bg-red-100 text-red-700"
+                        ? "bg-emerald-400/90 text-white" 
+                        : "bg-rose-400/90 text-white"
                     }`}
                   >
-                    {dayTotal >= 0 ? "+" : ""}
-                    {formatCurrency(dayTotal)}
-                  </Text>
+                    <Text size="small" className="font-bold">
+                      {dayTotal >= 0 ? "+" : ""}
+                      {formatCurrency(dayTotal)}
+                    </Text>
+                  </Box>
                 </Box>
-                <Box className="px-4 bg-section rounded-b-xl shadow-sm">
+                <Box className="bg-white dark:bg-dark-surface rounded-b-2xl shadow-card overflow-hidden">
                   {dayTransactions.map((transaction) => {
                     const category = categories.find(
                       (c) => c.id === transaction.categoryId
@@ -246,42 +264,50 @@ const HistoryPage: FC = () => {
                     return (
                       <Box
                         key={transaction.id}
-                        className="flex items-center justify-between py-4 border-b border-gray-50 last:border-b-0 hover:bg-gray-50 transition-colors rounded-lg px-2"
+                        className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-dark-border last:border-b-0 hover:bg-gray-50 dark:hover:bg-dark-surfaceVariant transition-all duration-200 cursor-pointer active:scale-98"
                       >
                         <Box className="flex items-center space-x-3 flex-1">
                           <Box
-                            className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
+                            className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md"
                             style={{
-                              backgroundColor: `${category?.color}20`,
+                              background: `linear-gradient(135deg, ${category?.color}15 0%, ${category?.color}25 100%)`,
                             }}
                           >
                             <Icon
                               icon={(category?.icon || "zi-more-grid") as any}
                               style={{ color: category?.color }}
-                              size={22}
+                              size={24}
                             />
                           </Box>
                           <Box className="flex-1 min-w-0">
-                            <Text size="small" className="font-semibold text-gray-800">
+                            <Text size="small" className="font-bold text-gray-900 dark:text-white">
                               {category?.name || "Khác"}
                             </Text>
-                            <Text size="xSmall" className="text-gray-500">
+                            <Text size="xSmall" className="text-gray-500 dark:text-gray-400">
                               {time}
                               {transaction.note && ` • ${transaction.note}`}
                             </Text>
                           </Box>
                         </Box>
-                        <Text
-                          size="small"
-                          className={`font-bold flex-shrink-0 ml-2 ${
+                        <Box
+                          className={`px-3 py-1.5 rounded-xl flex-shrink-0 ml-2 ${
                             transaction.type === "income"
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30"
+                              : "bg-gradient-to-r from-rose-50 to-red-50 dark:from-rose-900/30 dark:to-red-900/30"
                           }`}
                         >
-                          {transaction.type === "income" ? "+" : "-"}
-                          {formatCurrency(transaction.amount)}
-                        </Text>
+                          <Text
+                            size="small"
+                            className={`font-bold ${
+                              transaction.type === "income"
+                                ? "text-emerald-600 dark:text-emerald-400"
+                                : "text-rose-600 dark:text-rose-400"
+                            }`}
+                          >
+                            {transaction.type === "income" ? "+" : "-"}
+                            {formatCurrency(transaction.amount)}
+                          </Text>
+                        </Box>
                       </Box>
                     );
                   })}
