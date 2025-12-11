@@ -1,6 +1,5 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,vue}"],
-  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       colors: {
@@ -38,16 +37,6 @@ module.exports = {
           700: "#a16207",
           800: "#854d0e",
           900: "#713f12",
-        },
-        // Dark mode colors
-        dark: {
-          primary: '#818CF8',
-          background: '#0F172A',
-          surface: '#1E293B',
-          surfaceVariant: '#334155',
-          text: '#F1F5F9',
-          textSecondary: '#94A3B8',
-          border: '#475569',
         }
       },
       boxShadow: {

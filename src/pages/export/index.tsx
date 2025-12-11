@@ -81,23 +81,23 @@ const ExportPage: React.FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background dark:bg-dark-background">
+    <Page className="flex flex-col bg-background">
       <AppHeader title="Xuất dữ liệu" />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Export Info */}
-        <Box className="m-4 p-6 bg-white dark:bg-dark-surface rounded-2xl shadow-sm">
+        <Box className="m-4 p-6 bg-white rounded-2xl shadow-sm">
           <Box className="flex items-center mb-4">
             <Icon icon="zi-download" className="text-blue-600 mr-3" size={28} />
-            <Text.Title className="text-gray-900 dark:text-dark-text font-bold">
+            <Text.Title className="text-gray-900 font-bold">
               Xuất dữ liệu chi tiêu
             </Text.Title>
           </Box>
-          <Text size="small" className="text-gray-600 dark:text-dark-textSecondary">
+          <Text size="small" className="text-gray-600">
             Xuất toàn bộ dữ liệu giao dịch của bạn sang các định dạng khác nhau để lưu trữ, 
             phân tích hoặc chia sẻ.
           </Text>
-          <Box className="mt-4 p-3 bg-blue-50 dark:bg-dark-surfaceVariant rounded-lg">
-            <Text size="xSmall" className="text-blue-700 dark:text-blue-400">
+          <Box className="mt-4 p-3 bg-blue-50 rounded-lg">
+            <Text size="xSmall" className="text-blue-700">
               <Icon icon="zi-info-circle" size={16} className="mr-1" />
               Tổng số giao dịch: <strong>{transactions.length}</strong>
             </Text>
@@ -106,10 +106,10 @@ const ExportPage: React.FC = () => {
 
         {/* Format Selection */}
         <Box className="mx-4 mb-4">
-          <Text.Title className="mb-3 text-gray-900 dark:text-dark-text font-semibold">
+          <Text.Title className="mb-3 text-gray-900 font-semibold">
             Chọn định dạng
           </Text.Title>
-          <Box className="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm">
+          <Box className="bg-white rounded-2xl overflow-hidden shadow-sm">
             <Select
               value={format}
               onChange={(value) => setFormat(value as 'csv' | 'excel' | 'pdf')}
@@ -120,8 +120,8 @@ const ExportPage: React.FC = () => {
                 <Box className="flex items-center py-2">
                   <Icon icon="zi-file-text" className="text-green-600 mr-3" size={24} />
                   <Box className="flex-1">
-                    <Text className="font-medium dark:text-dark-text">CSV</Text>
-                    <Text size="xSmall" className="text-gray-500 dark:text-dark-textSecondary">
+                    <Text className="font-medium">CSV</Text>
+                    <Text size="xSmall" className="text-gray-500">
                       File văn bản, tương thích Excel
                     </Text>
                   </Box>
@@ -131,8 +131,8 @@ const ExportPage: React.FC = () => {
                 <Box className="flex items-center py-2">
                   <Icon icon="zi-grid" className="text-blue-600 mr-3" size={24} />
                   <Box className="flex-1">
-                    <Text className="font-medium dark:text-dark-text">Excel</Text>
-                    <Text size="xSmall" className="text-gray-500 dark:text-dark-textSecondary">
+                    <Text className="font-medium">Excel</Text>
+                    <Text size="xSmall" className="text-gray-500">
                       File Excel với nhiều sheet
                     </Text>
                   </Box>
@@ -142,8 +142,8 @@ const ExportPage: React.FC = () => {
                 <Box className="flex items-center py-2">
                   <Icon icon="zi-file" className="text-red-600 mr-3" size={24} />
                   <Box className="flex-1">
-                    <Text className="font-medium dark:text-dark-text">PDF</Text>
-                    <Text size="xSmall" className="text-gray-500 dark:text-dark-textSecondary">
+                    <Text className="font-medium">PDF</Text>
+                    <Text size="xSmall" className="text-gray-500">
                       Báo cáo chuyên nghiệp
                     </Text>
                   </Box>
@@ -152,8 +152,8 @@ const ExportPage: React.FC = () => {
             </Select>
           </Box>
 
-          <Box className="mt-3 p-4 bg-gray-50 dark:bg-dark-surfaceVariant rounded-xl">
-            <Text size="small" className="text-gray-700 dark:text-dark-textSecondary">
+          <Box className="mt-3 p-4 bg-gray-50 rounded-xl">
+            <Text size="small" className="text-gray-700">
               {getFormatDescription()}
             </Text>
           </Box>
@@ -183,20 +183,20 @@ const ExportPage: React.FC = () => {
         </Box>
 
         {/* Additional Info */}
-        <Box className="mx-4 mt-6 p-4 bg-amber-50 dark:bg-dark-surfaceVariant rounded-xl border border-amber-200 dark:border-dark-border">
-          <Text.Title className="text-amber-800 dark:text-amber-400 mb-2 text-sm font-semibold">
+        <Box className="mx-4 mt-6 p-4 bg-amber-50 rounded-xl border border-amber-200">
+          <Text.Title className="text-amber-800 mb-2 text-sm font-semibold">
             Lưu ý quan trọng
           </Text.Title>
           <Box className="space-y-2">
-            <Text size="xSmall" className="text-amber-700 dark:text-amber-300 flex items-start">
+            <Text size="xSmall" className="text-amber-700 flex items-start">
               <span className="mr-2">•</span>
               File sẽ được tải xuống vào thư mục Downloads của thiết bị
             </Text>
-            <Text size="xSmall" className="text-amber-700 dark:text-amber-300 flex items-start">
+            <Text size="xSmall" className="text-amber-700 flex items-start">
               <span className="mr-2">•</span>
               Dữ liệu xuất bao gồm tất cả giao dịch hiện có
             </Text>
-            <Text size="xSmall" className="text-amber-700 dark:text-amber-300 flex items-start">
+            <Text size="xSmall" className="text-amber-700 flex items-start">
               <span className="mr-2">•</span>
               Định dạng Excel và PDF có thể mất vài giây để tạo
             </Text>
