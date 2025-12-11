@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "zmp-ui/zaui.css";
 import "./css/tailwind.css";
+import "./css/icons.css";
 import "./css/app.scss";
 
 // Import App Component

@@ -96,6 +96,21 @@
 - Màu sắc và shadow được tối ưu cho dark mode
 - Transitions mượt mà khi chuyển theme (0.2s ease)
 
+## ⚠️ Lưu ý về Development
+
+### Icon Font trong môi trường Development
+
+Khi chạy ứng dụng trong môi trường development (`npm start`), các icon sẽ hiển thị dưới dạng text (ví dụ: "zi_home", "zi_user") thay vì biểu tượng thực tế. Đây là hành vi bình thường do:
+
+- Icon fonts được host trên Zalo CDN (`h5.zdn.vn`, `h5.zadn.vn`)
+- Trong môi trường development, các request tới CDN này bị block bởi browser security policies
+
+**Icons sẽ hoạt động bình thường khi:**
+- Triển khai lên nền tảng Zalo Mini App
+- Chạy trong ứng dụng Zalo chính thức
+
+Điều này không ảnh hưởng đến functionality của ứng dụng trong development, chỉ ảnh hưởng đến visual representation của icons.
+
 ## Cài đặt
 
 ### Sử dụng Zalo Mini App Extension

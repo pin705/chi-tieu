@@ -46,6 +46,86 @@ body {
   color: var(--zmp-primary-color);
 }
 
+/* Dark mode bottom navigation */
+.dark .zaui-bottom-navigation {
+  background-color: #1E293B;
+  color: #94A3B8;
+}
+
+.dark .zaui-bottom-navigation-item {
+  color: #94A3B8;
+}
+
+.dark .zaui-bottom-navigation-item-active {
+  color: #818CF8;
+}
+
+/* Enhanced header styles for dark mode */
+.dark .zaui-header {
+  background-color: transparent;
+  color: #F1F5F9;
+}
+
+.dark .zaui-header .zaui-header-back .zaui-icon,
+.dark .zaui-header .zaui-header-title {
+  color: #F1F5F9;
+}
+
+/* Better list item styling for dark mode */
+.dark .zaui-list-item {
+  background-color: transparent;
+  color: #F1F5F9;
+}
+
+.dark .zaui-list-item:active {
+  background-color: rgba(129, 140, 248, 0.1);
+}
+
+/* Enhanced input styling for dark mode */
+.dark .zaui-input-affix-wrapper,
+.dark .zaui-select,
+.dark .zaui-input {
+  background-color: #334155;
+  border-color: #475569;
+  color: #F1F5F9;
+}
+
+.dark .zaui-input::placeholder {
+  color: #64748B;
+}
+
+/* Sheet improvements for dark mode */
+.dark .zaui-sheet-content {
+  background-color: #1E293B;
+  color: #F1F5F9;
+}
+
+/* Better touch feedback - iOS-like */
+.zaui-list-item,
+button,
+.cursor-pointer {
+  -webkit-tap-highlight-color: rgba(79, 70, 229, 0.1);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Smooth page transitions */
+.zaui-page {
+  animation: pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .zaui-btn-primary,
 .zaui-btn-primary.zaui-btn-highlight,
 .zaui-radio-checked .zaui-radio-checkmark,
