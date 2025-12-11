@@ -56,13 +56,13 @@ export const Summary: FC = () => {
 
       {/* Budget Progress Card */}
       {budgetStatus.hasBudget && (
-        <Box className="bg-white dark:bg-dark-surface rounded-2xl p-5 mb-4 shadow-card animate-slide-up" style={{ animationDelay: '0.1s' }}>
+        <Box className="bg-white rounded-2xl p-5 mb-4 shadow-card animate-slide-up" style={{ animationDelay: '0.1s' }}>
           <Box className="flex items-center justify-between mb-4">
             <Box className="flex items-center">
               <Box className="bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-2xl p-2.5 mr-3 shadow-sm">
                 <Icon icon="zi-poll" className="text-indigo-600" size={20} />
               </Box>
-              <Text.Title size="small" className="font-bold text-gray-900 dark:text-white">
+              <Text.Title size="small" className="font-bold text-gray-900">
                 Ngân sách tháng này
               </Text.Title>
             </Box>
@@ -75,7 +75,7 @@ export const Summary: FC = () => {
             </Box>
           </Box>
           <Box className="flex justify-between items-center mb-3">
-            <Text size="small" className="text-gray-600 dark:text-gray-400 font-semibold">
+            <Text size="small" className="text-gray-600 font-semibold">
               {formatCurrency(budgetStatus.spent)} / {formatCurrency(budgetStatus.budget)}
             </Text>
             <Box className={`px-3 py-1 rounded-full ${budgetStatus.isExceeded ? 'bg-red-100' : 'bg-indigo-100'}`}>
@@ -84,7 +84,7 @@ export const Summary: FC = () => {
               </Text>
             </Box>
           </Box>
-          <Box className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+          <Box className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
             <Box
               className={`h-3 rounded-full transition-all duration-500 ${
                 budgetStatus.isExceeded 
@@ -108,12 +108,12 @@ export const Summary: FC = () => {
       )}
 
       {/* Monthly Stats Card */}
-      <Box className="bg-white dark:bg-dark-surface rounded-2xl p-5 shadow-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
+      <Box className="bg-white rounded-2xl p-5 shadow-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
         <Box className="flex items-center mb-4">
           <Box className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl p-2.5 mr-3 shadow-sm">
             <Icon icon="zi-clock-2" className="text-gray-700" size={20} />
           </Box>
-          <Text.Title size="small" className="font-bold text-gray-900 dark:text-white">
+          <Text.Title size="small" className="font-bold text-gray-900">
             Tháng này
           </Text.Title>
         </Box>
@@ -141,17 +141,17 @@ export const Summary: FC = () => {
             </Text.Title>
           </Box>
         </Box>
-        <Box className="pt-3 border-t border-gray-100 dark:border-gray-700">
-          <Box className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-4">
+        <Box className="pt-3 border-t border-gray-100">
+          <Box className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-slate-50 rounded-2xl p-4">
             <Box className="flex items-center">
-              <Icon icon="zi-poll" className="text-gray-600 dark:text-gray-300 mr-2" size={18} />
-              <Text size="small" className="text-gray-700 dark:text-gray-200 font-bold">
+              <Icon icon="zi-poll" className="text-gray-600 mr-2" size={18} />
+              <Text size="small" className="text-gray-700 font-bold">
                 Còn lại
               </Text>
             </Box>
             <Text.Title
               size="small"
-              className={`font-bold ${stats.balance >= 0 ? "text-indigo-600 dark:text-indigo-400" : "text-red-600 dark:text-red-400"}`}
+              className={`font-bold ${stats.balance >= 0 ? "text-indigo-600" : "text-red-600"}`}
             >
               {stats.balance >= 0 ? "+" : ""}{formatCurrency(stats.balance)}
             </Text.Title>

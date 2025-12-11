@@ -57,7 +57,7 @@ export const Navigation: FC = () => {
         onClick={() => navigate("/add-transaction")}
       >
         <Box 
-          className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-90 transition-all duration-200 border-4 border-white dark:border-gray-800"
+          className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-90 transition-all duration-200 border-4 border-white"
           style={{
             background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
             boxShadow: '0 8px 24px rgba(99, 102, 241, 0.4), 0 4px 12px rgba(79, 70, 229, 0.3)',
@@ -67,7 +67,7 @@ export const Navigation: FC = () => {
         </Box>
       </Box>
 
-      <Box className="glass border-t border-gray-200/50 dark:border-gray-700/50">
+      <Box className="glass border-t border-gray-200/50">
         <BottomNavigation
           id="footer"
           activeKey={location.pathname}

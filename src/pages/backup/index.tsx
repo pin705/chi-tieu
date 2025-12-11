@@ -148,18 +148,18 @@ const BackupPage: React.FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background dark:bg-dark-background">
+    <Page className="flex flex-col bg-background">
       <AppHeader title="Sao lưu & Khôi phục" />
       <Box className="flex-1 overflow-auto pb-20">
         {/* Backup Info */}
-        <Box className="m-4 p-6 bg-white dark:bg-dark-surface rounded-2xl shadow-sm">
+        <Box className="m-4 p-6 bg-white rounded-2xl shadow-sm">
           <Box className="flex items-center mb-4">
             <Icon icon="zi-cloud" className="text-blue-600 mr-3" size={28} />
-            <Text.Title className="text-gray-900 dark:text-dark-text font-bold">
+            <Text.Title className="text-gray-900 font-bold">
               Sao lưu dữ liệu
             </Text.Title>
           </Box>
-          <Text size="small" className="text-gray-600 dark:text-dark-textSecondary mb-4">
+          <Text size="small" className="text-gray-600 mb-4">
             Tạo bản sao lưu để bảo vệ dữ liệu của bạn. Bạn có thể khôi phục dữ liệu từ các bản sao lưu bất kỳ lúc nào.
           </Text>
           <Button
@@ -178,14 +178,14 @@ const BackupPage: React.FC = () => {
 
         {/* Backups List */}
         <Box className="mx-4 mb-4">
-          <Text.Title className="mb-3 text-gray-900 dark:text-dark-text font-semibold">
+          <Text.Title className="mb-3 text-gray-900 font-semibold">
             Các bản sao lưu ({backups.length})
           </Text.Title>
 
           {backups.length === 0 ? (
-            <Box className="bg-white dark:bg-dark-surface rounded-2xl p-8 text-center shadow-sm">
+            <Box className="bg-white rounded-2xl p-8 text-center shadow-sm">
               <Icon icon="zi-cloud-download" size={48} className="text-gray-400 mb-3" />
-              <Text className="text-gray-500 dark:text-dark-textSecondary">
+              <Text className="text-gray-500">
                 Chưa có bản sao lưu nào
               </Text>
             </Box>
@@ -194,14 +194,14 @@ const BackupPage: React.FC = () => {
               {backups.map((backup) => (
                 <Box
                   key={backup.id}
-                  className="bg-white dark:bg-dark-surface rounded-2xl p-4 shadow-sm"
+                  className="bg-white rounded-2xl p-4 shadow-sm"
                 >
                   <Box className="flex items-start justify-between mb-3">
                     <Box className="flex-1">
-                      <Text className="font-semibold dark:text-dark-text">
+                      <Text className="font-semibold">
                         {formatDate(backup.timestamp)}
                       </Text>
-                      <Text size="xSmall" className="text-gray-500 dark:text-dark-textSecondary mt-1">
+                      <Text size="xSmall" className="text-gray-500 mt-1">
                         Dung lượng: {formatSize(backup.size)}
                       </Text>
                     </Box>
@@ -241,20 +241,20 @@ const BackupPage: React.FC = () => {
         </Box>
 
         {/* Info */}
-        <Box className="mx-4 mt-6 p-4 bg-blue-50 dark:bg-dark-surfaceVariant rounded-xl border border-blue-200 dark:border-dark-border">
-          <Text.Title className="text-blue-800 dark:text-blue-400 mb-2 text-sm font-semibold">
+        <Box className="mx-4 mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+          <Text.Title className="text-blue-800 mb-2 text-sm font-semibold">
             Lưu ý
           </Text.Title>
           <Box className="space-y-2">
-            <Text size="xSmall" className="text-blue-700 dark:text-blue-300 flex items-start">
+            <Text size="xSmall" className="text-blue-700 flex items-start">
               <span className="mr-2">•</span>
               Dữ liệu được lưu trữ cục bộ trên thiết bị
             </Text>
-            <Text size="xSmall" className="text-blue-700 dark:text-blue-300 flex items-start">
+            <Text size="xSmall" className="text-blue-700 flex items-start">
               <span className="mr-2">•</span>
               Nên tạo bản sao lưu định kỳ để đảm bảo an toàn
             </Text>
-            <Text size="xSmall" className="text-blue-700 dark:text-blue-300 flex items-start">
+            <Text size="xSmall" className="text-blue-700 flex items-start">
               <span className="mr-2">•</span>
               Có thể xuất file và lưu trữ ở nơi khác
             </Text>

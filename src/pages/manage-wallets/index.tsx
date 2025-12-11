@@ -121,20 +121,20 @@ const ManageWalletsPage: FC = () => {
   const totalBalance = wallets.reduce((sum, wallet) => sum + wallet.balance, 0);
 
   return (
-    <Page className="flex flex-col bg-background dark:bg-dark-background">
+    <Page className="flex flex-col bg-background">
       <AppHeader title="Quản lý ví" />
       <Box className="flex-1 overflow-auto pb-24">
         {/* Total Balance */}
-        <Box className="rounded-2xl m-4 bg-section dark:bg-dark-surface p-6 relative overflow-hidden">
-          <Box className="absolute top-0 right-0 w-32 h-32 bg-white dark:bg-white opacity-10 rounded-full -mr-16 -mt-16" />
+        <Box className="rounded-2xl m-4 bg-section p-6 relative overflow-hidden">
+          <Box className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16" />
           <Box className="relative z-10">
-            <Text size="xSmall" className="text-gray-900 dark:text-dark-text opacity-90 mb-1">
+            <Text size="xSmall" className="text-gray-900 opacity-90 mb-1">
               Tổng số dư
             </Text>
-            <Text.Title className="text-gray-900 dark:text-dark-text text-3xl font-bold mb-2">
+            <Text.Title className="text-gray-900 text-3xl font-bold mb-2">
               {formatCurrency(totalBalance)}
             </Text.Title>
-            <Text size="xSmall" className="text-gray-900 dark:text-dark-text opacity-90">
+            <Text size="xSmall" className="text-gray-900 opacity-90">
               {wallets.length} ví
             </Text>
           </Box>
@@ -143,12 +143,12 @@ const ManageWalletsPage: FC = () => {
         {/* Wallets List */}
         <Box className="p-4 space-y-2.5">
           {wallets.length === 0 ? (
-            <Box className="bg-section dark:bg-dark-surface rounded-2xl p-12 text-center">
-              <Box className="bg-gray-100 dark:bg-dark-surfaceVariant rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <Icon icon="zi-home" size={40} className="text-gray-400 dark:text-gray-500" />
+            <Box className="bg-section rounded-2xl p-12 text-center">
+              <Box className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                <Icon icon="zi-home" size={40} className="text-gray-400" />
               </Box>
-              <Text className="text-gray-600 dark:text-dark-textSecondary font-medium">Chưa có ví nào</Text>
-              <Text size="xSmall" className="text-gray-400 dark:text-dark-textSecondary mt-2">
+              <Text className="text-gray-600 font-medium">Chưa có ví nào</Text>
+              <Text size="xSmall" className="text-gray-400 mt-2">
                 Nhấn nút + bên dưới để thêm ví
               </Text>
             </Box>
@@ -156,7 +156,7 @@ const ManageWalletsPage: FC = () => {
             wallets.map((wallet) => (
               <Box
                 key={wallet.id}
-                className="bg-section dark:bg-dark-surface rounded-2xl p-4"
+                className="bg-section rounded-2xl p-4"
               >
                 <Box className="flex items-center justify-between">
                   <Box className="flex items-center flex-1">
@@ -171,7 +171,7 @@ const ManageWalletsPage: FC = () => {
                       />
                     </Box>
                     <Box className="flex-1">
-                      <Text className="font-semibold text-gray-900 dark:text-dark-text mb-0.5">
+                      <Text className="font-semibold text-gray-900 mb-0.5">
                         {wallet.name}
                       </Text>
                       <Text className="text-lg font-bold" style={{ color: wallet.color }}>
@@ -184,14 +184,14 @@ const ManageWalletsPage: FC = () => {
                       size="small"
                       variant="secondary"
                       onClick={() => handleOpenEditSheet(wallet)}
-                      className="border-gray-200 dark:border-dark-border active:bg-gray-100 dark:active:bg-gray-700"
-                      icon={<Icon icon="zi-edit" size={18} className="text-gray-700 dark:text-gray-300" />}
+                      className="border-gray-200 active:bg-gray-100"
+                      icon={<Icon icon="zi-edit" size={18} className="text-gray-700" />}
                     />
                     <Button
                       size="small"
                       variant="secondary"
                       onClick={() => handleDelete(wallet.id)}
-                      className="border-red-200 dark:border-red-700 text-red-600 dark:text-red-400 active:bg-red-50 dark:active:bg-red-950"
+                      className="border-red-200 text-red-600 active:bg-red-50"
                       icon={<Icon icon="zi-delete" size={18} />}
                     />
                   </Box>

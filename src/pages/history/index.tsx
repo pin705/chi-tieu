@@ -101,18 +101,18 @@ const HistoryPage: FC = () => {
   };
 
   return (
-    <Page className="flex flex-col bg-background dark:bg-dark-background">
+    <Page className="flex flex-col bg-background">
       <AppHeader title="Lịch sử giao dịch" />
       
       {/* Search and Filter Bar */}
-      <Box className="p-4 bg-white dark:bg-dark-surface shadow-soft rounded-b-2xl animate-fade-in">
+      <Box className="p-4 bg-white shadow-soft rounded-b-2xl animate-fade-in">
           <Box className="flex gap-2.5 mb-3">
           <Input
             type="text"
             placeholder="Tìm kiếm giao dịch..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 bg-gray-50 dark:bg-dark-surfaceVariant border-2 border-gray-200 dark:border-dark-border rounded-2xl shadow-soft"
+            className="flex-1 bg-gray-50 border-2 border-gray-200 rounded-2xl shadow-soft"
             prefix={<Icon icon="zi-search" />}
             clearable
           />
@@ -120,7 +120,7 @@ const HistoryPage: FC = () => {
             className={`px-5 py-2 rounded-2xl flex items-center gap-2 cursor-pointer transition-all duration-200 transform active:scale-95 ${
               activeFiltersCount > 0 
                 ? "shadow-lg"
-                : "bg-white dark:bg-dark-surface border-2 border-gray-200 dark:border-dark-border shadow-soft hover:shadow-md"
+                : "bg-white border-2 border-gray-200 shadow-soft hover:shadow-md"
             }`}
             style={{
               background: activeFiltersCount > 0 
@@ -203,16 +203,16 @@ const HistoryPage: FC = () => {
 
       <Box className="flex-1 overflow-auto px-4 pt-4">
         {Object.keys(groupedTransactions).length === 0 ? (
-          <Box className="text-center py-16 bg-white dark:bg-dark-surface rounded-2xl shadow-card animate-fade-in">
-            <Box className="bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon icon="zi-search" size={40} className="text-gray-300 dark:text-gray-600" />
+          <Box className="text-center py-16 bg-white rounded-2xl shadow-card animate-fade-in">
+            <Box className="bg-gradient-to-br from-gray-100 to-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon icon="zi-search" size={40} className="text-gray-300" />
             </Box>
-            <Text className="text-gray-400 dark:text-gray-500 font-medium">
+            <Text className="text-gray-400 font-medium">
               {searchTerm || activeFiltersCount > 0
                 ? "Không tìm thấy giao dịch nào"
                 : "Chưa có giao dịch nào"}
             </Text>
-            <Text size="xSmall" className="text-gray-300 dark:text-gray-600 mt-1">
+            <Text size="xSmall" className="text-gray-300 mt-1">
               {searchTerm || activeFiltersCount > 0
                 ? "Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm"
                 : "Bắt đầu thêm giao dịch ngay"}
@@ -248,7 +248,7 @@ const HistoryPage: FC = () => {
                     </Text>
                   </Box>
                 </Box>
-                <Box className="bg-white dark:bg-dark-surface rounded-b-2xl shadow-card overflow-hidden">
+                <Box className="bg-white rounded-b-2xl shadow-card overflow-hidden">
                   {dayTransactions.map((transaction) => {
                     const category = categories.find(
                       (c) => c.id === transaction.categoryId
@@ -264,7 +264,7 @@ const HistoryPage: FC = () => {
                     return (
                       <Box
                         key={transaction.id}
-                        className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-dark-border last:border-b-0 hover:bg-gray-50 dark:hover:bg-dark-surfaceVariant transition-all duration-200 cursor-pointer active:scale-98"
+                        className="flex items-center justify-between p-4 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-all duration-200 cursor-pointer active:scale-98"
                       >
                         <Box className="flex items-center space-x-3 flex-1">
                           <Box
@@ -280,10 +280,10 @@ const HistoryPage: FC = () => {
                             />
                           </Box>
                           <Box className="flex-1 min-w-0">
-                            <Text size="small" className="font-bold text-gray-900 dark:text-white">
+                            <Text size="small" className="font-bold text-gray-900">
                               {category?.name || "Khác"}
                             </Text>
-                            <Text size="xSmall" className="text-gray-500 dark:text-gray-400">
+                            <Text size="xSmall" className="text-gray-500">
                               {time}
                               {transaction.note && ` • ${transaction.note}`}
                             </Text>
@@ -292,16 +292,16 @@ const HistoryPage: FC = () => {
                         <Box
                           className={`px-3 py-1.5 rounded-xl flex-shrink-0 ml-2 ${
                             transaction.type === "income"
-                              ? "bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30"
-                              : "bg-gradient-to-r from-rose-50 to-red-50 dark:from-rose-900/30 dark:to-red-900/30"
+                              ? "bg-gradient-to-r from-emerald-50 to-green-50"
+                              : "bg-gradient-to-r from-rose-50 to-red-50"
                           }`}
                         >
                           <Text
                             size="small"
                             className={`font-bold ${
                               transaction.type === "income"
-                                ? "text-emerald-600 dark:text-emerald-400"
-                                : "text-rose-600 dark:text-rose-400"
+                                ? "text-emerald-600"
+                                : "text-rose-600"
                             }`}
                           >
                             {transaction.type === "income" ? "+" : "-"}
