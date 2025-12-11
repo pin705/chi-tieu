@@ -215,7 +215,7 @@ const BackupPage: React.FC = () => {
                       onClick={() => handleRestoreBackup(backup.id)}
                       className="flex-1"
                     >
-                      <Icon icon="zi-retry" size={16} className="mr-1" />
+                      <Icon icon="zi-backup-arrow-solid" size={16} className="mr-1" />
                       Khôi phục
                     </Button>
                     <Button
