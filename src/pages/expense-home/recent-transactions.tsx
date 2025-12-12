@@ -39,21 +39,18 @@ export const RecentTransactions: FC = () => {
     <Box className="px-4 pb-4 animate-fade-in">
       <Box className="flex justify-between items-center mb-4">
         <Box className="flex items-center">
-          <Box className="bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-2xl p-2 mr-2 shadow-sm">
-            <Icon icon="zi-clock-2" className="text-indigo-600" size={18} />
-          </Box>
           <Text.Title size="small" className="font-bold text-gray-900">
             Giao dịch gần đây
           </Text.Title>
         </Box>
         <Box
-          className="flex items-center px-3 py-1.5 rounded-full bg-indigo-50 cursor-pointer active:scale-95 transition-transform"
+          className="flex items-center px-3 py-1.5 rounded-full bg-yellow-50 cursor-pointer active:scale-95 transition-transform"
           onClick={() => navigate("/history")}
         >
-          <Text size="xSmall" className="text-indigo-600 font-semibold mr-1">
+          <Text size="xSmall" className="text-yellow-600 font-semibold mr-1">
             Xem tất cả
           </Text>
-          <Icon icon="zi-arrow-right" size={14} className="text-indigo-600" />
+          <Icon icon="zi-arrow-right" size={14} className="text-yellow-600" />
         </Box>
       </Box>
       <Box className="space-y-2.5 bg-white rounded-2xl p-3 shadow-card">

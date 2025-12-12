@@ -10,7 +10,7 @@ export const Welcome: FC = () => {
     <Box 
       className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%)',
+        background: 'linear-gradient(135deg, #EAB308 0%, #CA8A04 50%, #A16207 100%)',
       }}
     >
       <Header
@@ -27,10 +27,10 @@ export const Welcome: FC = () => {
                 <Box className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-400 rounded-full border-2 border-white" />
               </Box>
               <Box>
-                <Text.Title size="small" className="text-white font-bold">
+                <Text.Title size="small" className="font-bold">
                   Chào {user.name}! 👋
                 </Text.Title>
-                <Text size="xxSmall" className="text-white/80 font-medium">
+                <Text size="xxSmall" className="font-medium">
                   Quản lý chi tiêu thông minh
                 </Text>
               </Box>

@@ -112,7 +112,7 @@ const HistoryPage: FC = () => {
             placeholder="Tìm kiếm giao dịch..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 bg-gray-50 border-2 border-gray-200 rounded-2xl shadow-soft"
+            className="flex-1 bg-gray-50 border-none rounded-2xl shadow-soft"
             prefix={<Icon icon="zi-search" />}
             clearable
           />
@@ -120,18 +120,18 @@ const HistoryPage: FC = () => {
             className={`px-5 py-2 rounded-2xl flex items-center gap-2 cursor-pointer transition-all duration-200 transform active:scale-95 ${
               activeFiltersCount > 0 
                 ? "shadow-lg"
-                : "bg-white border-2 border-gray-200 shadow-soft hover:shadow-md"
+                : "bg-white  shadow-soft hover:shadow-md"
             }`}
             style={{
               background: activeFiltersCount > 0 
-                ? 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)'
+                ? 'linear-gradient(135deg, #EAB308 0%, #CA8A04 100%)'
                 : undefined,
             }}
             onClick={() => setShowFilterSheet(true)}
           >
             <Icon icon="zi-filter" className={activeFiltersCount > 0 ? "text-white" : "text-gray-600"} />
             {activeFiltersCount > 0 && (
-              <Box className="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-md">
+              <Box className="bg-white text-yellow-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-md">
                 {activeFiltersCount}
               </Box>
             )}
@@ -142,60 +142,60 @@ const HistoryPage: FC = () => {
         {activeFiltersCount > 0 && (
           <Box className="flex flex-wrap gap-2 animate-slide-up">
             {filterType !== "all" && (
-              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+              <Box className="bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
                 <Text size="xSmall" className="font-bold">
                   {filterType === "income" ? "Thu nhập" : "Chi tiêu"}
                 </Text>
-                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterType("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterCategory !== "all" && (
-              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+              <Box className="bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
                 <Text size="xSmall" className="font-bold">
                   {categories.find((c) => c.id === filterCategory)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterCategory("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterWallet !== "all" && (
-              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+              <Box className="bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
                 <Text size="xSmall" className="font-bold">
                   {wallets.find((w) => w.id === filterWallet)?.name}
                 </Text>
-                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterWallet("all")}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterStartDate && (
-              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+              <Box className="bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
                 <Text size="xSmall" className="font-bold">
                   Từ {filterStartDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterStartDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             {filterEndDate && (
-              <Box className="bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
+              <Box className="bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 px-3 py-1.5 rounded-full text-xs flex items-center gap-2 shadow-soft">
                 <Text size="xSmall" className="font-bold">
                   Đến {filterEndDate.toLocaleDateString("vi-VN")}
                 </Text>
-                <Box className="cursor-pointer hover:bg-indigo-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
+                <Box className="cursor-pointer hover:bg-yellow-200 rounded-full p-0.5 transition-colors" onClick={() => setFilterEndDate(undefined)}>
                   <Icon icon="zi-close" size={12} />
                 </Box>
               </Box>
             )}
             <Box
-              className="px-3 py-1.5 text-xs cursor-pointer hover:bg-indigo-50 rounded-full transition-colors active:scale-95"
+              className="px-3 py-1.5 text-xs cursor-pointer hover:bg-yellow-50 rounded-full transition-colors active:scale-95"
               onClick={clearFilters}
             >
-              <Text size="xSmall" className="text-indigo-600 font-bold">✕ Xóa tất cả</Text>
+              <Text size="xSmall" className="text-yellow-600 font-bold">✕ Xóa tất cả</Text>
             </Box>
           </Box>
         )}
@@ -229,7 +229,7 @@ const HistoryPage: FC = () => {
                 <Box 
                   className="px-5 py-3 flex justify-between items-center rounded-t-2xl"
                   style={{
-                    background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+                    background: 'linear-gradient(135deg, #EAB308 0%, #CA8A04 100%)',
                   }}
                 >
                   <Text size="small" className="font-bold text-white">
@@ -345,7 +345,7 @@ const HistoryPage: FC = () => {
                   key={option.value}
                   className={`flex-1 py-3 px-4 rounded-xl text-center cursor-pointer transition-all duration-200 shadow-sm ${
                     filterType === option.value
-                      ? "bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-md transform scale-105"
+                      ? "bg-gradient-to-br from-yellow-600 to-yellow-700 text-white shadow-md transform scale-105"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                   onClick={() => setFilterType(option.value as any)}
@@ -367,7 +367,7 @@ const HistoryPage: FC = () => {
             <Select
               value={filterCategory}
               onChange={(value) => setFilterCategory(value as string)}
-              className="bg-white border-2 border-gray-200 rounded-xl"
+              className="bg-white  rounded-xl"
             >
               <Select.Option value="all" title="Tất cả danh mục" />
               {categories.map((category) => (
@@ -388,7 +388,7 @@ const HistoryPage: FC = () => {
             <Select
               value={filterWallet}
               onChange={(value) => setFilterWallet(value as string)}
-              className="bg-white border-2 border-gray-200 rounded-xl"
+              className="bg-white  rounded-xl"
             >
               <Select.Option value="all" title="Tất cả ví" />
               {wallets.map((wallet) => (
@@ -417,7 +417,7 @@ const HistoryPage: FC = () => {
                 locale="vi-VN"
                 mask
                 maskClosable
-                inputClass="bg-white border-2 border-gray-200 rounded-xl"
+                inputClass="bg-white  rounded-xl"
               />
               <DatePicker
                 placeholder="Đến ngày"
@@ -430,7 +430,7 @@ const HistoryPage: FC = () => {
                 mask
                 maskClosable
                 startDate={filterStartDate}
-                inputClass="bg-white border-2 border-gray-200 rounded-xl"
+                inputClass="bg-white  rounded-xl"
               />
             </Box>
           </Box>

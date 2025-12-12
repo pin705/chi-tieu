@@ -63,7 +63,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
           <Text size="small" className="font-bold text-gray-800">
             {formatCurrency(stat.amount)}
           </Text>
-          <Text size="xSmall" className="text-blue-600 font-medium">
+          <Text size="xSmall" className="text-yellow-600 font-medium">
             {stat.percentage.toFixed(1)}%
           </Text>
           {showBudget && budgetStatus.hasBudget && budgetStatus.isExceeded && (
@@ -95,7 +95,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
             </Text>
             <Text
               size="xSmall"
-              className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-blue-600"}`}
+              className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-yellow-600"}`}
             >
               {budgetStatus.percentage.toFixed(1)}%
             </Text>
@@ -103,7 +103,7 @@ const CategoryStatItem: FC<CategoryStatItemProps> = ({
           <Box className="w-full bg-gray-200 rounded-full h-2 shadow-inner">
             <Box
               className={`h-2 rounded-full shadow-sm ${
-                budgetStatus.isExceeded ? "bg-red-600" : "bg-blue-600"
+                budgetStatus.isExceeded ? "bg-red-600" : "bg-yellow-600"
               }`}
               style={{
                 width: `${Math.min(budgetStatus.percentage, 100)}%`,
@@ -194,26 +194,26 @@ const ReportsPage: FC = () => {
             <Box
               className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "category"
-                  ? "bg-white text-blue-600 shadow-md transform scale-105"
+                  ? "bg-white text-yellow-600 shadow-md transform scale-105"
                   : "text-gray-600 hover:bg-gray-200"
               }`}
               onClick={() => setViewMode("category")}
             >
               <Icon icon="zi-more-grid" className="mb-1" />
-              <Text size="small" className={`font-medium ${viewMode === "category" ? "text-blue-600" : "text-gray-600"}`}>
+              <Text size="small" className={`font-medium ${viewMode === "category" ? "text-yellow-600" : "text-gray-600"}`}>
                 Theo danh mục
               </Text>
             </Box>
             <Box
               className={`flex-1 py-3 px-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
                 viewMode === "trend"
-                  ? "bg-white text-blue-600 shadow-md transform scale-105"
+                  ? "bg-white text-yellow-600 shadow-md transform scale-105"
                   : "text-gray-600 hover:bg-gray-200"
               }`}
               onClick={() => setViewMode("trend")}
             >
               <Icon icon="zi-more-grid" className="mb-1" />
-              <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-blue-600" : "text-gray-600"}`}>
+              <Text size="small" className={`font-medium ${viewMode === "trend" ? "text-yellow-600" : "text-gray-600"}`}>
                 Xu hướng
               </Text>
             </Box>

@@ -162,7 +162,7 @@ const BudgetPage: FC = () => {
           </Box>
 
           {monthlyBudget ? (
-            <Box className="p-5 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl text-white shadow-lg">
+            <Box className="p-5 bg-gradient-to-br from-yellow-600 via-purple-600 to-pink-600 rounded-2xl text-white shadow-lg">
               <Text size="small" className="opacity-90">
                 {getMonthName(monthlyBudget.month)} {monthlyBudget.year}
               </Text>
@@ -170,7 +170,7 @@ const BudgetPage: FC = () => {
                 {formatCurrency(monthlyBudget.amount)}
               </Text.Title>
               <Button
-                className="flex bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md"
+                className="flex bg-white text-yellow-600 hover:bg-gray-100 font-semibold shadow-md"
                 size="small"
                 variant="secondary"
                 onClick={() => handleDeleteBudget(monthlyBudget.id)}
@@ -298,7 +298,7 @@ const BudgetPage: FC = () => {
                 onChange={(value) =>
                   setFormData({ ...formData, categoryId: value as string })
                 }
-                className="bg-white border-2 border-gray-200 rounded-xl"
+                className="bg-white  rounded-xl"
               >
                 {expenseCategories.map((category) => (
                   <Select.Option
@@ -322,7 +322,7 @@ const BudgetPage: FC = () => {
                 setFormData({ ...formData, amount: e.target.value })
               }
               placeholder="Nhập số tiền"
-              className="bg-white border-2 border-gray-200 rounded-xl"
+              className="bg-white  rounded-xl"
             />
           </Box>
 
@@ -345,7 +345,7 @@ const BudgetPage: FC = () => {
               locale="vi-VN"
               mask
               maskClosable
-              inputClass="bg-white border-2 border-gray-200 rounded-xl"
+              inputClass="bg-white  rounded-xl"
             />
           </Box>
 

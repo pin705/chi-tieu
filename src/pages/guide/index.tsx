@@ -195,10 +195,10 @@ const GuidePage: FC = () => {
 
         {/* Contact Support */}
         <Box className="px-4 pt-4 pb-4">
-          <Box className="bg-blue-50 rounded-2xl p-5 border border-blue-200">
+          <Box className="bg-yellow-50 rounded-2xl p-5 border border-yellow-200">
             <Box className="flex items-start">
-              <Box className="bg-blue-100 rounded-full p-2.5 mr-3 flex-shrink-0">
-                <Icon icon="zi-chat" size={20} className="text-blue-600" />
+              <Box className="bg-yellow-100 rounded-full p-2.5 mr-3 flex-shrink-0">
+                <Icon icon="zi-chat" size={20} className="text-yellow-600" />
               </Box>
               <Box className="flex-1">
                 <Text className="font-semibold text-gray-900 mb-1">

@@ -154,7 +154,7 @@ const BackupPage: React.FC = () => {
         {/* Backup Info */}
         <Box className="m-4 p-6 bg-white rounded-2xl shadow-sm">
           <Box className="flex items-center mb-4">
-            <Icon icon="zi-backup-solid" className="text-blue-600 mr-3" size={28} />
+            <Icon icon="zi-backup-solid" className="text-yellow-600 mr-3" size={28} />
             <Text.Title className="text-gray-900 font-bold">
               Sao lưu dữ liệu
             </Text.Title>
@@ -205,7 +205,7 @@ const BackupPage: React.FC = () => {
                         Dung lượng: {formatSize(backup.size)}
                       </Text>
                     </Box>
-                    <Icon icon="zi-bookmark" className="text-blue-600" size={24} />
+                    <Icon icon="zi-bookmark" className="text-yellow-600" size={24} />
                   </Box>
 
                   <Box className="flex gap-2">
@@ -241,20 +241,20 @@ const BackupPage: React.FC = () => {
         </Box>
 
         {/* Info */}
-        <Box className="mx-4 mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
-          <Text.Title className="text-blue-800 mb-2 text-sm font-semibold">
+        <Box className="mx-4 mt-6 p-4 bg-yellow-50 rounded-xl border border-yellow-200">
+          <Text.Title className="text-yellow-800 mb-2 text-sm font-semibold">
             Lưu ý
           </Text.Title>
           <Box className="space-y-2">
-            <Text size="xSmall" className="text-blue-700 flex items-start">
+            <Text size="xSmall" className="text-yellow-700 flex items-start">
               <span className="mr-2">•</span>
               Dữ liệu được lưu trữ cục bộ trên thiết bị
             </Text>
-            <Text size="xSmall" className="text-blue-700 flex items-start">
+            <Text size="xSmall" className="text-yellow-700 flex items-start">
               <span className="mr-2">•</span>
               Nên tạo bản sao lưu định kỳ để đảm bảo an toàn
             </Text>
-            <Text size="xSmall" className="text-blue-700 flex items-start">
+            <Text size="xSmall" className="text-yellow-700 flex items-start">
               <span className="mr-2">•</span>
               Có thể xuất file và lưu trữ ở nơi khác
             </Text>

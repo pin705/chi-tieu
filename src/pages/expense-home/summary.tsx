@@ -17,7 +17,7 @@ export const Summary: FC = () => {
       <Box 
         className="rounded-3xl p-6 mb-4 shadow-card relative overflow-hidden animate-scale-in"
         style={{
-          background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+          background: 'linear-gradient(135deg, #EAB308 0%, #CA8A04 100%)',
         }}
       >
         <Box className="absolute top-0 right-0 w-40 h-40 bg-white opacity-10 rounded-full -mr-20 -mt-20" />
@@ -59,27 +59,27 @@ export const Summary: FC = () => {
         <Box className="bg-white rounded-2xl p-5 mb-4 shadow-card animate-slide-up" style={{ animationDelay: '0.1s' }}>
           <Box className="flex items-center justify-between mb-4">
             <Box className="flex items-center">
-              <Box className="bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-2xl p-2.5 mr-3 shadow-sm">
-                <Icon icon="zi-poll" className="text-indigo-600" size={20} />
+              <Box className="bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-2xl p-2.5 mr-3 shadow-sm">
+                <Icon icon="zi-poll" className="text-yellow-600" size={20} />
               </Box>
               <Text.Title size="small" className="font-bold text-gray-900">
                 Ngân sách tháng này
               </Text.Title>
             </Box>
             <Box
-              className="flex items-center px-3 py-1.5 rounded-full bg-indigo-50 cursor-pointer active:scale-95 transition-transform"
+              className="flex items-center px-3 py-1.5 rounded-full bg-yellow-50 cursor-pointer active:scale-95 transition-transform"
               onClick={() => navigate("/budget")}
             >
-              <Text size="xSmall" className="text-indigo-600 font-semibold mr-1">Chi tiết</Text>
-              <Icon icon="zi-arrow-right" size={14} className="text-indigo-600" />
+              <Text size="xSmall" className="text-yellow-600 font-semibold mr-1">Chi tiết</Text>
+              <Icon icon="zi-arrow-right" size={14} className="text-yellow-600" />
             </Box>
           </Box>
           <Box className="flex justify-between items-center mb-3">
             <Text size="small" className="text-gray-600 font-semibold">
               {formatCurrency(budgetStatus.spent)} / {formatCurrency(budgetStatus.budget)}
             </Text>
-            <Box className={`px-3 py-1 rounded-full ${budgetStatus.isExceeded ? 'bg-red-100' : 'bg-indigo-100'}`}>
-              <Text size="small" className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-indigo-600"}`}>
+            <Box className={`px-3 py-1 rounded-full ${budgetStatus.isExceeded ? 'bg-red-100' : 'bg-yellow-100'}`}>
+              <Text size="small" className={`font-bold ${budgetStatus.isExceeded ? "text-red-600" : "text-yellow-600"}`}>
                 {budgetStatus.percentage.toFixed(0)}%
               </Text>
             </Box>
@@ -89,7 +89,7 @@ export const Summary: FC = () => {
               className={`h-3 rounded-full transition-all duration-500 ${
                 budgetStatus.isExceeded 
                   ? "bg-gradient-to-r from-red-500 to-red-600" 
-                  : "bg-gradient-to-r from-indigo-500 to-indigo-600"
+                  : "bg-gradient-to-r from-yellow-500 to-yellow-600"
               }`}
               style={{
                 width: `${Math.min(budgetStatus.percentage, 100)}%`,
@@ -151,7 +151,7 @@ export const Summary: FC = () => {
             </Box>
             <Text.Title
               size="small"
-              className={`font-bold ${stats.balance >= 0 ? "text-indigo-600" : "text-red-600"}`}
+              className={`font-bold ${stats.balance >= 0 ? "text-yellow-600" : "text-red-600"}`}
             >
               {stats.balance >= 0 ? "+" : ""}{formatCurrency(stats.balance)}
             </Text.Title>

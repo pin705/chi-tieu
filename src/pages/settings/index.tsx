@@ -59,7 +59,7 @@ const SettingsPage: FC = () => {
           </Box>
           <List>
             <List.Item
-              prefix={<Icon icon="zi-user" className="text-blue-600" size={22} />}
+              prefix={<Icon icon="zi-user" className="text-yellow-600" size={22} />}
               title="Quản lý ví"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}
               onClick={() => navigate("/manage-wallets")}
@@ -99,7 +99,7 @@ const SettingsPage: FC = () => {
               onClick={() => navigate("/export")}
             />
             <List.Item
-              prefix={<Icon icon="zi-backup-solid" className="text-blue-600" size={22} />}
+              prefix={<Icon icon="zi-backup-solid" className="text-yellow-600" size={22} />}
               title="Sao lưu & Khôi phục"
               subTitle="Bảo vệ dữ liệu của bạn"
               suffix={<Icon icon="zi-chevron-right" className="text-gray-400" />}

@@ -87,7 +87,7 @@ const ExportPage: React.FC = () => {
         {/* Export Info */}
         <Box className="m-4 p-6 bg-white rounded-2xl shadow-sm">
           <Box className="flex items-center mb-4">
-            <Icon icon="zi-download" className="text-blue-600 mr-3" size={28} />
+            <Icon icon="zi-download" className="text-yellow-600 mr-3" size={28} />
             <Text.Title className="text-gray-900 font-bold">
               Xuất dữ liệu chi tiêu
             </Text.Title>
@@ -96,8 +96,8 @@ const ExportPage: React.FC = () => {
             Xuất toàn bộ dữ liệu giao dịch của bạn sang các định dạng khác nhau để lưu trữ, 
             phân tích hoặc chia sẻ.
           </Text>
-          <Box className="mt-4 p-3 bg-blue-50 rounded-lg">
-            <Text size="xSmall" className="text-blue-700">
+          <Box className="mt-4 p-3 bg-yellow-50 rounded-lg">
+            <Text size="xSmall" className="text-yellow-700">
               <Icon icon="zi-info-circle" size={16} className="mr-1" />
               Tổng số giao dịch: <strong>{transactions.length}</strong>
             </Text>
@@ -129,7 +129,7 @@ const ExportPage: React.FC = () => {
               </Option>
               <Option value="excel" title="Excel (.xlsx)">
                 <Box className="flex items-center py-2">
-                  <Icon icon="zi-grid-solid" className="text-blue-600 mr-3" size={24} />
+                  <Icon icon="zi-grid-solid" className="text-yellow-600 mr-3" size={24} />
                   <Box className="flex-1">
                     <Text className="font-medium">Excel</Text>
                     <Text size="xSmall" className="text-gray-500">

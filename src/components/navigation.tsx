@@ -59,7 +59,7 @@ export const Navigation: FC = () => {
         <Box 
           className="w-16 h-16 rounded-full shadow-floating flex items-center justify-center cursor-pointer active:scale-90 transition-all duration-200 border-4 border-white"
           style={{
-            background: 'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)',
+            background: 'linear-gradient(135deg, #EAB308 0%, #CA8A04 100%)',
           }}
         >
           <Icon icon="zi-plus" size={32} className="text-white" />
